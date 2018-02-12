@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app-climapp.iml" filepath="$PROJECT_DIR$/.idea/modules/app-climapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app-climapp_main.iml" filepath="$PROJECT_DIR$/.idea/modules/app-climapp_main.iml" group="app-climapp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app-climapp_test.iml" filepath="$PROJECT_DIR$/.idea/modules/app-climapp_test.iml" group="app-climapp" />
+    </modules>
+  </component>
+</project>

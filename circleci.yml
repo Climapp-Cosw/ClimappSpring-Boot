@@ -1,0 +1,16 @@
+machine:
+  java:
+    version: oraclejdk8
+
+dependencies:
+  pre:
+    - chmod +x gradlew
+  override:
+    - chmod +x gradlew
+    - ./gradlew dependencies
+    
+deployment:
+  staging:
+    branch: master
+    heroku: 
+      appname: climapp
