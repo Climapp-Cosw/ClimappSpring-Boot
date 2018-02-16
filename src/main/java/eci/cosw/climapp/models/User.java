@@ -6,75 +6,120 @@ package eci.cosw.climapp.models;
 public class User {
 
     private long id;
+    private String name;
     private String email;
     private String password;
-    private String firstname;
-    private String lastname;
-    private String username;
+    private String confirmPassword;
+    private String image;
+    
 
     public User() {
     }
 
-    public User( String email, String password, String firstname, String lastname ) {
+    /**
+     * 
+     * @param email
+     * @param password
+     * @param name
+     * @param image
+     * @param confirmPassword 
+     */
+    public User( String email, String password, String name, String image, String confirmPassword ) {
         this.email = email;
         this.password = password;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.image = image;
+        this.name = name;
+        this.confirmPassword = confirmPassword;
     }
 
 
+    /**
+     * @return the id
+     */
     public long getId() {
         return id;
     }
 
-    public void setId( long id ) {
+    /**
+     * @param id the id to set
+     */
+    public void setId(long id) {
         this.id = id;
     }
 
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
-    public void setEmail( String email ) {
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * @return the password
+     */
     public String getPassword() {
         return password;
     }
 
-    public void setPassword( String password ) {
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getFirstname() {
-        return firstname;
+    /**
+     * @return the image
+     */
+    public String getImage() {
+        return image;
     }
 
-    public void setFirstname( String firstname ) {
-        this.firstname = firstname;
+    /**
+     * @param image the image to set
+     */
+    public void setImage(String image) {
+        this.image = image;
     }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname( String lastname ) {
-        this.lastname = lastname;
-    }
-
-    public String getUsername()
-    {
-        return username;
-    }
-
-    public void setUsername( String username ) {
-        this.username = username;
-    }
-
+    
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", email='" + email + '\'' + ", password='" + password + '\'' + ", firstname='"
-                + firstname + '\'' + '}';
+        return "User{" + "id=" + getId() + ", email='" + getEmail() + '\'' + ", password='" + getPassword() + '\'' + ", firstname='"
+                + name + '\'' + '}';
+    }
+
+    /**
+     * @return the confirmPassword
+     */
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    /**
+     * @param confirmPassword the confirmPassword to set
+     */
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }
