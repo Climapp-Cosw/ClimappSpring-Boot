@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 public class AppClimappApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AppClimappApplication.class, args);
+            SpringApplication.run(AppClimappApplication.class, args);
 	}
 	
 	@Bean
