@@ -18,6 +18,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     public UserServiceImpl() {
+        users.add(new User(new Long(1),"prueba@mail.com","password","name","http://www.your3dsource.com/images/facepic2.jpeg"
+                ,"password"));
     }
 
     @Override
@@ -36,8 +38,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User updateUser(User user,String email) {
+        boolean flag = true;
+        User u=null;
+        for(int i=0; i<users.size() && flag; i++){
+            u=users.get(i);
+            if(u.getEmail().trim().equalsIgnoreCase(email)){
+                u.setImage(user.getImage());
+                u.setPassword(user.getPassword());
+                u.setEmail(user.getEmail());
+                u.setName(user.getName());
+                u.setConfirmPassword(user.getConfirmPassword());
+                flag=false;
+            }
+        }
+        return u;
+    }
+
+    @Override
     public User createUser(User user) {
         users.add(user);
+        user.setId(new Long(users.size()));
         return user;
     }
 

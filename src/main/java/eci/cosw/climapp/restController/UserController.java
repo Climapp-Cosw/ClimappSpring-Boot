@@ -3,16 +3,13 @@ package eci.cosw.climapp.restController;
 import eci.cosw.climapp.models.User;
 import eci.cosw.climapp.services.UserService;
 import eci.cosw.climapp.services.UsersException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.ServletException;
 import java.util.Date;
-import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * Created by laura on 11/02/2018.
@@ -57,6 +54,16 @@ public class UserController  {
     public User getUsersByEmail(@PathVariable("email") String email){
         System.out.println("Correo: "+email);
         return userService.findUserByEmail(email);
+    }
+    @RequestMapping( value = "/updateprofile/{email}", method = RequestMethod.POST )
+    public User updateUser(@RequestBody User updateuser, @PathVariable("email") String email){
+        System.out.println("Correo: "+email);
+        System.out.println("Userupdate: "+updateuser.getName());
+        System.out.println("Userupdate: "+updateuser.getEmail());
+        System.out.println("Userupdate: "+updateuser.getPassword());
+        System.out.println("Userupdate: "+updateuser.getImage());
+        System.out.println("Userupdate: "+updateuser.getConfirmPassword());
+        return userService.updateUser(updateuser,email);
     }
     
     @RequestMapping( value = "/", method = RequestMethod.POST )

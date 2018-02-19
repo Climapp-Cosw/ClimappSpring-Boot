@@ -13,6 +13,8 @@ public interface UserService {
 
     public User getUser( Long id );
 
+    public User updateUser( User user,String email );
+
     public User createUser( User user );
 
     public User findUserByEmail( String email );

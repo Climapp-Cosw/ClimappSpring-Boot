@@ -32,6 +32,14 @@ public class User {
         this.confirmPassword = confirmPassword;
     }
 
+    public User(Long id,String email, String password, String name, String image, String confirmPassword ) {
+        this.email = email;
+        this.password = password;
+        this.image = image;
+        this.name = name;
+        this.confirmPassword = confirmPassword;
+        this.id=id;
+    }
 
     /**
      * @return the id
