@@ -36,22 +36,14 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
-
     @Override
-    public User updateUser(User user,String email) {
-        boolean flag = true;
-        User u=null;
-        for(int i=0; i<users.size() && flag; i++){
-            u=users.get(i);
-            if(u.getEmail().trim().equalsIgnoreCase(email)){
-                u.setImage(user.getImage());
-                u.setPassword(user.getPassword());
-                u.setEmail(user.getEmail());
-                u.setName(user.getName());
-                u.setConfirmPassword(user.getConfirmPassword());
-                flag=false;
-            }
-        }
+    public User updateUser(User user,String email){
+        User u=this.findUserByEmail(email);
+        u.setImage(user.getImage());
+        u.setPassword(user.getPassword());
+        u.setEmail(user.getEmail());
+        u.setName(user.getName());
+        u.setConfirmPassword(user.getConfirmPassword());
         return u;
     }
 

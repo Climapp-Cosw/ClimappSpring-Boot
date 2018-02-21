@@ -1,8 +1,9 @@
 package eci.cosw.climapp.restController;
 
+import eci.cosw.climapp.models.Report;
 import eci.cosw.climapp.models.User;
+import eci.cosw.climapp.services.ServicesException;
 import eci.cosw.climapp.services.UserService;
-import eci.cosw.climapp.services.UsersException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by laura on 11/02/2018.
@@ -55,33 +57,43 @@ public class UserController  {
         System.out.println("Correo: "+email);
         return userService.findUserByEmail(email);
     }
-    @RequestMapping( value = "/updateprofile/{email}", method = RequestMethod.POST )
-    public User updateUser(@RequestBody User updateuser, @PathVariable("email") String email){
+
+    @RequestMapping( value = "/{email}/reports", method = RequestMethod.GET )
+    public List<Report> getReportsByUser(@PathVariable("email") String email){
         System.out.println("Correo: "+email);
-        System.out.println("Userupdate: "+updateuser.getName());
-        System.out.println("Userupdate: "+updateuser.getEmail());
-        System.out.println("Userupdate: "+updateuser.getPassword());
-        System.out.println("Userupdate: "+updateuser.getImage());
-        System.out.println("Userupdate: "+updateuser.getConfirmPassword());
-        return userService.updateUser(updateuser,email);
+        return userService.findUserByEmail(email).getReports();
+    }
+
+    @RequestMapping( value = "/updateprofile/{email}", method = RequestMethod.POST )
+    public User updateUser(@RequestBody User updateuser, @PathVariable("email") String email) throws ServicesException {
+        if(!updateuser.getEmail().trim().equals(email) && userService.findUserByEmail(updateuser.getEmail())!=null){
+            throw new ServicesException("Email alredy registered. Please try again.");
+
+        }else{
+            return userService.updateUser(updateuser,email);
+        }
+
     }
     
     @RequestMapping( value = "/", method = RequestMethod.POST )
-    public User setUsers(@RequestBody User user) throws UsersException{
+    public User setUsers(@RequestBody User user) throws ServicesException {
         if(user.getName()==null || user.getName().trim().isEmpty()){
-            throw new UsersException("Please fill in name");
+            throw new ServicesException("Please fill in name");
         }
         else if(user.getEmail()==null || user.getEmail().trim().isEmpty()){
-            throw new UsersException("Please fill in email");
+            throw new ServicesException("Please fill in email");
+        }
+        else if(userService.findUserByEmail(user.getEmail())!=null){
+            throw  new ServicesException("Email alredy registered. Please try again.");
         }
         else if(user.getPassword()==null || user.getPassword().trim().isEmpty()){
-            throw new UsersException("Please fill in password");
+            throw new ServicesException("Please fill in password");
         }
         else if(user.getConfirmPassword()==null || user.getConfirmPassword().trim().isEmpty()){
-            throw new UsersException("Please fill in Confirm password");
+            throw new ServicesException("Please fill in Confirm password");
         }
         else if(!user.getConfirmPassword().equals(user.getPassword())){
-            throw new UsersException("Check your password and your confirm password. They are different");
+            throw new ServicesException("Check your password and your confirm password. They are different");
         }
         else{
             return userService.createUser(user);

@@ -1,5 +1,8 @@
 package eci.cosw.climapp.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by laura on 11/02/2018.
  */
@@ -11,6 +14,7 @@ public class User {
     private String password;
     private String confirmPassword;
     private String image;
+    private List<Report> reports = new ArrayList<>();
     
 
     public User() {
@@ -31,7 +35,15 @@ public class User {
         this.name = name;
         this.confirmPassword = confirmPassword;
     }
-
+    /**
+     *
+     * @param id
+     * @param email
+     * @param password
+     * @param name
+     * @param image
+     * @param confirmPassword
+     */
     public User(Long id,String email, String password, String name, String image, String confirmPassword ) {
         this.email = email;
         this.password = password;
@@ -110,12 +122,6 @@ public class User {
     public void setImage(String image) {
         this.image = image;
     }
-    
-    @Override
-    public String toString() {
-        return "User{" + "id=" + getId() + ", email='" + getEmail() + '\'' + ", password='" + getPassword() + '\'' + ", firstname='"
-                + name + '\'' + '}';
-    }
 
     /**
      * @return the confirmPassword
@@ -125,9 +131,29 @@ public class User {
     }
 
     /**
+     * @return the reports
+     */
+    public List<Report> getReports() {
+        return reports;
+    }
+
+    /**
+     * @param reports the reports to set
+     */
+    public void setReports(List<Report> reports) {
+        this.reports = reports;
+    }
+
+    /**
      * @param confirmPassword the confirmPassword to set
      */
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "id=" + getId() + ", email='" + getEmail() + '\'' + ", password='" + getPassword() + '\'' + ", firstname='"
+                + name + '\'' + '}';
     }
 }
