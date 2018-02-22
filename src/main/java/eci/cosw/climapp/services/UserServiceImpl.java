@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
          List<Zone> zon = u.getZones();
          for(int i=0; i<zon.size(); i++){
              if(zon.get(i).getId()==zone.getId()){
-                 throw new ServicesException("You're already subscribed to the zone");
+                 throw new ServicesException("You're already subscribed to the "+zone.getName()+" zone");
              }
          }
          zon.add(zone);

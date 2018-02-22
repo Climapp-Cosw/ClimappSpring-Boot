@@ -105,7 +105,7 @@ public class UserController  {
     
     
     @RequestMapping( value = "/zones/{email}", method = RequestMethod.POST )
-    public User setZone(@RequestBody Zone zone, @PathVariable("email") String email) throws ServletException, ServicesException{
+    public User addZone(@RequestBody Zone zone, @PathVariable("email") String email) throws ServletException, ServicesException{
         return userService.addZone(zone, email);
     }
     
