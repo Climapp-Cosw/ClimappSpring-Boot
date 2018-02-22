@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.ServletException;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Created by laura on 11/02/2018.
@@ -112,7 +110,12 @@ public class UserController  {
     @RequestMapping( value = "/zones/{email}", method = RequestMethod.DELETE )
     public User deleteZone(@RequestBody Zone zone, @PathVariable("email") String email) throws ServletException, ServicesException{
         return userService.deleteZone(zone, email);
-    }   
+    }
+    @RequestMapping( value = "/id/{id}", method = RequestMethod.GET )
+    public User getUsersById(@PathVariable("id") Long id){
+        System.out.println("Id: "+id);
+        return userService.findUserById(id);
+    }
 
     public class Token{
         String access_token;

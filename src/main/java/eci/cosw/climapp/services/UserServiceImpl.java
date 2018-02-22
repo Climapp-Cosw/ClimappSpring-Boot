@@ -54,7 +54,15 @@ public class UserServiceImpl implements UserService {
         user.setId(new Long(users.size()));
         return user;
     }
-
+    @Override
+    public User findUserById(Long id) {
+        for(int i=0; i<users.size(); i++){
+            if(users.get(i).getId()==id){
+                return users.get(i);
+            }
+        }
+        return null;
+    }
     @Override
     public User findUserByEmail(String email) {
         for(int i=0; i<users.size(); i++){

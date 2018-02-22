@@ -11,6 +11,8 @@ public class ReportServiceImpl implements ReportService{
 
     private List<Report>reports=new ArrayList<>();
 
+
+
     @Override
     public void createReport(Report rep) {
         reports.add(rep);
@@ -37,5 +39,6 @@ public class ReportServiceImpl implements ReportService{
     public List<Report> getReports() {
         return reports;
     }
+
 
 }

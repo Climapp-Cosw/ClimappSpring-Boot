@@ -39,7 +39,11 @@ public interface UserService {
      * @return
      */
     public User findUserByEmail( String email );
-
+    /**
+     * @param id
+     * @return
+     */
+    public User findUserById(Long id);
     /**
      * @param email
      * @param password
@@ -55,7 +59,7 @@ public interface UserService {
      * @throws eci.cosw.climapp.services.ServicesException 
      */
     public User addZone(Zone zone, String email) throws ServicesException;
-    
+
     /**
      * 
      * @param zone

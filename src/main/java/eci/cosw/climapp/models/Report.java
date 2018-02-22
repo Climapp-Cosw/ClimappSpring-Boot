@@ -8,12 +8,12 @@ public class Report {
 
     private Long id;
     private Date dateTimeReport;
-    private Coordenate latLng;
+    private Coordenate coordenate;
     private Image img;
     private String coment;
     private String weather;
-    private Long ratio;
     private User reportedUser;
+    private Zone zone;
 
     /**
      * @param id
@@ -23,15 +23,15 @@ public class Report {
      * @param coment
      * @param clima
      */
-    public Report(Long id,Date dateTimeReport, Coordenate latLng, Image img, String coment, String clima, User u,Long ratio) {
+    public Report(Long id,Date dateTimeReport, Coordenate latLng, Image img, String coment, String clima, User u,Zone z) {
         this.dateTimeReport = dateTimeReport;
-        this.latLng = latLng;
+        this.coordenate = latLng;
         this.img = img;
         this.coment = coment;
         this.weather = clima;
         this.id=id;
         this.reportedUser=u;
-        this.ratio=ratio;
+        this.zone=z;
     }
 
     public Report() {
@@ -42,20 +42,6 @@ public class Report {
      */
     public Date getDateTimeReport() {
         return dateTimeReport;
-    }
-
-    /**
-     * @return the ratio
-     */
-    public Long getRatio() {
-        return ratio;
-    }
-
-    /**
-     * @param ratio the ratio to set
-     */
-    public void setRatio(Long ratio) {
-        this.ratio = ratio;
     }
 
     /**
@@ -83,15 +69,15 @@ public class Report {
     /**
      * @return the Coordenate
      */
-    public Coordenate getLatLng() {
-        return latLng;
+    public Coordenate getCoordenate() {
+        return coordenate;
     }
 
     /**
      * @param latLng the Coordenate to set
      */
-    public void setLatLng(Coordenate latLng) {
-        this.latLng = latLng;
+    public void setCoordenate(Coordenate latLng) {
+        this.coordenate = latLng;
     }
 
     /**
@@ -155,11 +141,10 @@ public class Report {
         return "Report{" +
                 "id=" + id +
                 ", dateTimeReport=" + dateTimeReport +
-                ", latLng=" + latLng +
+                ", latLng=" + coordenate +
                 ", img=" + img +
                 ", coment='" + coment + '\'' +
                 ", weather='" + weather + '\'' +
-                ", ratio=" + ratio +
                 ", reportedUser=" + reportedUser +
                 '}';
     }

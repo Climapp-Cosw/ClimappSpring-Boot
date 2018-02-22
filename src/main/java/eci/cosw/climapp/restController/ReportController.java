@@ -24,7 +24,7 @@ public class ReportController {
         reportService.createReport(report);
     }
 
-    @RequestMapping( value = "/", method = RequestMethod.GET )
+    @RequestMapping( value = "/reports", method = RequestMethod.GET )
     public List<Report> getReports() {
 
         return reportService.getReports();
