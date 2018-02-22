@@ -645,6 +645,7 @@ var ProfileConfigPageComponent = /** @class */ (function () {
         this.userService = userService;
         this.formBuilder = formBuilder;
         this.router = router;
+        this.editable = false;
         this.userService.getUEmail().subscribe(function (serverResponse) {
             _this.username = serverResponse.name;
             _this.useremail = serverResponse.email;
@@ -665,7 +666,16 @@ var ProfileConfigPageComponent = /** @class */ (function () {
     };
     ProfileConfigPageComponent.prototype.routeToProfile = function () {
         this.editable = false;
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/profile']).then(function () {
+            var _this = this;
+            this.editable = false;
+            this.userService.getUEmail().subscribe(function (serverResponse) {
+                _this.username = serverResponse.name;
+                _this.useremail = serverResponse.email;
+                _this.userimage = serverResponse.image;
+                _this.userpass = serverResponse.password;
+            });
+        });
     };
     ProfileConfigPageComponent.prototype.saveConfig = function () {
         var _this = this;
