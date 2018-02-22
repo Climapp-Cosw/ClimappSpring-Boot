@@ -1,6 +1,7 @@
 package eci.cosw.climapp.services;
 
 import eci.cosw.climapp.models.User;
+import eci.cosw.climapp.models.Zone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -72,5 +73,26 @@ public class UserServiceImpl implements UserService {
             }
         }
         return null;
+    }
+
+    @Override
+    public User addZone(Zone zone, String email) throws ServicesException{
+         User u = this.findUserByEmail(email);
+         List<Zone> zon = u.getZones();
+         for(int i=0; i<zon.size(); i++){
+             if(zon.get(i).getId()==zone.getId()){
+                 throw new ServicesException("You're already subscribed to the zone");
+             }
+         }
+         zon.add(zone);
+         u.setZones(zon);
+         return u;
+    }
+
+    @Override
+    public User deleteZone(Zone zone,  String email) {
+        User u = this.findUserByEmail(email);
+        u.deleteZone(zone);
+        return u;
     }
 }

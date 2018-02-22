@@ -15,7 +15,7 @@ public class User {
     private String confirmPassword;
     private String image;
     private List<Report> reports = new ArrayList<>();
-    
+    private List<Zone> zones = new ArrayList<>();
 
     public User() {
     }
@@ -151,9 +151,42 @@ public class User {
         this.confirmPassword = confirmPassword;
     }
 
+    
+    
+    
     @Override
     public String toString() {
         return "User{" + "id=" + getId() + ", email='" + getEmail() + '\'' + ", password='" + getPassword() + '\'' + ", firstname='"
                 + name + '\'' + '}';
+    }
+
+    /**
+     * @return the zones
+     */
+    public List<Zone> getZones() {
+        return zones;
+    }
+
+    /**
+     * @param zones the zones to set
+     */
+    public void setZones(List<Zone> zones) {
+        this.zones = zones;
+    }
+    
+    /**
+     * Add zone to array
+     * @param zone 
+     */
+    public void addZone(Zone zone){
+        zones.add(zone);
+    }
+    
+    /**
+     * Delete zone of array
+     * @param zone 
+     */
+    public void deleteZone(Zone zone){
+        zones.remove(zone);
     }
 }

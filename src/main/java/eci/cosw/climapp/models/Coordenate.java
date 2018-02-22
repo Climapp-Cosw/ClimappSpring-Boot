@@ -2,17 +2,26 @@ package eci.cosw.climapp.models;
 
 public class Coordenate {
     private Long id;
-    private Long latitude;
-    private Long longitude;
+    private double latitude;
+    private double longitude;
 
     /**
      * @param latitude
      * @param longitude
      */
-    public Coordenate(Long id,Long latitude, Long longitude) {
+    public Coordenate(Long id,double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.id=id;
+    }
+    
+        /**
+     * @param latitude
+     * @param longitude
+     */
+    public Coordenate(double latitude, double longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public Coordenate(){
@@ -22,28 +31,28 @@ public class Coordenate {
     /**
      * @return the latitude
      */
-    public Long getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
     /**
      * @param latitude the latitude to set
      */
-    public void setLatitude(Long latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
     /**
      * @return the longitude
      */
-    public Long getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
     /**
      * @param longitude the longitude to set
      */
-    public void setLongitude(Long longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 

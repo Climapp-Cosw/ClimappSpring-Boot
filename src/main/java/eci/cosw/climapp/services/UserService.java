@@ -1,6 +1,7 @@
 package eci.cosw.climapp.services;
 
 import eci.cosw.climapp.models.User;
+import eci.cosw.climapp.models.Zone;
 
 import java.util.List;
 
@@ -45,5 +46,23 @@ public interface UserService {
      * @return
      */
     public User findUserByEmailAndPassword( String email, String password );
+    
+    /**
+     * 
+     * @param zone
+     * @param email
+     * @return 
+     * @throws eci.cosw.climapp.services.ServicesException 
+     */
+    public User addZone(Zone zone, String email) throws ServicesException;
+    
+    /**
+     * 
+     * @param zone
+     * @param email
+     * @return 
+     * @throws eci.cosw.climapp.services.ServicesException 
+     */
+    public User deleteZone(Zone zone, String email) throws ServicesException;
 
 }

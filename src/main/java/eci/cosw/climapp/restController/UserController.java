@@ -2,6 +2,7 @@ package eci.cosw.climapp.restController;
 
 import eci.cosw.climapp.models.Report;
 import eci.cosw.climapp.models.User;
+import eci.cosw.climapp.models.Zone;
 import eci.cosw.climapp.services.ServicesException;
 import eci.cosw.climapp.services.UserService;
 import io.jsonwebtoken.Jwts;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.ServletException;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by laura on 11/02/2018.
@@ -99,6 +102,17 @@ public class UserController  {
             return userService.createUser(user);
         }
     }
+    
+    
+    @RequestMapping( value = "/zones/{email}", method = RequestMethod.POST )
+    public User setZone(@RequestBody Zone zone, @PathVariable("email") String email) throws ServletException, ServicesException{
+        return userService.addZone(zone, email);
+    }
+    
+    @RequestMapping( value = "/zones/{email}", method = RequestMethod.DELETE )
+    public User deleteZone(@RequestBody Zone zone, @PathVariable("email") String email) throws ServletException, ServicesException{
+        return userService.deleteZone(zone, email);
+    }   
 
     public class Token{
         String access_token;
