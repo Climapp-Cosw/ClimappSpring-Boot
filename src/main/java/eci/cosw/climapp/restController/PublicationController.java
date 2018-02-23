@@ -42,7 +42,7 @@ public class PublicationController {
 
     }
 
-    @RequestMapping( value = "/publications", method = RequestMethod.GET )
+    @RequestMapping( value = "/", method = RequestMethod.GET )
     public List<Publication> getPublications(){
         return publicationService.getPublications();
     }

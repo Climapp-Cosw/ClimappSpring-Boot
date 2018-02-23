@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class User {
 
-    private long id;
+    private int id;
     private String name;
     private String email;
     private String password;
@@ -21,12 +21,12 @@ public class User {
     }
 
     /**
-     * 
+     *
      * @param email
      * @param password
      * @param name
      * @param image
-     * @param confirmPassword 
+     * @param confirmPassword
      */
     public User( String email, String password, String name, String image, String confirmPassword ) {
         this.email = email;
@@ -44,7 +44,7 @@ public class User {
      * @param image
      * @param confirmPassword
      */
-    public User(Long id,String email, String password, String name, String image, String confirmPassword ) {
+    public User(int id,String email, String password, String name, String image, String confirmPassword ) {
         this.email = email;
         this.password = password;
         this.image = image;
@@ -56,14 +56,14 @@ public class User {
     /**
      * @return the id
      */
-    public long getId() {
+    public int getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

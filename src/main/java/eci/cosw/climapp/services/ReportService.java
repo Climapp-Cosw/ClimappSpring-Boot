@@ -8,12 +8,12 @@ public interface ReportService {
     /**
      * @param rep
      */
-    public void createReport(Report rep);
+    public Report createReport(Report rep) throws ServicesException;
 
     /**
      * @param id
      */
-    public void deleteReport(Long id);
+    public void deleteReport(int id);
 
     /**
      */
@@ -23,7 +23,6 @@ public interface ReportService {
      * @return
      */
     public List<Report> getReports();
-
 
 
 }

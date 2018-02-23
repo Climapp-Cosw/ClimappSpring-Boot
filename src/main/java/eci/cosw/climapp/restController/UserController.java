@@ -65,14 +65,16 @@ public class UserController  {
         return userService.findUserByEmail(email).getReports();
     }
 
-    @RequestMapping( value = "/updateprofile/{email}", method = RequestMethod.POST )
-    public User updateUser(@RequestBody User updateuser, @PathVariable("email") String email) throws ServicesException {
-        if(!updateuser.getEmail().trim().equals(email) && userService.findUserByEmail(updateuser.getEmail())!=null){
+    @RequestMapping( value = "/updateprofile/{id}", method = RequestMethod.POST )
+    public User updateUser(@RequestBody User updateuser, @PathVariable("id") int id) throws ServicesException {
+        User u= userService.findUserById(id);
+        if(!updateuser.getEmail().trim().equals(u.getEmail()) && userService.findUserByEmail(updateuser.getEmail())!=null){
             throw new ServicesException("Email alredy registered. Please try again.");
 
         }else{
-            return userService.updateUser(updateuser,email);
+            return userService.updateUser(updateuser,u);
         }
+
 
     }
     
@@ -112,7 +114,7 @@ public class UserController  {
         return userService.deleteZone(zone, email);
     }
     @RequestMapping( value = "/id/{id}", method = RequestMethod.GET )
-    public User getUsersById(@PathVariable("id") Long id){
+    public User getUsersById(@PathVariable("id") int id){
         System.out.println("Id: "+id);
         return userService.findUserById(id);
     }

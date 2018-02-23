@@ -19,7 +19,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     public UserServiceImpl() {
-        users.add(new User(new Long(1),"prueba@mail.com","password","name","http://www.your3dsource.com/images/facepic2.jpeg"
+        users.add(new User(1,"prueba@mail.com","password","name","http://www.your3dsource.com/images/facepic2.jpeg"
+                ,"password"));
+        users.add(new User(1,"prueba2@mail.com","password","name","http://www.your3dsource.com/images/facepic2.jpeg"
                 ,"password"));
     }
 
@@ -29,7 +31,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUser(Long id) {
+    public User getUser(int id) {
         for(int i=0; i<users.size(); i++){
             if(users.get(i).getId()==id){
                 return users.get(i);
@@ -38,8 +40,7 @@ public class UserServiceImpl implements UserService {
         return null;
     }
     @Override
-    public User updateUser(User user,String email){
-        User u=this.findUserByEmail(email);
+    public User updateUser(User user,User u){
         u.setImage(user.getImage());
         u.setPassword(user.getPassword());
         u.setEmail(user.getEmail());
@@ -51,11 +52,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createUser(User user) {
         users.add(user);
-        user.setId(new Long(users.size()));
+        user.setId(users.size());
         return user;
     }
     @Override
-    public User findUserById(Long id) {
+    public User findUserById(int id) {
         for(int i=0; i<users.size(); i++){
             if(users.get(i).getId()==id){
                 return users.get(i);

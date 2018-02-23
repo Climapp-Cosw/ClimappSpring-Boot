@@ -24,7 +24,7 @@ public class PublicationServiceImpl implements PublicationService {
     @Override
     public Publication createPublication(Publication p) {
         publications.add(p);
-        p.setId((long) publications.size());
+        p.setId(publications.size());
         return p;
     }
 
@@ -34,13 +34,9 @@ public class PublicationServiceImpl implements PublicationService {
         reportPublications.add(rep);
         for (int i=0;i<reportsService.getReports().size();i++){
             Report repPublication= reportsService.getReports().get(i);
-            if(repPublication.getCoordenate().distCoordenate(rep.getCoordenate())<=0.7
-                    && rep.getWeather().equals(repPublication.getWeather())){
-                if (rep.getReportedUser().getId()==repPublication.getReportedUser().getId()) {
-                    throw new ServicesException("Ya has publicado un reporte en la misma zona y con el mismo clima.");
-                }else{
-                    reportPublications.add(repPublication);
-                }
+            if(repPublication.getCoordenate().distCoordenate(rep.getCoordenate())<=0.7 && rep.getWeather().equals(repPublication.getWeather())){
+                reportPublications.add(repPublication);
+
             };
         }
         return reportPublications;
@@ -52,14 +48,10 @@ public class PublicationServiceImpl implements PublicationService {
             List<Report> reportPublications=publications.get(i).getReports();
             for (int j=0;j<reportPublications.size();j++){
                 Report repPublication= reportPublications.get(j);
-                if(repPublication.getCoordenate().distCoordenate(rep.getCoordenate())<=0.7
-                        && rep.getWeather().equals(repPublication.getWeather())){
-                    if (rep.getReportedUser().getId()==repPublication.getReportedUser().getId()) {
-                        throw new ServicesException("Ya has publicado un reporte en la misma zona y con el mismo clima.");
-                    }else{
-                        reportPublications.add(rep);
-                        return publications.get(i);
-                    }
+                if(repPublication.getCoordenate().distCoordenate(rep.getCoordenate())<=0.7 && rep.getWeather().equals(repPublication.getWeather())){
+                    reportPublications.add(rep);
+                    return publications.get(i);
+
                 };
             }
         }

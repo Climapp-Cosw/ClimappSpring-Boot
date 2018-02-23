@@ -3,11 +3,9 @@ package eci.cosw.climapp.restController;
 
 import eci.cosw.climapp.models.Report;
 import eci.cosw.climapp.services.ReportService;
+import eci.cosw.climapp.services.ServicesException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,14 +17,13 @@ public class ReportController {
     private ReportService reportService;
 
     @RequestMapping( value = "/newreport", method = RequestMethod.POST )
-    public void createReport(@RequestBody Report report) {
-
-        reportService.createReport(report);
+    public Report createReport(@RequestBody Report report) throws ServicesException {
+        return reportService.createReport(report);
     }
 
-    @RequestMapping( value = "/reports", method = RequestMethod.GET )
+    @RequestMapping( value = "/", method = RequestMethod.GET )
     public List<Report> getReports() {
-
         return reportService.getReports();
     }
+
 }

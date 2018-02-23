@@ -1,16 +1,15 @@
 package eci.cosw.climapp.models;
 
 
-import java.awt.*;
 import java.util.Date;
 
 public class Report {
 
-    private Long id;
+    private int id;
     private Date dateTimeReport;
-    private Coordenate coordenate;
-    private Image img;
-    private String coment;
+    private Coordinate coordinate;
+    private String img;
+    private String comment;
     private String weather;
     private User reportedUser;
     private Zone zone;
@@ -20,16 +19,33 @@ public class Report {
      * @param dateTimeReport
      * @param latLng
      * @param img
-     * @param coment
+     * @param comment
      * @param clima
      */
-    public Report(Long id,Date dateTimeReport, Coordenate latLng, Image img, String coment, String clima, User u,Zone z) {
+    public Report(int id,Date dateTimeReport, Coordinate latLng, String img, String comment, String clima, User u,Zone z) {
         this.dateTimeReport = dateTimeReport;
-        this.coordenate = latLng;
+        this.coordinate = latLng;
         this.img = img;
-        this.coment = coment;
+        this.comment = comment;
         this.weather = clima;
         this.id=id;
+        this.reportedUser=u;
+        this.zone=z;
+    }
+
+    /**
+     * @param dateTimeReport
+     * @param latLng
+     * @param img
+     * @param comment
+     * @param clima
+     */
+    public Report(Date dateTimeReport, Coordinate latLng, String img, String comment, String clima, User u,Zone z) {
+        this.dateTimeReport = dateTimeReport;
+        this.coordinate = latLng;
+        this.img = img;
+        this.comment = comment;
+        this.weather = clima;
         this.reportedUser=u;
         this.zone=z;
     }
@@ -69,43 +85,43 @@ public class Report {
     /**
      * @return the Coordenate
      */
-    public Coordenate getCoordenate() {
-        return coordenate;
+    public Coordinate getCoordenate() {
+        return coordinate;
     }
 
     /**
      * @param latLng the Coordenate to set
      */
-    public void setCoordenate(Coordenate latLng) {
-        this.coordenate = latLng;
+    public void setCoordenate(Coordinate latLng) {
+        this.coordinate = latLng;
     }
 
     /**
      * @return the image
      */
-    public Image getImg() {
+    public String getImg() {
         return img;
     }
 
     /**
      * @param img the image to set
      */
-    public void setImg(Image img) {
+    public void setImg(String img) {
         this.img = img;
     }
 
     /**
      * @return the coment
      */
-    public String getComent() {
-        return coment;
+    public String getComment() {
+        return comment;
     }
 
     /**
      * @param coment the coment to set
      */
-    public void setComent(String coment) {
-        this.coment = coment;
+    public void setComment(String coment) {
+        this.comment = coment;
     }
 
     /**
@@ -125,14 +141,14 @@ public class Report {
     /**
      * @return the id
      */
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -141,9 +157,9 @@ public class Report {
         return "Report{" +
                 "id=" + id +
                 ", dateTimeReport=" + dateTimeReport +
-                ", latLng=" + coordenate +
+                ", latLng=" + coordinate +
                 ", img=" + img +
-                ", coment='" + coment + '\'' +
+                ", coment='" + comment + '\'' +
                 ", weather='" + weather + '\'' +
                 ", reportedUser=" + reportedUser +
                 '}';

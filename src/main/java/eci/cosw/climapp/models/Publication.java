@@ -4,22 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Publication {
-    private Long id;
+    private int id;
     private List<Report> reports=new ArrayList<Report>();
     private Zone zones;
 
-    public Publication(Long id, List<Report> reports,Zone z) {
+    public Publication(int id, List<Report> reports,Zone z) {
         this.id = id;
         this.reports = reports;
         this.zones=z;
     }
+
+    public Publication(List<Report> reports,Zone z) {
+        this.id = id;
+        this.reports = reports;
+        this.zones=z;
+    }
+
     public Publication() {
     }
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

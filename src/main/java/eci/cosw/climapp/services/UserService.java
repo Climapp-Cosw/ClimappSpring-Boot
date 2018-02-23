@@ -18,15 +18,16 @@ public interface UserService {
      * @param id
      * @return
      */
-    public User getUser( Long id );
+    public User getUser( int id );
 
 
     /**
-     * @param user
-     * @param email
+     * @param updateuser
+     * @param u
      * @return
+     * @throws ServicesException
      */
-    public User updateUser(User user, String email ) throws ServicesException;
+    public User updateUser(User updateuser, User u) throws ServicesException;
 
     /**
      * @param user
@@ -43,7 +44,7 @@ public interface UserService {
      * @param id
      * @return
      */
-    public User findUserById(Long id);
+    public User findUserById(int id);
     /**
      * @param email
      * @param password

@@ -14,10 +14,10 @@ public class Zone {
     private int id;
     private int number;
     private String name;
-    private Coordenate coordenate1;
-    private Coordenate coordenate2;
-    private Coordenate coordenate3;
-    private Coordenate coordenate4;
+    private Coordinate coordinate1;
+    private Coordinate coordinate2;
+    private Coordinate coordinate3;
+    private Coordinate coordinate4;
     
     
     /**
@@ -37,14 +37,14 @@ public class Zone {
      * @param coordenate3 
      * @param coordenate4 
      */
-    public Zone(int id, int number, String name, Coordenate coordenate1, Coordenate coordenate2, Coordenate coordenate3, Coordenate coordenate4){
+    public Zone(int id, int number, String name, Coordinate coordenate1, Coordinate coordenate2, Coordinate coordenate3, Coordinate coordenate4){
         this.id = id;
         this.number = number;
         this.name = name;
-        this.coordenate1 = coordenate1;
-        this.coordenate2 = coordenate2;
-        this.coordenate3 = coordenate3;
-        this.coordenate4 = coordenate4;
+        this.coordinate1 = coordenate1;
+        this.coordinate2 = coordenate2;
+        this.coordinate3 = coordenate3;
+        this.coordinate4 = coordenate4;
     }
 
     /**
@@ -92,57 +92,57 @@ public class Zone {
     /**
      * @return the coordenate1
      */
-    public Coordenate getCoordenate1() {
-        return coordenate1;
+    public Coordinate getCoordenate1() {
+        return coordinate1;
     }
 
     /**
      * @param coordenate1 the coordenate1 to set
      */
-    public void setCoordenate1(Coordenate coordenate1) {
-        this.coordenate1 = coordenate1;
+    public void setCoordenate1(Coordinate coordenate1) {
+        this.coordinate1 = coordenate1;
     }
 
     /**
      * @return the coordenate2
      */
-    public Coordenate getCoordenate2() {
-        return coordenate2;
+    public Coordinate getCoordenate2() {
+        return coordinate2;
     }
 
     /**
      * @param coordenate2 the coordenate2 to set
      */
-    public void setCoordenate2(Coordenate coordenate2) {
-        this.coordenate2 = coordenate2;
+    public void setCoordenate2(Coordinate coordenate2) {
+        this.coordinate2 = coordenate2;
     }
 
     /**
      * @return the coordenate3
      */
-    public Coordenate getCoordenate3() {
-        return coordenate3;
+    public Coordinate getCoordenate3() {
+        return coordinate3;
     }
 
     /**
      * @param coordenate3 the coordenate3 to set
      */
-    public void setCoordenate3(Coordenate coordenate3) {
-        this.coordenate3 = coordenate3;
+    public void setCoordenate3(Coordinate coordenate3) {
+        this.coordinate3 = coordenate3;
     }
 
     /**
      * @return the coordenate4
      */
-    public Coordenate getCoordenate4() {
-        return coordenate4;
+    public Coordinate getCoordenate4() {
+        return coordinate4;
     }
 
     /**
      * @param coordenate4 the coordenate4 to set
      */
-    public void setCoordenate4(Coordenate coordenate4) {
-        this.coordenate4 = coordenate4;
+    public void setCoordenate4(Coordinate coordenate4) {
+        this.coordinate4 = coordenate4;
     }
     
     
