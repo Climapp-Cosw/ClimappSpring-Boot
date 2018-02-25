@@ -19,6 +19,19 @@ public interface ZoneService {
      * @return 
      */
     public List<Zone> getZones();
+
+    /**
+     * @param name
+     * @return
+     */
+    public Zone getZone(String name);
+
+    /**
+     *
+     * @return
+     */
+    public int getNumZones();
+
     
     
 }

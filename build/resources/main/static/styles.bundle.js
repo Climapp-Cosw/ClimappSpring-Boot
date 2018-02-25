@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "body {\r\n    min-height: 75rem;\r\n    padding-top: 4.5rem;\r\n    background-color: lightblue;\r\n    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0,136,204,100)), to(rgba(255,255,255,100)));\r\n    background: linear-gradient(to top, rgba(0,136,204,100), rgba(255,255,255,100)); \r\n}\r\n\r\n", ""]);
+exports.push([module.i, "body {\r\n\r\n    min-height: 65rem;\r\n    padding-top: 4.5rem;\r\n    background-color: lightblue;\r\n    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0,136,204,100)), to(rgba(255,255,255,100)));\r\n    background: linear-gradient(to top, rgba(0,136,204,100), rgba(255,255,255,100));\r\n  /*margin-top: 10%;\r\n  padding-top: 5rem;\r\n  background-image:url(\"assets/img/artaic-blue.png\");\r\n  background-repeat: no-repeat;\r\n  background-size: 100%;*/\r\n}\r\n\r\n", ""]);
 
 // exports
 

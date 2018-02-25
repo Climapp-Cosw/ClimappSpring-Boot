@@ -15,12 +15,15 @@ public class Report {
     private Zone zone;
 
     /**
+     *
      * @param id
      * @param dateTimeReport
      * @param latLng
      * @param img
      * @param comment
      * @param clima
+     * @param u
+     * @param z
      */
     public Report(int id,Date dateTimeReport, Coordinate latLng, String img, String comment, String clima, User u,Zone z) {
         this.dateTimeReport = dateTimeReport;
@@ -32,13 +35,15 @@ public class Report {
         this.reportedUser=u;
         this.zone=z;
     }
-
     /**
+     *
      * @param dateTimeReport
      * @param latLng
      * @param img
      * @param comment
      * @param clima
+     * @param u
+     * @param z
      */
     public Report(Date dateTimeReport, Coordinate latLng, String img, String comment, String clima, User u,Zone z) {
         this.dateTimeReport = dateTimeReport;
@@ -85,14 +90,14 @@ public class Report {
     /**
      * @return the Coordenate
      */
-    public Coordinate getCoordenate() {
+    public Coordinate getCoordinate() {
         return coordinate;
     }
 
     /**
      * @param latLng the Coordenate to set
      */
-    public void setCoordenate(Coordinate latLng) {
+    public void setCoordinate(Coordinate latLng) {
         this.coordinate = latLng;
     }
 
@@ -150,6 +155,15 @@ public class Report {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+
+    public Zone getZone() {
+        return zone;
+    }
+
+    public void setZone(Zone zone) {
+        this.zone = zone;
     }
 
     @Override

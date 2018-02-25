@@ -16,6 +16,10 @@ public class PublicationServiceImpl implements PublicationService {
     @Autowired
     private ReportService reportsService;
 
+    public PublicationServiceImpl(){
+
+    }
+
     @Override
     public List<Publication> getPublications() {
         return publications;
@@ -34,27 +38,29 @@ public class PublicationServiceImpl implements PublicationService {
         reportPublications.add(rep);
         for (int i=0;i<reportsService.getReports().size();i++){
             Report repPublication= reportsService.getReports().get(i);
-            if(repPublication.getCoordenate().distCoordenate(rep.getCoordenate())<=0.7 && rep.getWeather().equals(repPublication.getWeather())){
+            System.out.println(rep.toString());
+            if(rep.getCoordinate().distCoordenate(repPublication.getCoordinate())<=0.7 && rep.getWeather().equals(repPublication.getWeather())){
                 reportPublications.add(repPublication);
-
             };
         }
+
+
         return reportPublications;
     }
     @Override
     public Publication findPublication(Report rep) throws ServicesException{
-
         for (int i=0;i<publications.size();i++){
             List<Report> reportPublications=publications.get(i).getReports();
             for (int j=0;j<reportPublications.size();j++){
                 Report repPublication= reportPublications.get(j);
-                if(repPublication.getCoordenate().distCoordenate(rep.getCoordenate())<=0.7 && rep.getWeather().equals(repPublication.getWeather())){
+                if(rep.getCoordinate().distCoordenate(repPublication.getCoordinate())<=0.7 && rep.getWeather().equals(repPublication.getWeather())){
                     reportPublications.add(rep);
                     return publications.get(i);
 
                 };
             }
         }
+
         return null;
     }
 }

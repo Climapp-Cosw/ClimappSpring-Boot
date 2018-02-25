@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse\" id=\"idNav\">\r\n<!--    <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\"\r\n            aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n        <span class=\"navbar-toggler-icon\"></span>\r\n    </button>-->\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\r\n        <ul class=\"navbar-nav mr-auto\">\r\n            <a class=\"navbar-brand\" >ClimApp</a>\r\n            <li *ngIf=\"isLoggedIn()\" class=\"nav-item\">\r\n                <a class=\"nav-link\" *ngIf=\"!isLoggedIn()\" routerLinkActive=\"/\" routerLink=\"/\">Home</a>\r\n            </li>\r\n            <li  class=\"nav-item\">\r\n                <a class=\"nav-link\" *ngIf=\"isLoggedIn()\" routerLinkActive=\"/profile\" routerLink=\"/profile\">Profile</a>\r\n            </li>\r\n             <li  class=\"nav-item\">\r\n                <a class=\"nav-link\" *ngIf=\"isLoggedIn()\" routerLinkActive=\"/publicweather\" routerLink=\"/publicweather\">Public Weather</a>\r\n            </li>\r\n            <li *ngIf=\"isLoggedIn()\" class=\"nav-item\">\r\n                <a class=\"nav-link\">Zones</a>\r\n            </li>\r\n        </ul>\r\n        <ul  class=\"nav navbar-nav navbar-right\">\r\n            <li *ngIf=\"isLoggedIn()\" class=\"nav-item\">\r\n                <a href=\"#\" class=\"nav-link\" (click)=\"signOut()\">(Sign Out)</a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>\r\n\r\n\r\n\r\n\r\n\r\n<div class=\"container\">\r\n    <router-outlet></router-outlet>\r\n</div>\r\n"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse\" id=\"idNav\">\r\n<!--    <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\"\r\n            aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n        <span class=\"navbar-toggler-icon\"></span>\r\n    </button>-->\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\r\n        <ul class=\"navbar-nav mr-auto\">\r\n            <a class=\"navbar-brand\"  >ClimApp</a>\r\n            <li *ngIf=\"isLoggedIn()\" class=\"nav-item\">\r\n                <a class=\"nav-link\" *ngIf=\"!isLoggedIn()\" routerLinkActive=\"/\" routerLink=\"/\">Home</a>\r\n            </li>\r\n            <li  class=\"nav-item\">\r\n                <a class=\"nav-link\" *ngIf=\"isLoggedIn()\" routerLinkActive=\"/profile\" routerLink=\"/profile\">Profile</a>\r\n            </li>\r\n             <li  class=\"nav-item\">\r\n                <a class=\"nav-link\" *ngIf=\"isLoggedIn()\" routerLinkActive=\"/publicWeather\" routerLink=\"/publicWeather\">Public Weather</a>\r\n            </li>\r\n\r\n            <li class=\"nav-item\">\r\n                <a *ngIf=\"isLoggedIn()\" class=\"nav-link\" routerLinkActive=\"/zones\" routerLink=\"/zones\">Zones</a>\r\n            </li>\r\n        </ul>\r\n        <ul  class=\"nav navbar-nav navbar-right\">\r\n            <li *ngIf=\"isLoggedIn()\" class=\"nav-item\">\r\n                <a href=\"#\" class=\"nav-link\" (click)=\"signOut()\">(Sign Out)</a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>\r\n\r\n\r\n\r\n\r\n\r\n<div class=\"container\">\r\n    <router-outlet></router-outlet>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -112,14 +112,17 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_home_page_home_page_component__ = __webpack_require__("../../../../../src/app/pages/home-page/home-page.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_profile_config_page_profile_config_page_component__ = __webpack_require__("../../../../../src/app/pages/profile-config-page/profile-config-page.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_publicWeather_page_publicWeather_page_component__ = __webpack_require__("../../../../../src/app/pages/publicWeather-page/publicWeather-page.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_report_service__ = __webpack_require__("../../../../../src/app/services/report.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__common_config_app_configuration_service__ = __webpack_require__("../../../../../src/app/common/config/app-configuration.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__common_config_initial_config__ = __webpack_require__("../../../../../src/app/common/config/initial-config.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__common_app_data_service__ = __webpack_require__("../../../../../src/app/common/app-data.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__common_api_service__ = __webpack_require__("../../../../../src/app/common/api.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__common_auth_service__ = __webpack_require__("../../../../../src/app/common/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_zones_page_zones_page_components__ = __webpack_require__("../../../../../src/app/pages/zones-page/zones-page.components.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_report_service__ = __webpack_require__("../../../../../src/app/services/report.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_zone_service__ = __webpack_require__("../../../../../src/app/services/zone.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__common_config_app_configuration_service__ = __webpack_require__("../../../../../src/app/common/config/app-configuration.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__common_config_initial_config__ = __webpack_require__("../../../../../src/app/common/config/initial-config.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__common_app_data_service__ = __webpack_require__("../../../../../src/app/common/app-data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__common_api_service__ = __webpack_require__("../../../../../src/app/common/api.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__common_auth_service__ = __webpack_require__("../../../../../src/app/common/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_publication_service__ = __webpack_require__("../../../../../src/app/services/publication.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -146,12 +149,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
 var ROUTES = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_9__pages_home_page_home_page_component__["a" /* HomePageComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_8__pages_login_page_login_page_component__["a" /* LoginPageComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_7__pages_register_page_register_page_component__["a" /* RegisterPageComponent */] },
-    { path: 'publicweather', component: __WEBPACK_IMPORTED_MODULE_11__pages_publicWeather_page_publicWeather_page_component__["a" /* PublicWeatherPageComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__common_auth_service__["a" /* AuthService */]] },
-    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_10__pages_profile_config_page_profile_config_page_component__["a" /* ProfileConfigPageComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__common_auth_service__["a" /* AuthService */]] },
+    { path: 'publicWeather', component: __WEBPACK_IMPORTED_MODULE_11__pages_publicWeather_page_publicWeather_page_component__["a" /* PublicWeatherPageComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__common_auth_service__["a" /* AuthService */]] },
+    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_10__pages_profile_config_page_profile_config_page_component__["a" /* ProfileConfigPageComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__common_auth_service__["a" /* AuthService */]] },
+    { path: 'zones', component: __WEBPACK_IMPORTED_MODULE_12__pages_zones_page_zones_page_components__["a" /* ZonesPageComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__common_auth_service__["a" /* AuthService */]] },
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -165,30 +172,34 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_7__pages_register_page_register_page_component__["a" /* RegisterPageComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__pages_profile_config_page_profile_config_page_component__["a" /* ProfileConfigPageComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__pages_publicWeather_page_publicWeather_page_component__["a" /* PublicWeatherPageComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__pages_zones_page_zones_page_components__["a" /* ZonesPageComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_3__ng_bootstrap_ng_bootstrap__["b" /* NgbModule */].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_5__angular_forms__["e" /* ReactiveFormsModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* RouterModule */].forRoot(ROUTES),
-                __WEBPACK_IMPORTED_MODULE_16__angular_http__["c" /* HttpModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_http__["c" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_2__agm_core__["a" /* AgmCoreModule */].forRoot({
                     apiKey: 'AIzaSyD6yCprhpqUqKmDwQcn6rWOc_TIk3s60-c'
                 })
             ],
             providers: [
                 {
-                    provide: __WEBPACK_IMPORTED_MODULE_15__common_config_initial_config__["a" /* INITIAL_CONFIG */],
+                    provide: __WEBPACK_IMPORTED_MODULE_17__common_config_initial_config__["a" /* INITIAL_CONFIG */],
                     useValue: {
                         apiURL: 'http://localhost:8080'
                     }
                 },
-                __WEBPACK_IMPORTED_MODULE_12__services_user_service__["a" /* UserService */],
-                __WEBPACK_IMPORTED_MODULE_13__services_report_service__["a" /* ReportService */],
-                __WEBPACK_IMPORTED_MODULE_14__common_config_app_configuration_service__["a" /* AppConfiguration */],
-                __WEBPACK_IMPORTED_MODULE_17__common_app_data_service__["a" /* AppDataService */],
-                __WEBPACK_IMPORTED_MODULE_18__common_api_service__["a" /* APIService */],
-                __WEBPACK_IMPORTED_MODULE_19__common_auth_service__["a" /* AuthService */],
+                __WEBPACK_IMPORTED_MODULE_13__services_user_service__["a" /* UserService */],
+                __WEBPACK_IMPORTED_MODULE_14__services_report_service__["a" /* ReportService */],
+                __WEBPACK_IMPORTED_MODULE_15__services_zone_service__["a" /* ZoneService */],
+                __WEBPACK_IMPORTED_MODULE_22__services_publication_service__["a" /* PublicationService */],
+                __WEBPACK_IMPORTED_MODULE_14__services_report_service__["a" /* ReportService */],
+                __WEBPACK_IMPORTED_MODULE_16__common_config_app_configuration_service__["a" /* AppConfiguration */],
+                __WEBPACK_IMPORTED_MODULE_19__common_app_data_service__["a" /* AppDataService */],
+                __WEBPACK_IMPORTED_MODULE_20__common_api_service__["a" /* APIService */],
+                __WEBPACK_IMPORTED_MODULE_21__common_auth_service__["a" /* AuthService */],
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
         })
@@ -454,26 +465,36 @@ var INITIAL_CONFIG = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Inje
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Coordinate; });
 var Coordinate = /** @class */ (function () {
-    function Coordinate(latituded, longituded) {
-        this._latituded = latituded;
-        this._longituded = longituded;
+    function Coordinate(latitude, longitude) {
+        this._latitude = latitude;
+        this._longitude = longitude;
     }
-    Object.defineProperty(Coordinate.prototype, "latituded", {
+    Object.defineProperty(Coordinate.prototype, "latitude", {
         get: function () {
-            return this._latituded;
+            return this._latitude;
         },
         set: function (value) {
-            this._latituded = value;
+            this._latitude = value;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Coordinate.prototype, "longituded", {
+    Object.defineProperty(Coordinate.prototype, "longitude", {
         get: function () {
-            return this._longituded;
+            return this._longitude;
         },
         set: function (value) {
-            this._longituded = value;
+            this._longitude = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Coordinate.prototype, "id", {
+        get: function () {
+            return this._id;
+        },
+        set: function (value) {
+            this._id = value;
         },
         enumerable: true,
         configurable: true
@@ -506,7 +527,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/home-page/home-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container\" id=\"fondo\">\r\n    <img class=\"img-responsive center\" src=\"http://ecofundacioncolombia.org/images/Logoo.png\" alt=\"Logo\"> \r\n        <br>\r\n        <button type=\"button\" class=\"btn btn-info btn-block btnInit center\" (click)=\"routeToSignIn()\">Sing In</button>\r\n        <br>\r\n        <button type=\"button\" class=\"btn btn-info btn-block btnInit center\" (click)=\"routeToSignUp()\">Sing Up</button>\r\n</div>\r\n\r\n\r\n"
+module.exports = "\r\n<div class=\"container\" id=\"fondo\">\r\n    <img class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n        <br>\r\n        <button type=\"button\" class=\"btn btn-info btn-block btnInit center\" (click)=\"routeToSignIn()\">Sing In</button>\r\n        <br>\r\n        <button type=\"button\" class=\"btn btn-info btn-block btnInit center\" (click)=\"routeToSignUp()\">Sing Up</button>\r\n</div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -576,7 +597,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/login-page/login-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n\r\n    <form [formGroup]=\"signInForm\" (ngSubmit)=\"doLogin()\" novalidate>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-3\"><img class=\"img-responsive\" src=\"http://ecofundacioncolombia.org/images/Logoo.png\" alt=\"Logo\"></div>\r\n            <div class=\"col-md-6\">\r\n                <h1 id=\"titulo\" align=\"center\">Sign-In</h1>\r\n                <br><br>\r\n                <div class=\"form-group\" >\r\n                    <label for=\"email\" class=\"center label\">Email</label>\r\n                    <input type=\"email\" class=\"form-control textField center\" id=\"email\" formControlName=\"email\" required=\"\">\r\n                </div>\r\n                <div class=\"form-group\" >\r\n                    <label for=\"password\" class=\"center label\">Password</label>\r\n                    <input type=\"password\" class=\"form-control textField center\" id=\"password\" formControlName=\"password\" required=\"\">\r\n                </div>\r\n                <br>\r\n                <button type=\"submit\" class=\"btn btn-info btn-block btnInit center\" [disabled]=\"!signInForm.valid\">Sign In</button>\r\n                <button type=\"button\" class=\"btn btn-info btn-block btnInit center\" (click)=\"routeToHome()\">Home</button>\r\n                <p class=\"text-danger mt-1\" *ngIf=\"loginError\">{{loginError}}</p>\r\n            </div>\r\n            <div class=\"col-md-3\"></div>\r\n        </div>\r\n    </form>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"container\">\r\n\r\n    <form [formGroup]=\"signInForm\" (ngSubmit)=\"doLogin()\" novalidate>\r\n        <div class=\"row\">\r\n            <div class=\"col-md-3\"><img class=\"img-responsive\" src=\"assets/img/logo.png\" alt=\"Logo\"></div>\r\n            <div class=\"col-md-6\">\r\n                <h1 id=\"titulo\" align=\"center\">Sign-In</h1>\r\n                <br><br>\r\n                <div class=\"form-group\" >\r\n                    <label for=\"email\" class=\"center label\">Email</label>\r\n                    <input type=\"email\" class=\"form-control textField center\" id=\"email\" formControlName=\"email\" required=\"\">\r\n                </div>\r\n                <div class=\"form-group\" >\r\n                    <label for=\"password\" class=\"center label\">Password</label>\r\n                    <input type=\"password\" class=\"form-control textField center\" id=\"password\" formControlName=\"password\" required=\"\">\r\n                </div>\r\n                <br>\r\n                <button type=\"submit\" class=\"btn btn-info btn-block btnInit center\" [disabled]=\"!signInForm.valid\">Sign In</button>\r\n                <button type=\"button\" class=\"btn btn-info btn-block btnInit center\" (click)=\"routeToHome()\">Home</button>\r\n                <p class=\"text-danger mt-1\" *ngIf=\"loginError\">{{loginError}}</p>\r\n            </div>\r\n            <div class=\"col-md-3\"></div>\r\n        </div>\r\n    </form>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -622,7 +643,7 @@ var LoginPageComponent = /** @class */ (function () {
         this.usersService.login(this.signInForm.get('email').value, this.signInForm.get('password').value).subscribe(function (loginResponse) {
             _this.usersService.getUserByEmail(_this.signInForm.get('email').value).subscribe(function (response) {
                 _this.usersService.cacheUser = response;
-                _this.router.navigate(['/profile']);
+                _this.router.navigate(['/publicWeather']);
             });
         }, function (error) {
             _this.loginError = 'Error Signing in: ' + (error && error.message ? error.message : '');
@@ -664,7 +685,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/profile-config-page/profile-config-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\" id=\"\" >\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-3\">\r\n\r\n      <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"http://ecofundacioncolombia.org/images/Logoo.png\" alt=\"Logo\">\r\n\r\n    </div>\r\n    <div class=\"col-6\">\r\n      <h1 id=\"titulo\" align=\"center\">Profile</h1>\r\n      <br>\r\n      <form [formGroup]=\"profileForm\"  novalidate>\r\n        <br>\r\n\r\n        <div class=\"row \" *ngIf=\"!isEditable()\">\r\n\r\n          <div class=\"col justify-content-center\" >\r\n\r\n            <label >Name: </label>\r\n            <p id=\"name2\">{{username}}</p>\r\n\r\n            <label for=\"email2\">Email: </label>\r\n            <p id=\"email2\">{{useremail}}</p>\r\n\r\n          </div>\r\n        </div>\r\n        <div *ngIf=\"isEditable()\" class=\"row\">\r\n          <label for=\"name\">Name: </label>\r\n          <input type=\"text\" [(ngModel)]=\"username\" class=\"form-control\" id=\"name\" formControlName=\"name\" required>\r\n\r\n          <label for=\"email\">Email: </label>\r\n          <input  type=\"email\" [(ngModel)]=\"useremail\" class=\"form-control\" id=\"email\" formControlName=\"email\"  required>\r\n\r\n          <label for=\"password\">New password: </label>\r\n          <input   type=\"password\" [(ngModel)]=\"userpass\" class=\"form-control\" id=\"password\" formControlName=\"password\" required>\r\n          <br>\r\n\r\n          <!-- Image file-->\r\n          <!--img id=\"imgn\" width=\"300\" height=\"300\" src=\"https://cdn3.iconfinder.com/data/icons/gray-toolbar-3/512/user-512.png\"  alt=\"ProfilePicture\">\r\n\r\n          <div class=\"custom-file col-9\" >\r\n            <label class=\"custom-file-label \" for=\"img\">Select your picture</label>\r\n            <input class=\"form-control\" formControlName=\"img\" type=\"file\" class=\"custom-file-input\" id=\"img\">\r\n\r\n          </div>\r\n          <div-- class=\"col-3\">\r\n            <button  type=\"submit\" class=\"btn btn-info btn-block btnInit \" (click)=\"saveConfig()\">Save</button>\r\n          </div-->\r\n\r\n\r\n          <label for=\"image\" class=\"center label\">Picture link</label>\r\n          <input type=\"text\" [(ngModel)]=\"userimage\" class=\"form-control textField center\" id=\"image\" formControlName=\"image\">\r\n        </div>\r\n      </form>\r\n\r\n\r\n    </div>\r\n    <div *ngIf=\"!isEditable()\" class=\"col-3\">\r\n\r\n        <img class=\"img-responsive\" width=\"300\" height=\"300\"   [src]=\"userimage\"  alt=\"ProfilePicture\">\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"row justify-content-center\" *ngIf=\"!isEditable()\">\r\n    <div class=\"col-2\" >\r\n      <button type=\"button\" class=\"btn btn-info btn-block btnInit\" (click)=\"routeToHome()\">Home</button>\r\n\r\n    </div>\r\n    <div class=\"col-2\">\r\n      <button  type=\"submit\" class=\"btn btn-info btn-block btnInit  \" (click)=\"edit()\">Edit profile</button>\r\n    </div>\r\n  </div>\r\n\r\n  <br>\r\n\r\n  <div *ngIf=\"isEditable()\" class=\"row justify-content-center\">\r\n    <div class=\"col-2\">\r\n      <button type=\"button\" class=\"btn btn-info btn-block btnInit center \" (click)=\"routeToProfile()\">Profile</button>\r\n    </div>\r\n\r\n    <div class=\"col-2\">\r\n      <button  type=\"submit\"  class=\"btn btn-info btn-block btnInit center \" [disabled]=\"!profileForm.valid\" (click)=\"saveConfig()\">Save</button>\r\n    </div>\r\n  </div>\r\n  <br>\r\n  <div *ngIf=\"isEditable()\" class=\"row justify-content-center\">\r\n    <div *ngIf=\"profileError\" class=\"alert alert-danger alert-dismissable col-6\">\r\n      <strong>Error!</strong> {{profileError}}.\r\n    </div>\r\n  </div>\r\n\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"container-fluid\" id=\"\" >\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-3\">\r\n\r\n      <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n\r\n    </div>\r\n    <div class=\"col-6\">\r\n      <h1 id=\"titulo\" align=\"center\">Profile</h1>\r\n      <br>\r\n      <form [formGroup]=\"profileForm\"  novalidate>\r\n        <br>\r\n\r\n        <div class=\"row \" *ngIf=\"!isEditable()\">\r\n\r\n          <div class=\"col justify-content-center\" >\r\n\r\n            <label >Name: </label>\r\n            <p id=\"name2\">{{username}}</p>\r\n\r\n            <label for=\"email2\">Email: </label>\r\n            <p id=\"email2\">{{useremail}}</p>\r\n\r\n          </div>\r\n        </div>\r\n        <div *ngIf=\"isEditable()\" class=\"row\">\r\n          <label for=\"name\">Name: </label>\r\n          <input type=\"text\" [(ngModel)]=\"username\" class=\"form-control\" id=\"name\" formControlName=\"name\" required>\r\n\r\n          <label for=\"email\">Email: </label>\r\n          <input  type=\"email\" [(ngModel)]=\"useremail\" class=\"form-control\" id=\"email\" formControlName=\"email\"  required>\r\n\r\n          <label for=\"password\">New password: </label>\r\n          <input   type=\"password\" [(ngModel)]=\"userpass\" class=\"form-control\" id=\"password\" formControlName=\"password\" required>\r\n          <br>\r\n\r\n          <!-- Image file-->\r\n          <!--img id=\"imgn\" width=\"300\" height=\"300\" src=\"https://cdn3.iconfinder.com/data/icons/gray-toolbar-3/512/user-512.png\"  alt=\"ProfilePicture\">\r\n\r\n          <div class=\"custom-file col-9\" >\r\n            <label class=\"custom-file-label \" for=\"img\">Select your picture</label>\r\n            <input class=\"form-control\" formControlName=\"img\" type=\"file\" class=\"custom-file-input\" id=\"img\">\r\n\r\n          </div>\r\n          <div-- class=\"col-3\">\r\n            <button  type=\"submit\" class=\"btn btn-info btn-block btnInit \" (click)=\"saveConfig()\">Save</button>\r\n          </div-->\r\n\r\n\r\n          <label for=\"image\" class=\"center label\">Picture link</label>\r\n          <input type=\"text\" [(ngModel)]=\"userimage\" class=\"form-control textField center\" id=\"image\" formControlName=\"image\">\r\n        </div>\r\n      </form>\r\n\r\n\r\n    </div>\r\n    <div *ngIf=\"!isEditable()\" class=\"col-3\">\r\n\r\n        <img class=\"img-responsive\" width=\"300\" height=\"300\"   [src]=\"userimage\"  alt=\"ProfilePicture\">\r\n\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"row justify-content-center\" *ngIf=\"!isEditable()\">\r\n    <div class=\"col-2\" >\r\n      <button type=\"button\" class=\"btn btn-info btn-block btnInit\" (click)=\"routeToHome()\">Home</button>\r\n\r\n    </div>\r\n    <div class=\"col-2\">\r\n      <button  type=\"submit\" class=\"btn btn-info btn-block btnInit  \" (click)=\"edit()\">Edit profile</button>\r\n    </div>\r\n  </div>\r\n\r\n  <br>\r\n\r\n  <div *ngIf=\"isEditable()\" class=\"row justify-content-center\">\r\n    <div class=\"col-2\">\r\n      <button type=\"button\" class=\"btn btn-info btn-block btnInit center \" (click)=\"routeToProfile()\">Profile</button>\r\n    </div>\r\n\r\n    <div class=\"col-2\">\r\n      <button  type=\"submit\"  class=\"btn btn-info btn-block btnInit center \" [disabled]=\"!profileForm.valid\" (click)=\"saveConfig()\">Save</button>\r\n    </div>\r\n  </div>\r\n  <br>\r\n  <div *ngIf=\"isEditable()\" class=\"row justify-content-center\">\r\n    <div *ngIf=\"profileError\" class=\"alert alert-danger alert-dismissable fade show col-6\">\r\n      <strong>Error!</strong> {{profileError}}.\r\n    </div>\r\n  </div>\r\n\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -724,6 +745,8 @@ var ProfileConfigPageComponent = /** @class */ (function () {
             _this.useremail = serverResponse.email;
             _this.userimage = serverResponse.image;
             _this.userpass = serverResponse.password;
+            _this.userService.cacheUser = serverResponse;
+            _this.user = serverResponse;
         });
     };
     ProfileConfigPageComponent.prototype.saveConfig = function () {
@@ -760,7 +783,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".btnInit{\r\n    width: 30%;\r\n    height: 8%;\r\n}\r\n\r\n.center {\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    display: block;\r\n}\r\n\r\n.textField{\r\n    width: 80%;\r\n}\r\n\r\n.label{\r\n    width: 80%;\r\n}\r\n\r\nimg {\r\n    max-width: 100%;\r\n    max-height: 50%;\r\n    height: 50%;\r\n    width: 80% !important;\r\n}\r\n\r\nimg {\r\n    max-width: 100%;\r\n    max-height: 50%;\r\n    height: 50%;\r\n    width: 80% !important;\r\n}\r\n\r\n#imagenesclima{\r\n    max-width: 50%;\r\n    max-height: 50%;\r\n}\r\n\r\n#map {\r\n   width: 100%;\r\n   height: 400px;\r\n   background-color: grey;\r\n }\r\n\r\nagm-map {\r\n      height: 400px;\r\n }\r\n\r\n.col-xs-12 col-sm-4 col-md-4 col-lg-4 col-md-offset-4{\r\n  position: relative; /*hace que muevas relativamente su posición*/\r\n  top: 100000px; /*Pixeles arriba de su posición natural (puede ser negativo)*/\r\n  left: 10px; /*Pixeles a la izquierda de su posición natural*/\r\n  right: 10px; /*Pixeles a la derecha de su posición natural*/\r\n}", ""]);
+exports.push([module.i, ".btnInit{\r\n    width: 30%;\r\n    height: 8%;\r\n}\r\n\r\n.center {\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    display: block;\r\n}\r\n\r\n.textField{\r\n    width: 80%;\r\n}\r\n\r\n.label{\r\n    width: 80%;\r\n}\r\n\r\nimg {\r\n    max-width: 100%;\r\n    max-height: 50%;\r\n    height: 50%;\r\n    width: 80% !important;\r\n}\r\n\r\n.imagenesclima{\r\n    max-width: 100%;\r\n    max-height: 50%;\r\n}\r\n\r\nagm-map {\r\n      height: 550px;\r\n }\r\n\r\n.col-xs-12 col-sm-4 col-md-4 col-lg-4 col-md-offset-4{\r\n  position: relative; /*hace que muevas relativamente su posición*/\r\n  top: 100000px; /*Pixeles arriba de su posición natural (puede ser negativo)*/\r\n  left: 10px; /*Pixeles a la izquierda de su posición natural*/\r\n  right: 10px; /*Pixeles a la derecha de su posición natural*/\r\n}\r\n", ""]);
 
 // exports
 
@@ -773,7 +796,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/publicWeather-page/publicWeather-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n\r\n    <form id=\"map\" [formGroup]=\"publicWeatherForm\"  novalidate>\r\n\r\n        <div class=\"row\">\r\n            <div class=\"col-1\">\r\n            <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"http://ecofundacioncolombia.org/images/Logoo.png\" alt=\"Logo\">\r\n            </div>\r\n\r\n\r\n                <div class=\"col-xs-6 col-sm-6 col-md-6 col-lg-6  col-md-offset-4\">\r\n                    <agm-map [latitude]=\"lat\" [longitude]=\"lng\"></agm-map>\r\n                </div>\r\n\r\n                 <div class=\"col-xs-12 col-sm-4 col-md-4 col-lg-4 col-md-offset-4\">\r\n                    <input type=\"text\" class=\"form-control\" placeholder=\"Search\" id=\"idTxtBusqueda\" >\r\n                    <div id=\"idDivRegionesFavoritas\" class=\"form-group\">\r\n                        <label for=\"idRegionesFavoritas\">Favoritos:</label>\r\n                        <textarea class=\"form-control\" formControlName=\"idRegionesFavoritas\" rows=\"10\" id=\"idRegionesFavoritas\" disabled=\"\"></textarea>\r\n                    </div>\r\n                </div>\r\n\r\n        </div>\r\n        <h1 id=\"titulo\" align=\"center\">Publica tu clima!!</h1>\r\n         <div class=\"row\">\r\n\r\n                <div class=\"col-md-3 \">\r\n                   <div ><img id=\"cloudy\" class=\"img-responsive\" src=\"http://roxyproyect.webcindario.com/imagenes/imag.png\" alt=\"nublado\" (click)=\"sendReport('cloudy')\"></div>\r\n\r\n                </div>\r\n                <div class=\"col-md-3 \">\r\n                   <div ><img id=\"sunny\" class=\"img-responsive\" src=\"http://laoblogger.com/images/clipart-sun-png-2.jpg\" alt=\"soleado\"(click)=\"sendReport('sunny')\"></div>\r\n                </div>\r\n                <div class=\"col-md-3 \">\r\n                   <div ><img id=\"rain\" class=\"img-responsive\" src=\"http://www.cmp.vcl.cu/images/Clima/precipitaciones.png\" alt=\"llovisnando\" (click)=\"sendReport('rain')\"></div>\r\n               </div>\r\n              <div class=\"col-md-3 \">\r\n                   <div ><img id=\"storm\" class=\"img-responsive\" (click)=\"sendReport('storm')\" src=\"http://res.freestockphotos.biz/thumb_small/15/15141-illustration-of-a-stormy-cloud-with-lightning-ts.png\" alt=\"tormenta\"></div>\r\n               </div>\r\n             </div>\r\n    </form>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-2\">\r\n      <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n    </div>\r\n    <div class=\"col\">\r\n      <div class=\"col\">\r\n            <agm-map   id=\"mapa\" [latitude]=\"lat\" [longitude]=\"long\">\r\n              <agm-marker title=\"Your Position\" openInfoWindow=\"true\"\r\n                          inconUrl=\"'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'\"\r\n                          [latitude]=\"lat\" [longitude]=\"long\" >\r\n              </agm-marker>\r\n            </agm-map>\r\n      </div>\r\n    </div>\r\n    <div class=\"col-3\">\r\n      <form id=\"map\" [formGroup]=\"publicWeatherForm\"  novalidate>\r\n        <div class=\"row\">\r\n\r\n          <div class=\"col\">\r\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search\" id=\"idTxtBusqueda\" >\r\n            <div id=\"idDivRegionesFavoritas\" class=\"form-group\">\r\n              <label for=\"idRegionesFavoritas\">Favoritos:</label>\r\n              <!--textarea class=\"form-control\" formControlName=\"idRegionesFavoritas\" rows=\"10\" id=\"idRegionesFavoritas\" disabled=\"true\"></textarea-->\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </form>\r\n    </div>\r\n\r\n\r\n  </div>\r\n\r\n  <h1 id=\"titulo\" align=\"center\">Publica tu clima!!</h1>\r\n  <div onload=\"ngOnInit()\" class=\"row \">\r\n\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"cloudy\" class=\"imagenesclima\"  src=\"assets/img/cloudy.png\" alt=\"nublado\" (click)=\"sendReport('cloudy')\"></div>\r\n\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"sunny\" class=\"imagenesclima\"  src=\"assets/img/sunny.png\" alt=\"soleado\"(click)=\"sendReport('sunny')\"></div>\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"rain\" class=\"imagenesclima\"  src=\"assets/img/rain.png\" alt=\"llovisnando\" (click)=\"sendReport('rain')\"></div>\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"storm\" class=\"imagenesclima\" (click)=\"sendReport('storm')\"  src=\"assets/img/storm.png\" alt=\"tormenta\"></div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -788,6 +811,7 @@ module.exports = "<div class=\"container\">\r\n\r\n    <form id=\"map\" [formGro
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_report_service__ = __webpack_require__("../../../../../src/app/services/report.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_coordinate__ = __webpack_require__("../../../../../src/app/models/coordinate.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_publication_service__ = __webpack_require__("../../../../../src/app/services/publication.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -803,26 +827,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PublicWeatherPageComponent = /** @class */ (function () {
-    function PublicWeatherPageComponent(userService, reportService, formBuilder, router) {
+    function PublicWeatherPageComponent(publicationService, userService, reportService, formBuilder, router) {
+        this.publicationService = publicationService;
         this.userService = userService;
         this.reportService = reportService;
         this.formBuilder = formBuilder;
         this.router = router;
+        this.lat = 4.748638;
+        this.long = -74.030353;
+        this.report = null;
+        this.user = this.userService.cacheUser;
     }
     PublicWeatherPageComponent.prototype.ngOnInit = function () {
         this.publicWeatherForm = this.formBuilder.group({
             idRegionesFavoritas: '',
         });
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
+        }
+    };
+    PublicWeatherPageComponent.prototype.setPosition = function (position) {
+        this.lat = position.coords.latitude;
+        this.long = position.coords.longitude;
+        console.log(position.coords);
     };
     PublicWeatherPageComponent.prototype.routeToHome = function () {
         this.router.navigate(['/']);
     };
     PublicWeatherPageComponent.prototype.sendReport = function (clima) {
+        var _this = this;
         // Latitud:4.748638
         // Longitud:-74.030353
-        console.log(this.lat + ' ' + this.lng);
-        this.reportService.registerReport(new Date(), new __WEBPACK_IMPORTED_MODULE_5__models_coordinate__["a" /* Coordinate */](-74.030353, 4.748638), 'img/' + clima, 'comment', 'clima', this.userService.cacheUser);
+        this.reportService.registerReport(new Date(), new __WEBPACK_IMPORTED_MODULE_5__models_coordinate__["a" /* Coordinate */](this.lat, this.long), 'assets/img/' + clima + '.png', 'comment', 'clima', this.user).subscribe(function (response) {
+            _this.report = response;
+            _this.publicationService.findPublication(_this.report).subscribe(function (response2) {
+            }, function (error2) {
+                console.log(error2);
+            });
+        }, function (error) {
+            console.log(error);
+        });
     };
     PublicWeatherPageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -830,7 +876,9 @@ var PublicWeatherPageComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/pages/publicWeather-page/publicWeather-page.component.html"),
             styles: [__webpack_require__("../../../../../src/app/pages/publicWeather-page/publicWeather-page.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_4__services_report_service__["a" /* ReportService */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6__services_publication_service__["a" /* PublicationService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_4__services_report_service__["a" /* ReportService */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
     ], PublicWeatherPageComponent);
     return PublicWeatherPageComponent;
 }());
@@ -860,7 +908,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/register-page/register-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n\r\n    <form [formGroup]=\"userForm\" (ngSubmit)=\"onSubmit()\" novalidate>\r\n\r\n        <div class=\"row\">\r\n            <div class=\"col-md-3\"><img class=\"img-responsive\" src=\"http://ecofundacioncolombia.org/images/Logoo.png\" alt=\"Logo\"></div>\r\n            <div class=\"col-md-6\">\r\n                <h1 id=\"titulo\" align=\"center\">Sign-Up</h1>\r\n                <div class=\"form-group\" >\r\n                    <label for=\"name\" class=\"center label\">Name</label>\r\n                    <input type=\"text\" class=\"form-control textField center\" id=\"name\" formControlName=\"name\" required>\r\n                </div>\r\n\r\n                <div class=\"form-group\" >\r\n                    <label for=\"email\" class=\"center label\">Email</label>\r\n                    <input type=\"email\" class=\"form-control textField center\" id=\"email\" formControlName=\"email\" required>\r\n                </div>\r\n\r\n                <div class=\"form-group\" >\r\n                    <label for=\"password\" class=\"center label\">Password</label>\r\n                    <input type=\"password\" class=\"form-control textField center\" id=\"password\" formControlName=\"password\" required>\r\n                </div>\r\n\r\n                <div class=\"form-group\">\r\n                    <label for=\"confirmPassword\" class=\"center label\">Confirm Password</label>\r\n                    <input type=\"password\" class=\"form-control textField center\" id=\"confirmPassword\" formControlName=\"confirmPassword\" required>\r\n                </div>\r\n\r\n                <p class=\"text-danger mt-1\" *ngIf=\"error\">{{error}}</p>\r\n                <button type=\"submit\" class=\"btn btn-info btn-block btnInit center\" [disabled]=\"!userForm.valid\">Register</button>\r\n                <button type=\"button\" class=\"btn btn-info btn-block btnInit center\" (click)=\"routeToHome()\">Home</button>\r\n            </div>\r\n            <div class=\"col-md-3\"><img class=\"img-responsive\" src=\"https://cdn3.iconfinder.com/data/icons/gray-toolbar-3/512/user-512.png\" alt=\"ProfilePicture\">\r\n                <div class=\"form-group\">\r\n                    <label for=\"image\" class=\"center label\">Picture link</label>\r\n                    <input type=\"text\" class=\"form-control textField center\" id=\"image\" formControlName=\"image\">\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"container\">\r\n\r\n    <form [formGroup]=\"userForm\" (ngSubmit)=\"onSubmit()\" novalidate>\r\n\r\n        <div class=\"row\">\r\n            <div class=\"col-md-3\"><img class=\"img-responsive\" src=\"assets/img/logo.png\" alt=\"Logo\"></div>\r\n            <div class=\"col-md-6\">\r\n                <h1 id=\"titulo\" align=\"center\">Sign-Up</h1>\r\n                <div class=\"form-group\" >\r\n                    <label for=\"name\" class=\"center label\">Name</label>\r\n                    <input type=\"text\" class=\"form-control textField center\" id=\"name\" formControlName=\"name\" required>\r\n                </div>\r\n\r\n                <div class=\"form-group\" >\r\n                    <label for=\"email\" class=\"center label\">Email</label>\r\n                    <input type=\"email\" class=\"form-control textField center\" id=\"email\" formControlName=\"email\" required>\r\n                </div>\r\n\r\n                <div class=\"form-group\" >\r\n                    <label for=\"password\" class=\"center label\">Password</label>\r\n                    <input type=\"password\" class=\"form-control textField center\" id=\"password\" formControlName=\"password\" required>\r\n                </div>\r\n\r\n                <div class=\"form-group\">\r\n                    <label for=\"confirmPassword\" class=\"center label\">Confirm Password</label>\r\n                    <input type=\"password\" class=\"form-control textField center\" id=\"confirmPassword\" formControlName=\"confirmPassword\" required>\r\n                </div>\r\n\r\n                <p class=\"text-danger mt-1\" *ngIf=\"error\">{{error}}</p>\r\n                <button type=\"submit\" class=\"btn btn-info btn-block btnInit center\" [disabled]=\"!userForm.valid\">Register</button>\r\n                <button type=\"button\" class=\"btn btn-info btn-block btnInit center\" (click)=\"routeToHome()\">Home</button>\r\n            </div>\r\n            <div class=\"col-md-3\"><img class=\"img-responsive\" src=\"https://cdn3.iconfinder.com/data/icons/gray-toolbar-3/512/user-512.png\" alt=\"ProfilePicture\">\r\n                <div class=\"form-group\">\r\n                    <label for=\"image\" class=\"center label\">Picture link</label>\r\n                    <input type=\"text\" class=\"form-control textField center\" id=\"image\" formControlName=\"image\">\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </form>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -928,6 +976,165 @@ var RegisterPageComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/pages/zones-page/zones-page.components.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".btnInit{\r\n    width: 30%;\r\n    height: 8%;\r\n}\r\n\r\n.center {\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    display: block;\r\n}\r\n\r\n.textField{\r\n    width: 80%;\r\n}\r\n\r\n.label{\r\n    width: 80%;\r\n}\r\n\r\nimg {\r\n    width: 70% !important;\r\n}\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/zones-page/zones-page.components.html":
+/***/ (function(module, exports) {
+
+module.exports = "\r\n<div class=\"container-fluid\" id=\"\" >\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-3\">\r\n            <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n        </div>\r\n        <div class=\"col-6\">\r\n            <h1 id=\"titulo\" align=\"center\">Zones</h1>\r\n        </div>\r\n\r\n        <table class=\"table\" align=\"CENTER\">\r\n            <thead class=\"thead-dark\">\r\n                <tr>\r\n                    <th>Number</th>\r\n                    <th>Name</th>\r\n                    <th></th>\r\n\r\n                </tr>\r\n            </thead>\r\n            <tr *ngFor=\"let zone of zones\">\r\n                <td>{{zone.number}}</td>\r\n                <td>{{zone.name}}</td>\r\n                <td><button type=\"button\" class=\"btn btn-info\" (click)=\"subscribeZone(zone.id, zone.number, zone.name, content)\">Subscribe</button></td>\r\n            </tr>\r\n        </table>\r\n\r\n\r\n    </div>\r\n</div>\r\n\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n\r\n    <div class=\"modal-header\">\r\n        <h4 class=\"modal-title\">Confirmation</h4>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <div class=\"jumbotron\">\r\n            <h4 class=\"text-center\">{{infoModal}}</h4>\r\n        </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-outline-light\" (click)=\"c('Close click')\">Close</button>\r\n    </div>\r\n</ng-template>\r\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/zones-page/zones-page.components.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ZonesPageComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_zone_service__ = __webpack_require__("../../../../../src/app/services/zone.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var ZonesPageComponent = /** @class */ (function () {
+    function ZonesPageComponent(formBuilder, router, zoneService, userService, modalService) {
+        this.formBuilder = formBuilder;
+        this.router = router;
+        this.zoneService = zoneService;
+        this.userService = userService;
+        this.modalService = modalService;
+        this.zones = [];
+    }
+    ZonesPageComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.zoneService.listZones().subscribe(function (zonesResponse) {
+            _this.zones = zonesResponse;
+        });
+    };
+    ZonesPageComponent.prototype.subscribeZone = function (id, number, name, content) {
+        var _this = this;
+        this.userService.addZone('prueba@mail.com', id, number, name).subscribe(function (serverResponse) {
+            _this.infoModal = 'You have subscribed to ' + name + ' zone.';
+            _this.modalService.open(content, { windowClass: 'dark-modal' });
+            console.log('Se ha adicionado');
+        }, function (error) {
+            _this.infoModal = error.message;
+            _this.modalService.open(content, { windowClass: 'dark-modal' });
+            console.log(error);
+            console.log(error.message);
+        });
+    };
+    ZonesPageComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-zones-page',
+            template: __webpack_require__("../../../../../src/app/pages/zones-page/zones-page.components.html"),
+            styles: [__webpack_require__("../../../../../src/app/pages/zones-page/zones-page.components.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_3__services_zone_service__["a" /* ZoneService */], __WEBPACK_IMPORTED_MODULE_4__services_user_service__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["a" /* NgbModal */]])
+    ], ZonesPageComponent);
+    return ZonesPageComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/publication.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PublicationService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_api_service__ = __webpack_require__("../../../../../src/app/common/api.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_config_app_configuration_service__ = __webpack_require__("../../../../../src/app/common/config/app-configuration.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_auth_service__ = __webpack_require__("../../../../../src/app/common/auth.service.ts");
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var PublicationService = /** @class */ (function (_super) {
+    __extends(PublicationService, _super);
+    function PublicationService(config, http, authService) {
+        var _this = _super.call(this, config, authService, http) || this;
+        _this.config = config;
+        _this.http = http;
+        _this.authService = authService;
+        return _this;
+    }
+    PublicationService.prototype.findPublication = function (report) {
+        return this.post('publications/findpublication', { id: report.id, dateTimeReport: report.dateTimeReport,
+            coordinate: report.coordinate, img: report.img, comment: report.comment, weather: report.weather,
+            reportedUser: report.user, zone: report.zone }).map(function (responsePublication) { });
+    };
+    PublicationService.prototype.deleteReport = function () { };
+    PublicationService.prototype.getPublications = function () {
+        return this.get('publications/');
+    };
+    PublicationService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__common_config_app_configuration_service__["a" /* AppConfiguration */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_4__common_auth_service__["a" /* AuthService */]])
+    ], PublicationService);
+    return PublicationService;
+}(__WEBPACK_IMPORTED_MODULE_1__common_api_service__["a" /* APIService */]));
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/services/report.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -972,7 +1179,9 @@ var ReportService = /** @class */ (function (_super) {
         return _this;
     }
     ReportService.prototype.registerReport = function (dateTimeReport, coordinate, img, comment, weather, user) {
-        return this.post('reports/newreports', { dateTimeReport: dateTimeReport, coordinate: coordinate, img: img, comment: comment, weather: weather }).map(function (responseReport) { });
+        return this.post('reports/newreport/' + coordinate.latitude + '&' + coordinate.longitude, { dateTimeReport: dateTimeReport,
+            coordinate: coordinate, img: img, comment: comment, weather: weather,
+            reportedUser: user });
     };
     ReportService.prototype.deleteReport = function () {
     };
@@ -1067,11 +1276,72 @@ var UserService = /** @class */ (function (_super) {
             }
         });
     };
+    UserService.prototype.addZone = function (email, id, number, name) {
+        return this.post('users/zones/' + email, { id: id, number: number, name: name }).map(function (loginResponse) {
+        });
+    };
     UserService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__common_config_app_configuration_service__["a" /* AppConfiguration */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_4__common_auth_service__["a" /* AuthService */]])
     ], UserService);
     return UserService;
+}(__WEBPACK_IMPORTED_MODULE_1__common_api_service__["a" /* APIService */]));
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/zone.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ZoneService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_api_service__ = __webpack_require__("../../../../../src/app/common/api.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_config_app_configuration_service__ = __webpack_require__("../../../../../src/app/common/config/app-configuration.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_auth_service__ = __webpack_require__("../../../../../src/app/common/auth.service.ts");
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ZoneService = /** @class */ (function (_super) {
+    __extends(ZoneService, _super);
+    function ZoneService(config, http, authService) {
+        var _this = _super.call(this, config, authService, http) || this;
+        _this.config = config;
+        _this.http = http;
+        _this.authService = authService;
+        return _this;
+    }
+    ZoneService.prototype.listZones = function () {
+        return this.get('zones/');
+    };
+    ZoneService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__common_config_app_configuration_service__["a" /* AppConfiguration */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_4__common_auth_service__["a" /* AuthService */]])
+    ], ZoneService);
+    return ZoneService;
 }(__WEBPACK_IMPORTED_MODULE_1__common_api_service__["a" /* APIService */]));
 
 

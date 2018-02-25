@@ -1,15 +1,15 @@
 package eci.cosw.climapp.models;
 
 public class Coordinate {
-    private Long id;
-    private double latitude;
-    private double longitude;
+    private long id;
+    private Double latitude;
+    private Double longitude;
 
     /**
      * @param latitude
      * @param longitude
      */
-    public Coordinate(Long id,double latitude, double longitude) {
+    public Coordinate(long id,Double latitude, Double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.id=id;
@@ -19,7 +19,7 @@ public class Coordinate {
      * @param latitude
      * @param longitude
      */
-    public Coordinate(double latitude, double longitude) {
+    public Coordinate(Double latitude, Double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -32,54 +32,54 @@ public class Coordinate {
      * @return the latitude
      */
     public double getLatitude() {
-        return latitude;
+        return Double.valueOf(latitude);
     }
 
     /**
      * @param latitude the latitude to set
      */
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
+    public void setLatitude(Double latitude) {
+        this.latitude = Double.valueOf(latitude);
     }
 
     /**
      * @return the longitude
      */
     public double getLongitude() {
-        return longitude;
+        return Double.valueOf(longitude);
     }
 
     /**
      * @param longitude the longitude to set
      */
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
+    public void setLongitude(Double longitude) {
+        this.longitude = Double.valueOf(longitude);
     }
 
     /**
      * @return the id
      */
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public double distCoordenate(Coordinate otherCoordenate){
-        double ratio = 6371;//Km
-        double dLat = Math.toRadians(otherCoordenate.getLatitude() - this.getLatitude());
-        double dLng = Math.toRadians(otherCoordenate.getLongitude() - this.getLongitude());
+    public double distCoordenate(Coordinate otherCoordinate){
+        double ratio = 6378.0F;//Km
+        double dLat = Math.toRadians(Double.valueOf(otherCoordinate.getLatitude()) - Double.valueOf(this.getLatitude()));
+        double dLng = Math.toRadians(Double.valueOf(otherCoordinate.getLongitude()) - Double.valueOf(this.getLongitude()));
         double sindLat = Math.sin(dLat / 2);
         double sindLng = Math.sin(dLng / 2);
-        double va1 = Math.pow(sindLat, 2) + Math.pow(sindLng, 2) * Math.cos(Math.toRadians(this.getLongitude())) * Math.cos(Math.toRadians(this.getLatitude()));
+        double va1 = Math.pow(sindLat, 2) + Math.pow(sindLng, 2) * Math.cos(Math.toRadians(Double.valueOf(this.getLatitude()))) * Math.cos(Math.toRadians(Double.valueOf(this.getLatitude())));
         double va2 = 2 * Math.atan2(Math.sqrt(va1), Math.sqrt(1 - va1));
         double dist = ratio * va2;
-        System.out.println("Distance"+dist);
+        System.out.println("Distance: "+dist);
         return dist;
     };
     @Override

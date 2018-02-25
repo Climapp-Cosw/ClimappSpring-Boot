@@ -2,7 +2,6 @@ package eci.cosw.climapp.services;
 
 import eci.cosw.climapp.models.User;
 import eci.cosw.climapp.models.Zone;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,11 +16,10 @@ public class UserServiceImpl implements UserService {
     private List<User> users = new ArrayList<>();
 
 
-    @Autowired
     public UserServiceImpl() {
-        users.add(new User(1,"prueba@mail.com","password","name","http://www.your3dsource.com/images/facepic2.jpeg"
+        users.add(new User(1,"prueba@mail.com","password","Laura","http://www.your3dsource.com/images/facepic1.jpeg"
                 ,"password"));
-        users.add(new User(1,"prueba2@mail.com","password","name","http://www.your3dsource.com/images/facepic2.jpeg"
+        users.add(new User(2,"prueba2@mail.com","password","Lucas","http://www.your3dsource.com/images/facepic2.jpeg"
                 ,"password"));
     }
 
