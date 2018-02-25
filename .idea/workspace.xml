@@ -2,57 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="18a90dea-1834-44dd-a221-7b4073bf0a98" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.5.1/fileChanges/last-build.bin" afterPath="$PROJECT_DIR$/.gradle/4.5.1/fileChanges/last-build.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.5.1/fileContent/annotation-processors.bin" afterPath="$PROJECT_DIR$/.gradle/4.5.1/fileContent/annotation-processors.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.5.1/fileContent/fileContent.lock" afterPath="$PROJECT_DIR$/.gradle/4.5.1/fileContent/fileContent.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.5.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.5.1/fileHashes/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.5.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.5.1/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.5.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.5.1/fileHashes/resourceHashesCache.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.5.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.5.1/taskHistory/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.5.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.5.1/taskHistory/taskHistory.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/models/Coordinate.class" afterPath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/models/Coordinate.class" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/models/Report.class" afterPath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/models/Report.class" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/models/Zone.class" afterPath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/models/Zone.class" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/restController/PublicationController.class" afterPath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/restController/PublicationController.class" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/restController/ReportController.class" afterPath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/restController/ReportController.class" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/services/PublicationServiceImpl.class" afterPath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/services/PublicationServiceImpl.class" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/services/ReportService.class" afterPath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/services/ReportService.class" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/services/ReportServiceImpl.class" afterPath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/services/ReportServiceImpl.class" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/services/UserServiceImpl.class" afterPath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/services/UserServiceImpl.class" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/services/ZoneService.class" afterPath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/services/ZoneService.class" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/services/ZoneServiceStub.class" afterPath="$PROJECT_DIR$/build/classes/java/main/eci/cosw/climapp/services/ZoneServiceStub.class" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/inline.bundle.js" afterPath="$PROJECT_DIR$/build/resources/main/static/inline.bundle.js" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/inline.bundle.js.map" afterPath="$PROJECT_DIR$/build/resources/main/static/inline.bundle.js.map" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/main.bundle.js" afterPath="$PROJECT_DIR$/build/resources/main/static/main.bundle.js" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/main.bundle.js.map" afterPath="$PROJECT_DIR$/build/resources/main/static/main.bundle.js.map" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/polyfills.bundle.js" afterPath="$PROJECT_DIR$/build/resources/main/static/polyfills.bundle.js" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/polyfills.bundle.js.map" afterPath="$PROJECT_DIR$/build/resources/main/static/polyfills.bundle.js.map" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/styles.bundle.js" afterPath="$PROJECT_DIR$/build/resources/main/static/styles.bundle.js" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/styles.bundle.js.map" afterPath="$PROJECT_DIR$/build/resources/main/static/styles.bundle.js.map" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/vendor.bundle.js" afterPath="$PROJECT_DIR$/build/resources/main/static/vendor.bundle.js" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/static/vendor.bundle.js.map" afterPath="$PROJECT_DIR$/build/resources/main/static/vendor.bundle.js.map" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/models/Coordinate.java" afterPath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/models/Coordinate.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/models/Report.java" afterPath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/models/Report.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/models/Zone.java" afterPath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/models/Zone.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/restController/PublicationController.java" afterPath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/restController/PublicationController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/restController/ReportController.java" afterPath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/restController/ReportController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/services/PublicationServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/services/PublicationServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/services/ReportServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/services/ReportServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/services/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/services/UserServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/services/ZoneService.java" afterPath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/services/ZoneService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/services/ZoneServiceStub.java" afterPath="$PROJECT_DIR$/src/main/java/eci/cosw/climapp/services/ZoneServiceStub.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/inline.bundle.js" afterPath="$PROJECT_DIR$/src/main/resources/static/inline.bundle.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/inline.bundle.js.map" afterPath="$PROJECT_DIR$/src/main/resources/static/inline.bundle.js.map" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/main.bundle.js" afterPath="$PROJECT_DIR$/src/main/resources/static/main.bundle.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/main.bundle.js.map" afterPath="$PROJECT_DIR$/src/main/resources/static/main.bundle.js.map" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/polyfills.bundle.js" afterPath="$PROJECT_DIR$/src/main/resources/static/polyfills.bundle.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/polyfills.bundle.js.map" afterPath="$PROJECT_DIR$/src/main/resources/static/polyfills.bundle.js.map" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles.bundle.js" afterPath="$PROJECT_DIR$/src/main/resources/static/styles.bundle.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles.bundle.js.map" afterPath="$PROJECT_DIR$/src/main/resources/static/styles.bundle.js.map" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/vendor.bundle.js" afterPath="$PROJECT_DIR$/src/main/resources/static/vendor.bundle.js" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/vendor.bundle.js.map" afterPath="$PROJECT_DIR$/src/main/resources/static/vendor.bundle.js.map" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -132,8 +83,8 @@
       <file leaf-file-name="PublicationController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/eci/cosw/climapp/restController/PublicationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="43" column="27" lean-forward="false" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+            <state relative-caret-position="505">
+              <caret line="41" column="14" lean-forward="false" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -1064,12 +1015,12 @@
       <workItem from="1519353367736" duration="5364000" />
       <workItem from="1519500706944" duration="105000" />
       <workItem from="1519501073701" duration="2294000" />
-      <workItem from="1519503930864" duration="26104000" />
+      <workItem from="1519503930864" duration="27502000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83913000" />
+    <option name="totallyTimeSpent" value="85311000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -1547,8 +1498,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/eci/cosw/climapp/restController/PublicationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="43" column="27" lean-forward="false" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+        <state relative-caret-position="505">
+          <caret line="41" column="14" lean-forward="false" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
           <folding />
         </state>
       </provider>

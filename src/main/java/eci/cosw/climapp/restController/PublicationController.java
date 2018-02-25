@@ -21,24 +21,26 @@ public class PublicationController {
     private ReportService reportService;
 
 
-    @RequestMapping( value = "/findpublication", method = RequestMethod.POST )
-    public Publication findPublication(@RequestBody Report report) throws ServicesException {
+    @RequestMapping( value = "/findpublication/{lat}&{lon}", method = RequestMethod.POST )
+    public void findPublication(@RequestBody Report report ,@PathVariable("lat")String lat,@PathVariable("lon")String lon) throws ServicesException {
+        report.getCoordinate().setLongitude(Double.valueOf(lon));
+        report.getCoordinate().setLatitude(Double.valueOf(lat));
         List<Report> reports = publicationService.findNewPublication(report);
         if(reports.size()>=3){
             Publication p=new Publication();
             p.setReports(reports);
             publicationService.createPublication(p);
-            System.out.print("sflbsgdfgbvdfgb vdfbdfdfdfdfdfdfdfdfdfdfdfdfubfbfbfbf "+reports.size());
             for (int i=0;i<reportService.getReports().size();i++){
                 reportService.deleteReport(reports.get(i).getId());
             }
             System.out.println("publicacion realizadaaaa");
-            return p;
+
 
             //publica a la zona configurada del stomp//
 
             //publica a la zona configurada del stomp//
         }else{
+            System.out.print("sflbsgdfgbvdfgb vdfbdfdfdfdfdfdfdfdfdfdfdfdfubfbfbfbf "+reports.size());
             if(publicationService.findPublication(report)!=null){
                 reportService.deleteReport(report.getId());
                 System.out.println("publicacion ya encontrada");
@@ -48,8 +50,6 @@ public class PublicationController {
             };
 
         }
-        return null;
-
     }
 
     @RequestMapping( value = "/", method = RequestMethod.GET )
