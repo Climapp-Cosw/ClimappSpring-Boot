@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse\" id=\"idNav\">\r\n<!--    <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\"\r\n            aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n        <span class=\"navbar-toggler-icon\"></span>\r\n    </button>-->\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\r\n        <ul class=\"navbar-nav mr-auto\">\r\n            <a class=\"navbar-brand\"  >ClimApp</a>\r\n            <li *ngIf=\"isLoggedIn()\" class=\"nav-item\">\r\n                <a class=\"nav-link\" *ngIf=\"!isLoggedIn()\" routerLinkActive=\"/\" routerLink=\"/\">Home</a>\r\n            </li>\r\n            <li  class=\"nav-item\">\r\n                <a class=\"nav-link\" *ngIf=\"isLoggedIn()\" routerLinkActive=\"/profile\" routerLink=\"/profile\">Profile</a>\r\n            </li>\r\n             <li  class=\"nav-item\">\r\n                <a class=\"nav-link\" *ngIf=\"isLoggedIn()\" routerLinkActive=\"/publicWeather\" routerLink=\"/publicWeather\">Public Weather</a>\r\n            </li>\r\n\r\n            <li class=\"nav-item\">\r\n                <a *ngIf=\"isLoggedIn()\" class=\"nav-link\" routerLinkActive=\"/zones\" routerLink=\"/zones\">Zones</a>\r\n            </li>\r\n        </ul>\r\n        <ul  class=\"nav navbar-nav navbar-right\">\r\n            <li *ngIf=\"isLoggedIn()\" class=\"nav-item\">\r\n                <a href=\"#\" class=\"nav-link\" (click)=\"signOut()\">(Sign Out)</a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>\r\n\r\n\r\n\r\n\r\n\r\n<div class=\"container\">\r\n    <router-outlet></router-outlet>\r\n</div>\r\n"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse\" id=\"idNav\">\r\n<!--    <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\"\r\n            aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n        <span class=\"navbar-toggler-icon\"></span>\r\n    </button>-->\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\r\n        <ul class=\"navbar-nav mr-auto\">\r\n            <a class=\"navbar-brand\"  >ClimApp</a>\r\n            <li *ngIf=\"isLoggedIn()\" class=\"nav-item\">\r\n                <a class=\"nav-link\" *ngIf=\"!isLoggedIn()\" routerLinkActive=\"/\" routerLink=\"/\">Home</a>\r\n            </li>\r\n            <li  class=\"nav-item\">\r\n                <a class=\"nav-link\" *ngIf=\"isLoggedIn()\" routerLinkActive=\"/profile\" routerLink=\"/profile\">Profile</a>\r\n            </li>\r\n\r\n             <li  class=\"nav-item\">\r\n                <a class=\"nav-link\" *ngIf=\"isLoggedIn()\" routerLinkActive=\"/publicWeather\" routerLink=\"/publicWeather\">Public Weather</a>\r\n            </li>\r\n\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" *ngIf=\"isLoggedIn()\"  routerLinkActive=\"/zones\" routerLink=\"/zones\">Zones</a>\r\n\r\n            </li>\r\n        </ul>\r\n        <ul  class=\"nav navbar-nav navbar-right\">\r\n            <li *ngIf=\"isLoggedIn()\" class=\"nav-item\">\r\n                <a href=\"#\" class=\"nav-link\" (click)=\"signOut()\">(Sign Out)</a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>\r\n\r\n\r\n\r\n\r\n\r\n<div class=\"container\">\r\n    <router-outlet></router-outlet>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -50,6 +50,7 @@ module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse fixed-
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_auth_service__ = __webpack_require__("../../../../../src/app/common/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_stomp_service__ = __webpack_require__("../../../../../src/app/services/stomp.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,13 +63,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AppComponent = /** @class */ (function () {
-    function AppComponent(authService, router) {
+    function AppComponent(_stompService, authService, router) {
+        this._stompService = _stompService;
         this.authService = authService;
         this.router = router;
         this.title = 'app';
         this.lat = 4.6097100;
         this.lng = -74.0817500;
+        this.inputField = 'CONNECTED';
         if (!this.authService.isLoggedIn()) {
             this.router.navigate(['/']);
         }
@@ -79,13 +83,25 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.signOut = function () {
         this.authService.signOut();
     };
+    AppComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._stompService.connect('ws://localhost:8080/stompTest');
+        this._stompService.getObservable().subscribe(function (payload) {
+            _this.serverResponse = payload.outputField;
+        });
+    };
+    AppComponent.prototype.send = function () {
+        this._stompService.send(this.inputField);
+    };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/app.component.css")]
+            styles: [__webpack_require__("../../../../../src/app/app.component.css")],
+            providers: [__WEBPACK_IMPORTED_MODULE_3__services_stomp_service__["a" /* StompService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__common_auth_service__["a" /* AuthService */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_stomp_service__["a" /* StompService */],
+            __WEBPACK_IMPORTED_MODULE_2__common_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
     ], AppComponent);
     return AppComponent;
@@ -113,8 +129,8 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_profile_config_page_profile_config_page_component__ = __webpack_require__("../../../../../src/app/pages/profile-config-page/profile-config-page.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_publicWeather_page_publicWeather_page_component__ = __webpack_require__("../../../../../src/app/pages/publicWeather-page/publicWeather-page.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_zones_page_zones_page_components__ = __webpack_require__("../../../../../src/app/pages/zones-page/zones-page.components.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_report_service__ = __webpack_require__("../../../../../src/app/services/report.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_report_service__ = __webpack_require__("../../../../../src/app/services/report.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_zone_service__ = __webpack_require__("../../../../../src/app/services/zone.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__common_config_app_configuration_service__ = __webpack_require__("../../../../../src/app/common/config/app-configuration.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__common_config_initial_config__ = __webpack_require__("../../../../../src/app/common/config/initial-config.ts");
@@ -123,12 +139,14 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__common_api_service__ = __webpack_require__("../../../../../src/app/common/api.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__common_auth_service__ = __webpack_require__("../../../../../src/app/common/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_publication_service__ = __webpack_require__("../../../../../src/app/services/publication.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_stomp_service__ = __webpack_require__("../../../../../src/app/services/stomp.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -158,7 +176,7 @@ var ROUTES = [
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_7__pages_register_page_register_page_component__["a" /* RegisterPageComponent */] },
     { path: 'publicWeather', component: __WEBPACK_IMPORTED_MODULE_11__pages_publicWeather_page_publicWeather_page_component__["a" /* PublicWeatherPageComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__common_auth_service__["a" /* AuthService */]] },
     { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_10__pages_profile_config_page_profile_config_page_component__["a" /* ProfileConfigPageComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__common_auth_service__["a" /* AuthService */]] },
-    { path: 'zones', component: __WEBPACK_IMPORTED_MODULE_12__pages_zones_page_zones_page_components__["a" /* ZonesPageComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__common_auth_service__["a" /* AuthService */]] },
+    { path: 'zones', component: __WEBPACK_IMPORTED_MODULE_12__pages_zones_page_zones_page_components__["a" /* ZonesPageComponent */] },
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -191,15 +209,17 @@ var AppModule = /** @class */ (function () {
                         apiURL: 'http://localhost:8080'
                     }
                 },
-                __WEBPACK_IMPORTED_MODULE_13__services_user_service__["a" /* UserService */],
-                __WEBPACK_IMPORTED_MODULE_14__services_report_service__["a" /* ReportService */],
+                __WEBPACK_IMPORTED_MODULE_14__services_user_service__["a" /* UserService */],
+                __WEBPACK_IMPORTED_MODULE_13__services_report_service__["a" /* ReportService */],
                 __WEBPACK_IMPORTED_MODULE_15__services_zone_service__["a" /* ZoneService */],
                 __WEBPACK_IMPORTED_MODULE_22__services_publication_service__["a" /* PublicationService */],
-                __WEBPACK_IMPORTED_MODULE_14__services_report_service__["a" /* ReportService */],
+                __WEBPACK_IMPORTED_MODULE_13__services_report_service__["a" /* ReportService */],
                 __WEBPACK_IMPORTED_MODULE_16__common_config_app_configuration_service__["a" /* AppConfiguration */],
                 __WEBPACK_IMPORTED_MODULE_19__common_app_data_service__["a" /* AppDataService */],
                 __WEBPACK_IMPORTED_MODULE_20__common_api_service__["a" /* APIService */],
                 __WEBPACK_IMPORTED_MODULE_21__common_auth_service__["a" /* AuthService */],
+                __WEBPACK_IMPORTED_MODULE_15__services_zone_service__["a" /* ZoneService */],
+                __WEBPACK_IMPORTED_MODULE_23__services_stomp_service__["a" /* StompService */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
         })
@@ -997,7 +1017,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/zones-page/zones-page.components.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container-fluid\" id=\"\" >\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-3\">\r\n            <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n        </div>\r\n        <div class=\"col-6\">\r\n            <h1 id=\"titulo\" align=\"center\">Zones</h1>\r\n        </div>\r\n\r\n        <table class=\"table\" align=\"CENTER\">\r\n            <thead class=\"thead-dark\">\r\n                <tr>\r\n                    <th>Number</th>\r\n                    <th>Name</th>\r\n                    <th></th>\r\n\r\n                </tr>\r\n            </thead>\r\n            <tr *ngFor=\"let zone of zones\">\r\n                <td>{{zone.number}}</td>\r\n                <td>{{zone.name}}</td>\r\n                <td><button type=\"button\" class=\"btn btn-info\" (click)=\"subscribeZone(zone.id, zone.number, zone.name, content)\">Subscribe</button></td>\r\n            </tr>\r\n        </table>\r\n\r\n\r\n    </div>\r\n</div>\r\n\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n\r\n    <div class=\"modal-header\">\r\n        <h4 class=\"modal-title\">Confirmation</h4>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <div class=\"jumbotron\">\r\n            <h4 class=\"text-center\">{{infoModal}}</h4>\r\n        </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-outline-light\" (click)=\"c('Close click')\">Close</button>\r\n    </div>\r\n</ng-template>\r\n"
+module.exports = "\r\n<div class=\"container-fluid\" id=\"\" >\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-3\">\r\n\r\n            <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n        </div>\r\n        <div class=\"col-6\">\r\n            <h1 id=\"titulo\" align=\"center\">Zones</h1>\r\n        </div>\r\n\r\n        <table class=\"table\" align=\"CENTER\">\r\n            <thead class=\"thead-dark\">\r\n                <tr>\r\n                    <th>Number</th>\r\n                    <th>Name</th>\r\n                    <th></th>\r\n\r\n                </tr>\r\n            </thead>\r\n            <tr *ngFor=\"let zone of zones\">\r\n                <td>{{zone.number}}</td>\r\n                <td>{{zone.name}}</td>\r\n                <td><button type=\"button\" class=\"btn btn-info\" (click)=\"subscribeZone(zone.id, zone.number, zone.name, content)\">Subscribe</button></td>\r\n            </tr>\r\n        </table>\r\n\r\n\r\n    </div>\r\n</div>\r\n\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n\r\n    <div class=\"modal-header\">\r\n        <h4 class=\"modal-title\">Confirmation</h4>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <div class=\"jumbotron\">\r\n            <h4 class=\"text-center\">{{infoModal}}</h4>\r\n        </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-outline-light\" (click)=\"c('Close click')\">Close</button>\r\n    </div>\r\n\r\n</ng-template>\r\n\r\n"
 
 /***/ }),
 
@@ -1061,8 +1081,10 @@ var ZonesPageComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/pages/zones-page/zones-page.components.html"),
             styles: [__webpack_require__("../../../../../src/app/pages/zones-page/zones-page.components.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_3__services_zone_service__["a" /* ZoneService */], __WEBPACK_IMPORTED_MODULE_4__services_user_service__["a" /* UserService */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_3__services_zone_service__["a" /* ZoneService */],
+            __WEBPACK_IMPORTED_MODULE_4__services_user_service__["a" /* UserService */],
             __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["a" /* NgbModal */]])
     ], ZonesPageComponent);
     return ZonesPageComponent;
@@ -1199,6 +1221,56 @@ var ReportService = /** @class */ (function (_super) {
 
 /***/ }),
 
+/***/ "../../../../../src/app/services/stomp.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StompService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__ = __webpack_require__("../../../../rxjs/_esm5/Subject.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_stompjs__ = __webpack_require__("../../../../stompjs/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_stompjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_stompjs__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var StompService = /** @class */ (function () {
+    function StompService() {
+        this._stompSubject = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__["a" /* Subject */]();
+    }
+    StompService.prototype.connect = function (_webSocketUrl) {
+        var self = this;
+        var webSocket = new WebSocket(_webSocketUrl);
+        this._stompClient = Stomp.over(webSocket);
+        this._stompClient.connect({}, function (frame) {
+            self._stompClient.subscribe('/topic/greetings', function (stompResponse) {
+                // stompResponse = {command, headers, body with JSON
+                // reflecting the object returned by Spring framework}
+                self._stompSubject.next(JSON.parse(stompResponse.body));
+            });
+        });
+    };
+    StompService.prototype.send = function (_payload) {
+        this._stompClient.send("/app/hello", {}, JSON.stringify({ 'inputField': _payload }));
+    };
+    StompService.prototype.getObservable = function () {
+        return this._stompSubject.asObservable();
+    };
+    StompService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])()
+    ], StompService);
+    return StompService;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/services/user.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1325,6 +1397,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+//import { StompService } from 'ng2-stomp-service';
 var ZoneService = /** @class */ (function (_super) {
     __extends(ZoneService, _super);
     function ZoneService(config, http, authService) {
