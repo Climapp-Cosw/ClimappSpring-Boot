@@ -65,14 +65,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent(_stompService, authService, router) {
-        this._stompService = _stompService;
+    function AppComponent(authService, router, stompService) {
         this.authService = authService;
         this.router = router;
+        this.stompService = stompService;
         this.title = 'app';
-        this.lat = 4.6097100;
-        this.lng = -74.0817500;
-        this.inputField = 'CONNECTED';
+        this.stompService.connectSTOMP();
         if (!this.authService.isLoggedIn()) {
             this.router.navigate(['/']);
         }
@@ -83,26 +81,14 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.signOut = function () {
         this.authService.signOut();
     };
-    AppComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this._stompService.connect('ws://localhost:8080/stompTest');
-        this._stompService.getObservable().subscribe(function (payload) {
-            _this.serverResponse = payload.outputField;
-        });
-    };
-    AppComponent.prototype.send = function () {
-        this._stompService.send(this.inputField);
-    };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
             styles: [__webpack_require__("../../../../../src/app/app.component.css")],
-            providers: [__WEBPACK_IMPORTED_MODULE_3__services_stomp_service__["a" /* StompService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services_stomp_service__["a" /* StompService */],
-            __WEBPACK_IMPORTED_MODULE_2__common_auth_service__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__common_auth_service__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */], __WEBPACK_IMPORTED_MODULE_3__services_stomp_service__["a" /* StompService */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -218,7 +204,6 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_19__common_app_data_service__["a" /* AppDataService */],
                 __WEBPACK_IMPORTED_MODULE_20__common_api_service__["a" /* APIService */],
                 __WEBPACK_IMPORTED_MODULE_21__common_auth_service__["a" /* AuthService */],
-                __WEBPACK_IMPORTED_MODULE_15__services_zone_service__["a" /* ZoneService */],
                 __WEBPACK_IMPORTED_MODULE_23__services_stomp_service__["a" /* StompService */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
@@ -816,7 +801,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/publicWeather-page/publicWeather-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-2\">\r\n      <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n    </div>\r\n    <div class=\"col\">\r\n      <div class=\"col\">\r\n            <agm-map   id=\"mapa\" [latitude]=\"lat\" [longitude]=\"long\">\r\n              <agm-marker title=\"Your Position\" openInfoWindow=\"true\"\r\n                          inconUrl=\"'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'\"\r\n                          [latitude]=\"lat\" [longitude]=\"long\" >\r\n              </agm-marker>\r\n            </agm-map>\r\n      </div>\r\n    </div>\r\n    <div class=\"col-3\">\r\n      <form id=\"map\" [formGroup]=\"publicWeatherForm\"  novalidate>\r\n        <div class=\"row\">\r\n\r\n          <div class=\"col\">\r\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search\" id=\"idTxtBusqueda\" >\r\n            <div id=\"idDivRegionesFavoritas\" class=\"form-group\">\r\n              <label for=\"idRegionesFavoritas\">Favoritos:</label>\r\n              <!--textarea class=\"form-control\" formControlName=\"idRegionesFavoritas\" rows=\"10\" id=\"idRegionesFavoritas\" disabled=\"true\"></textarea-->\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </form>\r\n    </div>\r\n\r\n\r\n  </div>\r\n\r\n  <h1 id=\"titulo\" align=\"center\">Publica tu clima!!</h1>\r\n  <div onload=\"ngOnInit()\" class=\"row \">\r\n\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"cloudy\" class=\"imagenesclima\"  src=\"assets/img/cloudy.png\" alt=\"nublado\" (click)=\"sendReport('cloudy')\"></div>\r\n\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"sunny\" class=\"imagenesclima\"  src=\"assets/img/sunny.png\" alt=\"soleado\"(click)=\"sendReport('sunny')\"></div>\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"rain\" class=\"imagenesclima\"  src=\"assets/img/rain.png\" alt=\"llovisnando\" (click)=\"sendReport('rain')\"></div>\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"storm\" class=\"imagenesclima\" (click)=\"sendReport('storm')\"  src=\"assets/img/storm.png\" alt=\"tormenta\"></div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-2\">\r\n      <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n    </div>\r\n    <div class=\"col\">\r\n      <div class=\"col\">\r\n            <agm-map   id=\"mapa\" [(latitude)]=\"lat\" [(longitude)]=\"long\">\r\n              <agm-marker title=\"Your Position\" openInfoWindow=\"true\"\r\n                          inconUrl=\"'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'\"\r\n                          [(latitude)]=\"lat\" [(longitude)]=\"long\" >\r\n              </agm-marker>\r\n            </agm-map>\r\n      </div>\r\n    </div>\r\n    <div class=\"col-3\">\r\n      <form id=\"map\" [formGroup]=\"publicWeatherForm\"  novalidate>\r\n        <div class=\"row\">\r\n\r\n          <div class=\"col\">\r\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search\" id=\"idTxtBusqueda\" >\r\n            <div id=\"idDivRegionesFavoritas\" class=\"form-group\">\r\n              <label for=\"idRegionesFavoritas\">Favoritos:</label>\r\n              <div id=\"idRegionesFavoritas\">\r\n                <table class=\"table\">\r\n                  <thead class=\"thead-dark\">\r\n                  <tr>\r\n                    <th scope=\"col\">Localidad</th>\r\n                    <th scope=\"col\">Clima</th>\r\n                  </tr>\r\n                  </thead>\r\n                  <tbody>\r\n                  <tr *ngFor=\"let zone of zoneSuscribe\">\r\n                    <td>{{zone.zone}}</td>\r\n                    <td>{{zone.weather}}</td>\r\n                  </tr>\r\n                  </tbody>\r\n                </table>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </form>\r\n    </div>\r\n\r\n\r\n  </div>\r\n\r\n  <h1 id=\"titulo\" align=\"center\">Publica tu clima!!</h1>\r\n  <div onload=\"ngOnInit()\" class=\"row \">\r\n\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"cloudy\" class=\"imagenesclima\"  src=\"assets/img/cloudy.png\" alt=\"nublado\" (click)=\"sendReport('cloudy', content)\"></div>\r\n\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"sunny\" class=\"imagenesclima\"  src=\"assets/img/sunny.png\" alt=\"soleado\"(click)=\"sendReport('sunny', content)\"></div>\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"rain\" class=\"imagenesclima\"  src=\"assets/img/rain.png\" alt=\"llovisnando\" (click)=\"sendReport('rain', content)\"></div>\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"storm\" class=\"imagenesclima\" (click)=\"sendReport('storm', content)\"  src=\"assets/img/storm.png\" alt=\"tormenta\"></div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n\r\n  <div class=\"modal-header\">\r\n    <h4 class=\"modal-title\">Confirmation</h4>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"modal-body\">\r\n    <div class=\"jumbotron\">\r\n      <h4 class=\"text-center\">{{infoModal}}</h4>\r\n    </div>\r\n  </div>\r\n  <div class=\"modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-outline-light\" (click)=\"c('Close click')\">Close</button>\r\n  </div>\r\n\r\n</ng-template>\r\n\r\n"
 
 /***/ }),
 
@@ -832,6 +817,7 @@ module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_report_service__ = __webpack_require__("../../../../../src/app/services/report.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_coordinate__ = __webpack_require__("../../../../../src/app/models/coordinate.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_publication_service__ = __webpack_require__("../../../../../src/app/services/publication.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -848,17 +834,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var PublicWeatherPageComponent = /** @class */ (function () {
-    function PublicWeatherPageComponent(publicationService, userService, reportService, formBuilder, router) {
+    function PublicWeatherPageComponent(publicationService, userService, reportService, formBuilder, router, modalService) {
         this.publicationService = publicationService;
         this.userService = userService;
         this.reportService = reportService;
         this.formBuilder = formBuilder;
         this.router = router;
+        this.modalService = modalService;
         this.lat = 4.748638;
         this.long = -74.030353;
         this.report = null;
         this.user = this.userService.cacheUser;
+        this.getPublicationsInit();
     }
     PublicWeatherPageComponent.prototype.ngOnInit = function () {
         this.publicWeatherForm = this.formBuilder.group({
@@ -867,6 +856,7 @@ var PublicWeatherPageComponent = /** @class */ (function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
         }
+        this.getPublicationsInit();
     };
     PublicWeatherPageComponent.prototype.setPosition = function (position) {
         this.lat = position.coords.latitude;
@@ -876,19 +866,53 @@ var PublicWeatherPageComponent = /** @class */ (function () {
     PublicWeatherPageComponent.prototype.routeToHome = function () {
         this.router.navigate(['/']);
     };
-    PublicWeatherPageComponent.prototype.sendReport = function (clima) {
+    PublicWeatherPageComponent.prototype.sendReport = function (weather, content) {
         var _this = this;
         // Latitud:4.748638
         // Longitud:-74.030353
-        this.reportService.registerReport(new Date(), new __WEBPACK_IMPORTED_MODULE_5__models_coordinate__["a" /* Coordinate */](this.lat, this.long), 'assets/img/' + clima + '.png', 'comment', 'clima', this.user).subscribe(function (response) {
+        this.reportService.registerReport(new Date(), new __WEBPACK_IMPORTED_MODULE_5__models_coordinate__["a" /* Coordinate */](this.lat, this.long), 'assets/img/' + weather + '.png', 'comment', weather, this.user).subscribe(function (response) {
             _this.report = response;
+            _this.infoModal = 'Se ha registrado un nuevo reporte';
             _this.publicationService.findPublication(_this.report).subscribe(function (response2) {
+                if (response2) {
+                    _this.infoModal += 'Se ha realizado la publicacion';
+                }
+                else {
+                    _this.infoModal += 'Aun no se ha realizado la publicacion';
+                }
+                _this.modalService.open(content, { windowClass: 'dark-modal' });
             }, function (error2) {
-                console.log(error2);
+                console.log('Not found Publication' + error2);
+            });
+        }, function (error) {
+            _this.infoModal = error.message;
+            _this.modalService.open(content, { windowClass: 'dark-modal' });
+            console.log(error);
+            console.log(error.message);
+        });
+    };
+    PublicWeatherPageComponent.prototype.getPublicationsInit = function () {
+        this.publicationService.getPublications().subscribe(function (response) {
+            response.map(function (publication) {
+                publication.reports.map(function (report) {
+                    /*Dibujar las publicaciones en el mapa*/
+                    this.drawCircleMap(report);
+                    /*Lista de zonas favoritas y clima*/
+                    this.zoneSuscribe = this.user.zones.map(function (zone) {
+                        if (report.zone.number === zone.number) {
+                            return { weather: report.weather, zone: report.zone.name };
+                        }
+                    });
+                });
             });
         }, function (error) {
             console.log(error);
         });
+    };
+    PublicWeatherPageComponent.drawCircleMap = function (report) {
+        /**dibujar en el mapa las cordenadas de la publicaciones, con el color del clima de cada reporte**/
+        var clima = report.weather;
+        var coordinate = report.coordinate;
     };
     PublicWeatherPageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -898,7 +922,8 @@ var PublicWeatherPageComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_6__services_publication_service__["a" /* PublicationService */],
             __WEBPACK_IMPORTED_MODULE_3__services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_4__services_report_service__["a" /* ReportService */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_7__ng_bootstrap_ng_bootstrap__["a" /* NgbModal */]])
     ], PublicWeatherPageComponent);
     return PublicWeatherPageComponent;
 }());
@@ -1028,10 +1053,9 @@ module.exports = "\r\n<div class=\"container-fluid\" id=\"\" >\r\n\r\n    <div c
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ZonesPageComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_zone_service__ = __webpack_require__("../../../../../src/app/services/zone.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_zone_service__ = __webpack_require__("../../../../../src/app/services/zone.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service__ = __webpack_require__("../../../../../src/app/services/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__ = __webpack_require__("../../../../@ng-bootstrap/ng-bootstrap/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1046,15 +1070,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var ZonesPageComponent = /** @class */ (function () {
-    function ZonesPageComponent(formBuilder, router, zoneService, userService, modalService) {
-        this.formBuilder = formBuilder;
+    function ZonesPageComponent(router, zoneService, userService, modalService) {
         this.router = router;
         this.zoneService = zoneService;
         this.userService = userService;
         this.modalService = modalService;
         this.zones = [];
+        this.user = userService.cacheUser;
     }
     ZonesPageComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1064,7 +1087,8 @@ var ZonesPageComponent = /** @class */ (function () {
     };
     ZonesPageComponent.prototype.subscribeZone = function (id, number, name, content) {
         var _this = this;
-        this.userService.addZone('prueba@mail.com', id, number, name).subscribe(function (serverResponse) {
+        this.userService.addZone(this.user.email, id, number, name).subscribe(function (serverResponse) {
+            _this.zoneService.suscribeZone(number, name);
             _this.infoModal = 'You have subscribed to ' + name + ' zone.';
             _this.modalService.open(content, { windowClass: 'dark-modal' });
             console.log('Se ha adicionado');
@@ -1081,11 +1105,8 @@ var ZonesPageComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/pages/zones-page/zones-page.components.html"),
             styles: [__webpack_require__("../../../../../src/app/pages/zones-page/zones-page.components.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_3__services_zone_service__["a" /* ZoneService */],
-            __WEBPACK_IMPORTED_MODULE_4__services_user_service__["a" /* UserService */],
-            __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["a" /* NgbModal */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_zone_service__["a" /* ZoneService */], __WEBPACK_IMPORTED_MODULE_3__services_user_service__["a" /* UserService */],
+            __WEBPACK_IMPORTED_MODULE_4__ng_bootstrap_ng_bootstrap__["a" /* NgbModal */]])
     ], ZonesPageComponent);
     return ZonesPageComponent;
 }());
@@ -1203,7 +1224,7 @@ var ReportService = /** @class */ (function (_super) {
     ReportService.prototype.registerReport = function (dateTimeReport, coordinate, img, comment, weather, user) {
         return this.post('reports/newreport/' + coordinate.latitude + '&' + coordinate.longitude, { dateTimeReport: dateTimeReport,
             coordinate: coordinate, img: img, comment: comment, weather: weather,
-            reportedUser: user });
+            reportedUser: user, zone: null });
     };
     ReportService.prototype.deleteReport = function () {
     };
@@ -1227,42 +1248,52 @@ var ReportService = /** @class */ (function (_super) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StompService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__ = __webpack_require__("../../../../rxjs/_esm5/Subject.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_stompjs__ = __webpack_require__("../../../../stompjs/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_stompjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_stompjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_stompjs__ = __webpack_require__("../../../../stompjs/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_stompjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_stompjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sockjs_client__ = __webpack_require__("../../../../sockjs-client/lib/entry.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sockjs_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_sockjs_client__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_publicWeather_page_publicWeather_page_component__ = __webpack_require__("../../../../../src/app/pages/publicWeather-page/publicWeather-page.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 
 
 var StompService = /** @class */ (function () {
     function StompService() {
-        this._stompSubject = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Subject__["a" /* Subject */]();
     }
-    StompService.prototype.connect = function (_webSocketUrl) {
+    StompService.prototype.connectSTOMP = function () {
+        console.log('Connecting to WS...');
+        var socket = new __WEBPACK_IMPORTED_MODULE_2_sockjs_client___default.a('/stompendpoint');
+        this.stompClient = __WEBPACK_IMPORTED_MODULE_1_stompjs___default.a.over(socket);
         var self = this;
-        var webSocket = new WebSocket(_webSocketUrl);
-        this._stompClient = Stomp.over(webSocket);
-        this._stompClient.connect({}, function (frame) {
-            self._stompClient.subscribe('/topic/greetings', function (stompResponse) {
-                // stompResponse = {command, headers, body with JSON
-                // reflecting the object returned by Spring framework}
-                self._stompSubject.next(JSON.parse(stompResponse.body));
+        this.stompClient.connect({}, function (frame) {
+            console.log('Connected: ' + frame);
+            /*PUBLIC ZONE*/
+            self.stompClient.subscribe('/topic/reportWeather', function (data) {
+                var data1 = JSON.parse(data.body);
+                /*Dibujar la nueva publicacion*/
+                this.data1.reports.map(function (report) {
+                    __WEBPACK_IMPORTED_MODULE_3__pages_publicWeather_page_publicWeather_page_component__["a" /* PublicWeatherPageComponent */].drawCircleMap(report);
+                });
+            });
+            /*FAVORIT ZONE*/
+            self.stompClient.subscribe('/topic/zoneSuscribe/' + this.numberZone, function (data) {
+                var data1 = JSON.parse(data.body);
+                __WEBPACK_IMPORTED_MODULE_3__pages_publicWeather_page_publicWeather_page_component__["a" /* PublicWeatherPageComponent */].zoneSuscribe.add({ weather: data.weather, zone: data.zones.number });
             });
         });
     };
-    StompService.prototype.send = function (_payload) {
-        this._stompClient.send("/app/hello", {}, JSON.stringify({ 'inputField': _payload }));
-    };
-    StompService.prototype.getObservable = function () {
-        return this._stompSubject.asObservable();
-    };
     StompService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])()
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+        __metadata("design:paramtypes", [])
     ], StompService);
     return StompService;
 }());
@@ -1373,6 +1404,7 @@ var UserService = /** @class */ (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_config_app_configuration_service__ = __webpack_require__("../../../../../src/app/common/config/app-configuration.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_auth_service__ = __webpack_require__("../../../../../src/app/common/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__stomp_service__ = __webpack_require__("../../../../../src/app/services/stomp.service.ts");
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1397,22 +1429,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-//import { StompService } from 'ng2-stomp-service';
+
 var ZoneService = /** @class */ (function (_super) {
     __extends(ZoneService, _super);
-    function ZoneService(config, http, authService) {
+    function ZoneService(config, http, authService, stompService) {
         var _this = _super.call(this, config, authService, http) || this;
         _this.config = config;
         _this.http = http;
         _this.authService = authService;
+        _this.stompService = stompService;
         return _this;
     }
     ZoneService.prototype.listZones = function () {
         return this.get('zones/');
     };
+    ZoneService.prototype.suscribeZone = function (id, name) {
+        this.stompService.numberZone = id;
+        this.stompService.stompClient.send('/topic/zoneSuscribe/', {}, name);
+    };
     ZoneService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__common_config_app_configuration_service__["a" /* AppConfiguration */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_4__common_auth_service__["a" /* AuthService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__common_config_app_configuration_service__["a" /* AppConfiguration */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_4__common_auth_service__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_5__stomp_service__["a" /* StompService */]])
     ], ZoneService);
     return ZoneService;
 }(__WEBPACK_IMPORTED_MODULE_1__common_api_service__["a" /* APIService */]));

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app-climapp.iml" filepath="$PROJECT_DIR$/.idea/modules/app-climapp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app-climapp_main.iml" filepath="$PROJECT_DIR$/.idea/modules/app-climapp_main.iml" group="app-climapp" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app-climapp_test.iml" filepath="$PROJECT_DIR$/.idea/modules/app-climapp_test.iml" group="app-climapp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ClimappSpring-Boot.iml" filepath="$PROJECT_DIR$/.idea/modules/ClimappSpring-Boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ClimappSpring-Boot_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ClimappSpring-Boot_main.iml" group="ClimappSpring-Boot" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ClimappSpring-Boot_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ClimappSpring-Boot_test.iml" group="ClimappSpring-Boot" />
     </modules>
   </component>
 </project>

@@ -35,10 +35,8 @@ public class PublicationServiceImpl implements PublicationService {
     @Override
     public List<Report> findNewPublication(Report rep) throws ServicesException{
         List<Report> reportPublications=new ArrayList<Report>();
-        reportPublications.add(rep);
         for (int i=0;i<reportsService.getReports().size();i++){
             Report repPublication= reportsService.getReports().get(i);
-            System.out.println(rep.toString());
             if(rep.getCoordinate().distCoordenate(repPublication.getCoordinate())<=0.7 && rep.getWeather().equals(repPublication.getWeather())){
                 reportPublications.add(repPublication);
             };

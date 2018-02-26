@@ -6,6 +6,7 @@ import eci.cosw.climapp.services.PublicationService;
 import eci.cosw.climapp.services.ReportService;
 import eci.cosw.climapp.services.ServicesException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,19 +21,23 @@ public class PublicationController {
     @Autowired
     private ReportService reportService;
 
+    @Autowired
+    private SimpMessagingTemplate msgt;
 
-    @RequestMapping( value = "/findpublication/{lat}&{lon}", method = RequestMethod.POST )
-    public void findPublication(@RequestBody Report report ,@PathVariable("lat")String lat,@PathVariable("lon")String lon) throws ServicesException {
-        report.getCoordinate().setLongitude(Double.valueOf(lon));
-        report.getCoordinate().setLatitude(Double.valueOf(lat));
+    @RequestMapping( value = "/findpublication", method = RequestMethod.POST )
+    public boolean findPublication(@RequestBody Report report) throws ServicesException {
+        boolean flag=false;
+        Publication p=null;
         List<Report> reports = publicationService.findNewPublication(report);
         if(reports.size()>=3){
-            Publication p=new Publication();
+            p=new Publication();
             p.setReports(reports);
+            p.setZones(report.getZone());
             publicationService.createPublication(p);
             for (int i=0;i<reportService.getReports().size();i++){
                 reportService.deleteReport(reports.get(i).getId());
             }
+            flag=true;
             System.out.println("publicacion realizadaaaa");
 
 
@@ -40,16 +45,26 @@ public class PublicationController {
 
             //publica a la zona configurada del stomp//
         }else{
-            System.out.print("sflbsgdfgbvdfgb vdfbdfdfdfdfdfdfdfdfdfdfdfdfubfbfbfbf "+reports.size());
-            if(publicationService.findPublication(report)!=null){
+            p=publicationService.findPublication(report);
+            if(p!=null){
                 reportService.deleteReport(report.getId());
+                flag=true;
                 System.out.println("publicacion ya encontrada");
-                //publica a la zona configurada del stomp//
-
-                //publica a la zona configurada del stomp//
             };
+            flag=true;
 
         }
+        if(flag){
+            //PUBLICAR ZONA
+            msgt.convertAndSend("/topic/reportWeather", p);
+            //Publicar Zona favorita
+            int numberZone = report.getZone().getNumber();
+            if(numberZone!=22){
+                msgt.convertAndSend("/topic/zoneSuscribe"+numberZone, p);
+
+            }
+        }
+        return flag;
     }
 
     @RequestMapping( value = "/", method = RequestMethod.GET )

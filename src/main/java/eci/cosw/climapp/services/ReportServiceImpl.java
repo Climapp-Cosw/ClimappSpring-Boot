@@ -24,11 +24,11 @@ public class ReportServiceImpl implements ReportService{
     private ZoneService zoneService;
 
     public ReportServiceImpl() throws ServicesException{
-        reports.add(new Report(1,new Date(),new Coordinate( 4.710988599999999,-74.072092), "comment","clima", "img",
+        reports.add(new Report(1,new Date(),new Coordinate( 4.710988599999999,-74.072092), "assets/img/rain","comment", "rain",
                 new User(3,"prueba3@mail.com","password","natan ram","http://www.your3dsource.com/images/facepic3.jpeg","password"),
                 new Zone(11, 11, "Suba",
                         new ArrayList<Coordinate> (Arrays.asList(new Coordinate(4.836357, -74.084712), new Coordinate(4.828147, -74.033557), new Coordinate(4.741931, -74.134494), new Coordinate(4.686501, -74.057247))))));
-        reports.add(new Report(1,new Date(),new Coordinate( 4.711777486983153,-74.07104712948808), "comment","clima", "img",
+        reports.add(new Report(2,new Date(),new Coordinate( 4.711777486983153,-74.07104712948808), "assets/img/rain","comment", "rain",
                 new User(4,"prueba4@mail.com","password","daniel ro","http://www.your3dsource.com/images/facepic4.jpeg","password"),
                 new Zone(11, 11, "Suba",
                         new ArrayList<Coordinate> (Arrays.asList(new Coordinate(4.836357, -74.084712), new Coordinate(4.828147, -74.033557), new Coordinate(4.741931, -74.134494), new Coordinate(4.686501, -74.057247))))));

@@ -2,8 +2,8 @@ package eci.cosw.climapp.models;
 
 public class Coordinate {
     private long id;
-    private Double latitude;
-    private Double longitude;
+    private double latitude;
+    private double longitude;
 
     /**
      * @param latitude
@@ -19,7 +19,7 @@ public class Coordinate {
      * @param latitude
      * @param longitude
      */
-    public Coordinate(Double latitude, Double longitude) {
+    public Coordinate(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }
