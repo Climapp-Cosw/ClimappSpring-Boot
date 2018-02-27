@@ -59,6 +59,12 @@ public class UserController  {
         return userService.findUserByEmail(email);
     }
 
+    @RequestMapping( value = "/users", method = RequestMethod.GET )
+    public List<User> getUsers(){
+
+        return userService.getUsers();
+    }
+
     @RequestMapping( value = "/{email}/reports", method = RequestMethod.GET )
     public List<Report> getReportsByUser(@PathVariable("email") String email){
         System.out.println("Correo: "+email);

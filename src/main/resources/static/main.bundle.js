@@ -740,7 +740,7 @@ var ProfileConfigPageComponent = /** @class */ (function () {
     };
     ProfileConfigPageComponent.prototype.routeToHome = function () {
         this.editable = false;
-        this.router.navigate(['/']);
+        this.router.navigate(['/publicWeather']);
     };
     ProfileConfigPageComponent.prototype.userGet = function () {
         var _this = this;
@@ -892,7 +892,7 @@ var PublicWeatherPageComponent = /** @class */ (function () {
         });
     };
     PublicWeatherPageComponent.prototype.getPublicationsInit = function () {
-        alert("ENTRA A LA FUNCION!!");
+        //alert("ENTRA A LA FUNCION!!")
         this.publicationService.getPublications().subscribe(function (response) {
             response.map(function (publication) {
                 publication.reports.map(function (report) {
@@ -1275,6 +1275,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var StompService = /** @class */ (function () {
+    //private data2: Publication;
     function StompService() {
     }
     StompService.prototype.connectSTOMP = function () {
@@ -1286,16 +1287,22 @@ var StompService = /** @class */ (function () {
             console.log('Connected: ' + frame);
             /*PUBLIC ZONE*/
             self.stompClient.subscribe('/topic/reportWeather', function (data) {
-                var data1 = JSON.parse(data.body);
+                var data2 = data.body;
+                console.log(data.body);
                 /*Dibujar la nueva publicacion*/
-                this.data1.reports.map(function (report) {
-                    __WEBPACK_IMPORTED_MODULE_3__pages_publicWeather_page_publicWeather_page_component__["a" /* PublicWeatherPageComponent */].drawCircleMap(report);
+                data2.id;
+                console.log("IDS " + data2.id);
+                //this.data2.reports.map(function (report) {
+                data2.map(function (report) {
+                    //PublicWeatherPageComponent.drawCircleMap(report);
+                    alert("ENTRE!!");
                 });
             });
             /*FAVORITE ZONE*/
             self.stompClient.subscribe('/topic/zoneSuscribe/' + this.numberZone, function (data) {
                 var data1 = JSON.parse(data.body);
-                __WEBPACK_IMPORTED_MODULE_3__pages_publicWeather_page_publicWeather_page_component__["a" /* PublicWeatherPageComponent */].zoneSuscribe.add({ weather: data.weather, zone: data.zones.number });
+                __WEBPACK_IMPORTED_MODULE_3__pages_publicWeather_page_publicWeather_page_component__["a" /* PublicWeatherPageComponent */].zoneSuscribe.add({ weather: data1.weather, zone: data1.zones.number });
+                alert("SUSCRITO A LA ZONA");
             });
         });
     };

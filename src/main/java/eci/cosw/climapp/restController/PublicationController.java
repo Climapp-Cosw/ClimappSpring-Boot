@@ -16,6 +16,8 @@ import java.util.List;
 @RequestMapping( "publications" )
 public class PublicationController {
 
+
+
     @Autowired
     private PublicationService publicationService;
 
@@ -33,7 +35,8 @@ public class PublicationController {
         boolean flag=false;
         Publication p=null;
         List<Report> reports = publicationService.findNewPublication(report);
-        if(reports.size()>=3){
+        //Amount of valid publications
+        if(reports.size()>=2){
             p=new Publication();
             p.setReports(reports);
             p.setZones(report.getZone());
@@ -55,7 +58,7 @@ public class PublicationController {
                 flag=true;
                 //System.out.println("publicacion ya encontrada");
             };
-            flag=true;
+            //flag=true;
 
         }
         if(flag){
