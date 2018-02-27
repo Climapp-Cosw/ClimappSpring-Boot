@@ -36,7 +36,7 @@ public class PublicationController {
         Publication p=null;
         List<Report> reports = publicationService.findNewPublication(report);
         //Amount of valid publications
-        if(reports.size()>=2){
+        if(reports.size()>=3){
             p=new Publication();
             p.setReports(reports);
             p.setZones(report.getZone());
