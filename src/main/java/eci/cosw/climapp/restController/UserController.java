@@ -119,6 +119,11 @@ public class UserController  {
         return userService.findUserById(id);
     }
 
+    @RequestMapping( value = "/zones/favorites/{email}", method = RequestMethod.GET )
+    public List<Zone> getFavoriteZonesByUser(@PathVariable("email") String email){
+        return userService.getFavoriteZonesByUser(email);
+    }
+
     public class Token{
         String access_token;
 
@@ -134,7 +139,5 @@ public class UserController  {
             this.access_token = access_token;
         }
     }
-
-
 
 }

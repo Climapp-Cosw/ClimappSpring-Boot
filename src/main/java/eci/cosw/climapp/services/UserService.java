@@ -70,4 +70,7 @@ public interface UserService {
      */
     public User deleteZone(Zone zone, String email) throws ServicesException;
 
+
+    public List<Zone> getFavoriteZonesByUser(String email);
+
 }

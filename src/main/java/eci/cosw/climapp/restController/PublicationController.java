@@ -5,6 +5,7 @@ import eci.cosw.climapp.models.Report;
 import eci.cosw.climapp.services.PublicationService;
 import eci.cosw.climapp.services.ReportService;
 import eci.cosw.climapp.services.ServicesException;
+import eci.cosw.climapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,9 @@ public class PublicationController {
     @Autowired
     private SimpMessagingTemplate msgt;
 
+    @Autowired
+    private UserService user;
+
     @RequestMapping( value = "/findpublication", method = RequestMethod.POST )
     public boolean findPublication(@RequestBody Report report) throws ServicesException {
         boolean flag=false;
@@ -38,7 +42,7 @@ public class PublicationController {
                 reportService.deleteReport(reports.get(i).getId());
             }
             flag=true;
-            System.out.println("publicacion realizadaaaa");
+            //System.out.println("publicacion realizadaaaa");
 
 
             //publica a la zona configurada del stomp//
@@ -49,7 +53,7 @@ public class PublicationController {
             if(p!=null){
                 reportService.deleteReport(report.getId());
                 flag=true;
-                System.out.println("publicacion ya encontrada");
+                //System.out.println("publicacion ya encontrada");
             };
             flag=true;
 
@@ -60,7 +64,7 @@ public class PublicationController {
             //Publicar Zona favorita
             int numberZone = report.getZone().getNumber();
             if(numberZone!=22){
-                msgt.convertAndSend("/topic/zoneSuscribe"+numberZone, p);
+                msgt.convertAndSend("/topic/zoneSuscribe/"+numberZone, p);
 
             }
         }

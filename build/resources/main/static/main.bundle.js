@@ -801,7 +801,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/publicWeather-page/publicWeather-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-2\">\r\n      <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n    </div>\r\n    <div class=\"col\">\r\n      <div class=\"col\">\r\n            <agm-map   id=\"mapa\" [(latitude)]=\"lat\" [(longitude)]=\"long\">\r\n              <agm-marker title=\"Your Position\" openInfoWindow=\"true\"\r\n                          inconUrl=\"'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'\"\r\n                          [(latitude)]=\"lat\" [(longitude)]=\"long\" >\r\n              </agm-marker>\r\n            </agm-map>\r\n      </div>\r\n    </div>\r\n    <div class=\"col-3\">\r\n      <form id=\"map\" [formGroup]=\"publicWeatherForm\"  novalidate>\r\n        <div class=\"row\">\r\n\r\n          <div class=\"col\">\r\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search\" id=\"idTxtBusqueda\" >\r\n            <div id=\"idDivRegionesFavoritas\" class=\"form-group\">\r\n              <label for=\"idRegionesFavoritas\">Favoritos:</label>\r\n              <div id=\"idRegionesFavoritas\">\r\n                <table class=\"table\">\r\n                  <thead class=\"thead-dark\">\r\n                  <tr>\r\n                    <th scope=\"col\">Localidad</th>\r\n                    <th scope=\"col\">Clima</th>\r\n                  </tr>\r\n                  </thead>\r\n                  <tbody>\r\n                  <tr *ngFor=\"let zone of zoneSuscribe\">\r\n                    <td>{{zone.zone}}</td>\r\n                    <td>{{zone.weather}}</td>\r\n                  </tr>\r\n                  </tbody>\r\n                </table>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </form>\r\n    </div>\r\n\r\n\r\n  </div>\r\n\r\n  <h1 id=\"titulo\" align=\"center\">Publica tu clima!!</h1>\r\n  <div onload=\"ngOnInit()\" class=\"row \">\r\n\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"cloudy\" class=\"imagenesclima\"  src=\"assets/img/cloudy.png\" alt=\"nublado\" (click)=\"sendReport('cloudy', content)\"></div>\r\n\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"sunny\" class=\"imagenesclima\"  src=\"assets/img/sunny.png\" alt=\"soleado\"(click)=\"sendReport('sunny', content)\"></div>\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"rain\" class=\"imagenesclima\"  src=\"assets/img/rain.png\" alt=\"llovisnando\" (click)=\"sendReport('rain', content)\"></div>\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"storm\" class=\"imagenesclima\" (click)=\"sendReport('storm', content)\"  src=\"assets/img/storm.png\" alt=\"tormenta\"></div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n\r\n  <div class=\"modal-header\">\r\n    <h4 class=\"modal-title\">Confirmation</h4>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"modal-body\">\r\n    <div class=\"jumbotron\">\r\n      <h4 class=\"text-center\">{{infoModal}}</h4>\r\n    </div>\r\n  </div>\r\n  <div class=\"modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-outline-light\" (click)=\"c('Close click')\">Close</button>\r\n  </div>\r\n\r\n</ng-template>\r\n\r\n"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-2\">\r\n      <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n    </div>\r\n    <div class=\"col\">\r\n      <div class=\"col\">\r\n            <agm-map   id=\"mapa\" [(latitude)]=\"lat\" [(longitude)]=\"long\">\r\n              <agm-marker title=\"Your Position\" openInfoWindow=\"true\"\r\n                          inconUrl=\"'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'\"\r\n                          [(latitude)]=\"lat\" [(longitude)]=\"long\" >\r\n              </agm-marker>\r\n            </agm-map>\r\n      </div>\r\n    </div>\r\n    <div class=\"col-3\">\r\n      <form id=\"map\" [formGroup]=\"publicWeatherForm\"  novalidate>\r\n        <div class=\"row\">\r\n\r\n          <div class=\"col\">\r\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search\" id=\"idTxtBusqueda\" >\r\n            <div id=\"idDivRegionesFavoritas\" class=\"form-group\">\r\n              <label for=\"idRegionesFavoritas\">Favorites:</label>\r\n              <div id=\"idRegionesFavoritas\">\r\n                <table class=\"table\">\r\n                  <thead class=\"thead-dark\">\r\n                  <tr>\r\n                    <th scope=\"col\">Zone</th>\r\n                    <th scope=\"col\">Current Weather</th>\r\n                    <th>\r\n                      <input type=\"button\" value=\"show\" ng-click=\"getPublicationsInit()\">\r\n                    </th>\r\n                  </tr>\r\n                  </thead>\r\n                  <tbody>\r\n                  <tr *ngFor=\"let zone of zoneSuscribe\">\r\n                    <td>{{zone.zone}}</td>\r\n                    <td>{{zone.weather}}</td>\r\n                  </tr>\r\n                  </tbody>\r\n                </table>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </form>\r\n    </div>\r\n\r\n\r\n  </div>\r\n\r\n  <h1 id=\"titulo\" align=\"center\">Publica tu clima!!</h1>\r\n  <div onload=\"ngOnInit()\" class=\"row \">\r\n\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"cloudy\" class=\"imagenesclima\"  src=\"assets/img/cloudy.png\" alt=\"nublado\" (click)=\"sendReport('cloudy', content)\"></div>\r\n\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"sunny\" class=\"imagenesclima\"  src=\"assets/img/sunny.png\" alt=\"soleado\"(click)=\"sendReport('sunny', content)\"></div>\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"rain\" class=\"imagenesclima\"  src=\"assets/img/rain.png\" alt=\"llovisnando\" (click)=\"sendReport('rain', content)\"></div>\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"storm\" class=\"imagenesclima\" (click)=\"sendReport('storm', content)\"  src=\"assets/img/storm.png\" alt=\"tormenta\"></div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n\r\n  <div class=\"modal-header\">\r\n    <h4 class=\"modal-title\">Confirmation</h4>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"modal-body\">\r\n    <div class=\"jumbotron\">\r\n      <h4 class=\"text-center\">{{infoModal}}</h4>\r\n    </div>\r\n  </div>\r\n  <div class=\"modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-outline-light\" (click)=\"c('Close click')\">Close</button>\r\n  </div>\r\n\r\n</ng-template>\r\n\r\n"
 
 /***/ }),
 
@@ -892,6 +892,7 @@ var PublicWeatherPageComponent = /** @class */ (function () {
         });
     };
     PublicWeatherPageComponent.prototype.getPublicationsInit = function () {
+        alert("ENTRA A LA FUNCION!!");
         this.publicationService.getPublications().subscribe(function (response) {
             response.map(function (publication) {
                 publication.reports.map(function (report) {
@@ -900,6 +901,7 @@ var PublicWeatherPageComponent = /** @class */ (function () {
                     /*Lista de zonas favoritas y clima*/
                     this.zoneSuscribe = this.user.zones.map(function (zone) {
                         if (report.zone.number === zone.number) {
+                            alert({ weather: report.weather, zone: report.zone.name });
                             return { weather: report.weather, zone: report.zone.name };
                         }
                     });
@@ -913,6 +915,11 @@ var PublicWeatherPageComponent = /** @class */ (function () {
         /**dibujar en el mapa las cordenadas de la publicaciones, con el color del clima de cada reporte**/
         var clima = report.weather;
         var coordinate = report.coordinate;
+    };
+    //Create the favorite zone view
+    PublicWeatherPageComponent.prototype.getFavoriteZones = function (email) {
+        this.userService.listFavoriteZones(email);
+        alert("Favorite zones: " + this.userService.listFavoriteZones(email));
     };
     PublicWeatherPageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -1042,7 +1049,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/zones-page/zones-page.components.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container-fluid\" id=\"\" >\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-3\">\r\n\r\n            <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n        </div>\r\n        <div class=\"col-6\">\r\n            <h1 id=\"titulo\" align=\"center\">Zones</h1>\r\n        </div>\r\n\r\n        <table class=\"table\" align=\"CENTER\">\r\n            <thead class=\"thead-dark\">\r\n                <tr>\r\n                    <th>Number</th>\r\n                    <th>Name</th>\r\n                    <th></th>\r\n\r\n                </tr>\r\n            </thead>\r\n            <tr *ngFor=\"let zone of zones\">\r\n                <td>{{zone.number}}</td>\r\n                <td>{{zone.name}}</td>\r\n                <td><button type=\"button\" class=\"btn btn-info\" (click)=\"subscribeZone(zone.id, zone.number, zone.name, content)\">Subscribe</button></td>\r\n            </tr>\r\n        </table>\r\n\r\n\r\n    </div>\r\n</div>\r\n\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n\r\n    <div class=\"modal-header\">\r\n        <h4 class=\"modal-title\">Confirmation</h4>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <div class=\"jumbotron\">\r\n            <h4 class=\"text-center\">{{infoModal}}</h4>\r\n        </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-outline-light\" (click)=\"c('Close click')\">Close</button>\r\n    </div>\r\n\r\n</ng-template>\r\n\r\n"
+module.exports = "\r\n<div class=\"container-fluid\" id=\"\" >\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-3\">\r\n\r\n            <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n        </div>\r\n        <div class=\"col-6\">\r\n            <h1 id=\"titulo\" align=\"center\">Zones</h1>\r\n        </div>\r\n\r\n        <table class=\"table\" align=\"CENTER\">\r\n            <thead class=\"thead-dark\">\r\n                <tr>\r\n                    <th>Number</th>\r\n                    <th>Name</th>\r\n                    <th></th>\r\n\r\n                </tr>\r\n            </thead>\r\n            <tr *ngFor=\"let zone of zones\">\r\n                <td>{{zone.number}}</td>\r\n                <td>{{zone.name}}</td>\r\n                <td><button type=\"button\" class=\"btn btn-info\" (click)=\"subscribeZone(zone.id, zone.number, zone.name, content)\">Subscribe</button></td>\r\n            </tr>\r\n        </table>\r\n    </div>\r\n</div>\r\n\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n\r\n    <div class=\"modal-header\">\r\n        <h4 class=\"modal-title\">Confirmation</h4>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <div class=\"jumbotron\">\r\n            <h4 class=\"text-center\">{{infoModal}}</h4>\r\n        </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-outline-light\" (click)=\"c('Close click')\">Close</button>\r\n    </div>\r\n\r\n</ng-template>\r\n\r\n"
 
 /***/ }),
 
@@ -1091,7 +1098,8 @@ var ZonesPageComponent = /** @class */ (function () {
             _this.zoneService.suscribeZone(number, name);
             _this.infoModal = 'You have subscribed to ' + name + ' zone.';
             _this.modalService.open(content, { windowClass: 'dark-modal' });
-            console.log('Se ha adicionado');
+            //alert('Se ha adicionado '+name+ 'a tus zonas');
+            console.log('Se ha adicionado ' + name + ' a tus zonas');
         }, function (error) {
             _this.infoModal = error.message;
             _this.modalService.open(content, { windowClass: 'dark-modal' });
@@ -1284,7 +1292,7 @@ var StompService = /** @class */ (function () {
                     __WEBPACK_IMPORTED_MODULE_3__pages_publicWeather_page_publicWeather_page_component__["a" /* PublicWeatherPageComponent */].drawCircleMap(report);
                 });
             });
-            /*FAVORIT ZONE*/
+            /*FAVORITE ZONE*/
             self.stompClient.subscribe('/topic/zoneSuscribe/' + this.numberZone, function (data) {
                 var data1 = JSON.parse(data.body);
                 __WEBPACK_IMPORTED_MODULE_3__pages_publicWeather_page_publicWeather_page_component__["a" /* PublicWeatherPageComponent */].zoneSuscribe.add({ weather: data.weather, zone: data.zones.number });
@@ -1383,6 +1391,9 @@ var UserService = /** @class */ (function (_super) {
         return this.post('users/zones/' + email, { id: id, number: number, name: name }).map(function (loginResponse) {
         });
     };
+    UserService.prototype.listFavoriteZones = function (email) {
+        return this.get('zones/favorites/' + email);
+    };
     UserService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__common_config_app_configuration_service__["a" /* AppConfiguration */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */], __WEBPACK_IMPORTED_MODULE_4__common_auth_service__["a" /* AuthService */]])
@@ -1445,7 +1456,6 @@ var ZoneService = /** @class */ (function (_super) {
     };
     ZoneService.prototype.suscribeZone = function (id, name) {
         this.stompService.numberZone = id;
-        this.stompService.stompClient.send('/topic/zoneSuscribe/', {}, name);
     };
     ZoneService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),

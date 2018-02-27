@@ -7,11 +7,13 @@ package eci.cosw.climapp.restController;
 
 import eci.cosw.climapp.models.Zone;
 import eci.cosw.climapp.services.ZoneService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  *
@@ -27,4 +29,11 @@ public class ZoneController {
     public List<Zone> getZones(){
         return zoneServices.getZones();
     }
+
+    @RequestMapping( value = "/zones", method = RequestMethod.GET )
+    public Zone getZone(@RequestBody String name){
+        return zoneServices.getZone(name);
+    }
+
+
 }

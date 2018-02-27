@@ -102,4 +102,10 @@ public class UserServiceImpl implements UserService {
         u.deleteZone(zone);
         return u;
     }
+
+    @Override
+    public List<Zone> getFavoriteZonesByUser(String email) {
+        User u=this.findUserByEmail(email);
+        return u.getZones();
+    }
 }
