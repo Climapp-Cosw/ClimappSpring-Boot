@@ -39,19 +39,13 @@ public class PublicationController {
             }
             flag=true;
             System.out.println("publicacion realizadaaaa");
-
-
-            //publica a la zona configurada del stomp//
-
-            //publica a la zona configurada del stomp//
         }else{
             p=publicationService.findPublication(report);
             if(p!=null){
-                reportService.deleteReport(report.getId());
                 flag=true;
-                System.out.println("publicacion ya encontrada");
+                reportService.deleteReport(report.getId());
+
             };
-            flag=true;
 
         }
         if(flag){
