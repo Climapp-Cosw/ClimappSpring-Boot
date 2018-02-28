@@ -11,6 +11,4 @@ Juan Pablo Arevalo
 
 ###Heroku app: [![Build Status](https://climapp.herokuapp.com/)]
 
-
-El enlace al entorno Circle.CI del proyecto [![CircleCI](https://circleci.com/gh/Climapp-Cosw.svg?style=svg)](https://circleci.com/gh/Climapp-Cosw)
-###Circleci: [![Build Status](https://circleci.com/gh/Climapp-Cosw)]
+[![CircleCI](https://circleci.com/gh/Climapp-Cosw/ClimappSpring-Boot.svg?style=svg)](https://circleci.com/gh/Climapp-Cosw/ClimappSpring-Boot)
