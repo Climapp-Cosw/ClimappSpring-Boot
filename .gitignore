@@ -1,9 +1,7 @@
  # System Files
-.gradle
 .idea
 out
 *.iml
 *.ipr
 *.iws
  
-src/main/resources/static/*
