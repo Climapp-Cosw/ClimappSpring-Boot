@@ -46,9 +46,9 @@ public class ReportServiceImpl implements ReportService{
             Report p=reports.get(i);
             if (rep.getReportedUser().getId()==p.getReportedUser().getId() && p.getCoordinate().distCoordenate(rep.getCoordinate())<=0.7) {
                 if(p.getWeather().equals(rep.getWeather())){
-                    throw new ServicesException("Ya has publicado un reporte en la misma zona y con el mismo clima.");
+                    throw new ServicesException("You have already published a report in the same zone with the same weather");
                 }else if(!p.getWeather().equals(rep.getWeather()) && p.getDateTimeReport().compareTo(rep.getDateTimeReport())<8 ){
-                    throw new ServicesException("Ya has publicado un reporte recientemente en la misma zona y con diferente clima.");
+                    throw new ServicesException("You have recently published a report in the same zone with different weather conditions");
                 }
             }
         }

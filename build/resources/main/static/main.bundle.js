@@ -898,13 +898,14 @@ var PublicWeatherPageComponent = /** @class */ (function () {
         this.publicationService.getPublications().subscribe(function (response) {
             response.map(function (publication) {
                 /*PublicWeatherPageComponent.drawCircleMap(publication.reports);*/
-                this.userService.getUserById(this.user.id).subscribe(function (response) {
-                    response.zones.map(function (z) {
-                        if (z.number === publication.reports[1].zone.number) {
-                            PublicWeatherPageComponent_1.add({ weather: 'assets/img/' + publication.reports[1].weather + '.png', zone: publication.reports[1].zone.name });
-                        }
-                    });
-                });
+                PublicWeatherPageComponent_1.add({ weather: 'assets/img/' + publication.reports[1].weather + '.png', zone: publication.reports[1].zone.name });
+                /*this.userService.getUserById(this.user.id).subscribe( response =>  {
+                      response.zones.map(function (z: Zone) {
+                          if( z.number === publication.reports[1].zone.number){
+                            PublicWeatherPageComponent.add({weather: 'assets/img/' + publication.reports[1].weather + '.png', zone: publication.reports[1].zone.name  });
+                          }
+                      })
+                });*/
                 this.circle = publication.reports.map(function (report) {
                     return { latit: report.coordinate.latitude, longit: report.coordinate.longitude, color: 'red' };
                 });
@@ -1326,8 +1327,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var StompService = /** @class */ (function () {
-    //private data2: Publication;
     function StompService() {
+        this.example = [];
     }
     StompService.prototype.connectSTOMP = function () {
         console.log('Connecting to WS...');
@@ -1349,7 +1350,9 @@ var StompService = /** @class */ (function () {
             self.stompClient.subscribe('/topic/zoneSuscribe/' + this.numberZone, function (data) {
                 var data1;
                 data1 = JSON.parse(data.body);
+                console.log("stomp " + data1.zone.name);
                 __WEBPACK_IMPORTED_MODULE_3__pages_publicWeather_page_publicWeather_page_component__["a" /* PublicWeatherPageComponent */].add({ weather: data1.reports[1].weather, zone: data1.zone.number });
+                this.example.push({ idzone: data1.zone.number, climas: [data1.reports[1].weather] });
             });
         });
     };
