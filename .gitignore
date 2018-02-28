@@ -1,1 +1,12 @@
-/.nb-gradle/
+ # System Files
+.DS_Store
+Thumbs.db
+build
+.gradle
+.idea
+out
+*.iml
+*.ipr
+*.iws
+ 
+src/main/resources/static/*
