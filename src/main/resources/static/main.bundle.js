@@ -801,7 +801,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/publicWeather-page/publicWeather-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"row\" onload=\"ngOnInit()\">\r\n    <div class=\"col-2\">\r\n      <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n    </div>\r\n    <div class=\"col\">\r\n      <div class=\"col\">\r\n            <agm-map   id=\"mapa\" [(latitude)]=\"lat\" [(longitude)]=\"long\">\r\n              <agm-marker title=\"Your Position\" openInfoWindow=\"true\"\r\n                          inconUrl=\"'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'\"\r\n                          [(latitude)]=\"lat\" [(longitude)]=\"long\" >\r\n              </agm-marker>\r\n              <agm-circle  onload=\"Draw()\" *ngFor=\"let circle of circles\" [(latitude)]=\"circle.coordinate.latitude\" [(longitude)]=\"circle.coordinate.longitude\" [(fillColor)]=\"circle.comment\" [radius]=\"500\" >\r\n              </agm-circle>\r\n              <!--agm-circle [latitude]=\"lat_circle\" [longitude]=\"long_circle\" [fillColor]=\"weather_color\" [radius]=\"500\" >\r\n              </agm-circle-->\r\n            </agm-map>\r\n            <!--button type=\"button\" (click)=\"Draw()\">Load Map</button-->\r\n      </div>\r\n    </div>\r\n    <div class=\"col-3\">\r\n      <form id=\"map\" [formGroup]=\"publicWeatherForm\"  novalidate>\r\n        <div class=\"row\">\r\n\r\n          <div class=\"col\">\r\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search\" id=\"idTxtBusqueda\" >\r\n            <div id=\"idDivRegionesFavoritas\" class=\"form-group\">\r\n              <label for=\"idRegionesFavoritas\">Favorites:</label>\r\n              <div id=\"idRegionesFavoritas\">\r\n                <table class=\"table\">\r\n                  <thead class=\"thead-dark\">\r\n                  <tr>\r\n                    <th scope=\"col\">Zone</th>\r\n                    <th scope=\"col\">Current Weather</th>\r\n                    <th>\r\n                      <input type=\"button\" value=\"show\" ng-click=\"getPublicationsInit()\">\r\n                    </th>\r\n                  </tr>\r\n                  </thead>\r\n                  <tbody>\r\n                  <tr *ngFor=\"let zone of zoneSuscribe\">\r\n                    <td>{{zone.zone}}</td>\r\n                    <td>{{zone.weather}}</td>\r\n                  </tr>\r\n                  </tbody>\r\n                </table>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </form>\r\n    </div>\r\n\r\n\r\n  </div>\r\n\r\n  <h1 id=\"titulo\" align=\"center\">Publica tu clima!!</h1>\r\n  <div  class=\"row \">\r\n\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"cloudy\" class=\"imagenesclima\"  src=\"assets/img/cloudy.png\" alt=\"nublado\" (click)=\"sendReport('cloudy', content)\"></div>\r\n\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"sunny\" class=\"imagenesclima\"  src=\"assets/img/sunny.png\" alt=\"soleado\"(click)=\"sendReport('sunny', content)\"></div>\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"rain\" class=\"imagenesclima\"  src=\"assets/img/rain.png\" alt=\"llovisnando\" (click)=\"sendReport('rain', content)\"></div>\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"storm\" class=\"imagenesclima\" (click)=\"sendReport('storm', content)\"  src=\"assets/img/storm.png\" alt=\"tormenta\"></div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n\r\n  <div class=\"modal-header\">\r\n    <h4 class=\"modal-title\">Confirmation</h4>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"modal-body\">\r\n    <div class=\"jumbotron\">\r\n      <h4 class=\"text-center\">{{infoModal}}</h4>\r\n    </div>\r\n  </div>\r\n  <div class=\"modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-outline-light\" (click)=\"c('Close click')\">Close</button>\r\n  </div>\r\n\r\n</ng-template>\r\n\r\n"
+module.exports = "<div class=\"container\">\r\n  <div class=\"row\" onload=\"ngOnInit()\">\r\n    <div class=\"col-2\">\r\n      <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n    </div>\r\n    <div class=\"col\">\r\n      <div class=\"col\">\r\n            <agm-map   id=\"mapa\" [(latitude)]=\"lat\" [(longitude)]=\"long\">\r\n              <agm-marker title=\"Your Position\" openInfoWindow=\"true\"\r\n                          inconUrl=\"'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'\"\r\n                          [(latitude)]=\"lat\" [(longitude)]=\"long\" >\r\n              </agm-marker>\r\n              <agm-circle  onload=\"Draw()\" *ngFor=\"let circle of circles\" [(latitude)]=\"circle.coordinate.latitude\" [(longitude)]=\"circle.coordinate.longitude\" [(fillColor)]=\"circle.comment\" [radius]=\"500\" >\r\n              </agm-circle>\r\n              <!--agm-circle [latitude]=\"lat_circle\" [longitude]=\"long_circle\" [fillColor]=\"weather_color\" [radius]=\"500\" >\r\n              </agm-circle-->\r\n            </agm-map>\r\n            <!--button type=\"button\" (click)=\"Draw()\">Load Map</button-->\r\n      </div>\r\n    </div>\r\n    <div class=\"col-3\">\r\n      <form id=\"map\" [formGroup]=\"publicWeatherForm\"  novalidate>\r\n        <div class=\"row\">\r\n\r\n          <div class=\"col\">\r\n            <input type=\"text\" class=\"form-control\" placeholder=\"Search\" id=\"idTxtBusqueda\" >\r\n            <div id=\"idDivRegionesFavoritas\" class=\"form-group\">\r\n              <label for=\"idRegionesFavoritas\">Favorites:</label>\r\n              <div id=\"idRegionesFavoritas\">\r\n                <table class=\"table\">\r\n                  <thead class=\"thead-dark\">\r\n                  <tr>\r\n                    <th scope=\"col\">Zone</th>\r\n                    <th scope=\"col\">Current Weather</th>\r\n                    <th>\r\n                      <input type=\"button\" value=\"show\" ng-click=\"getPublicationsInit()\">\r\n                    </th>\r\n                  </tr>\r\n                  </thead>\r\n                  <tbody>\r\n                  <tr *ngFor=\"let zone of zoneSuscribe\">\r\n                    <td>{{zone.zone}}</td>\r\n                    <td><img id=\"\" width=\"10px\" height=\"10px\" src=\"zone.weather\" alt=\"nublado\"></td>\r\n                  </tr>\r\n                  </tbody>\r\n                </table>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </form>\r\n    </div>\r\n\r\n\r\n  </div>\r\n\r\n  <h1 id=\"titulo\" align=\"center\">Publica tu clima!!</h1>\r\n  <div  class=\"row \">\r\n\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"cloudy\" class=\"imagenesclima\"  src=\"assets/img/cloudy.png\" alt=\"nublado\" (click)=\"sendReport('cloudy', content)\"></div>\r\n\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"sunny\" class=\"imagenesclima\"  src=\"assets/img/sunny.png\" alt=\"soleado\"(click)=\"sendReport('sunny', content)\"></div>\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"rain\" class=\"imagenesclima\"  src=\"assets/img/rain.png\" alt=\"llovisnando\" (click)=\"sendReport('rain', content)\"></div>\r\n    </div>\r\n    <div class=\"col-md-3 \">\r\n      <div ><img id=\"storm\" class=\"imagenesclima\" (click)=\"sendReport('storm', content)\"  src=\"assets/img/storm.png\" alt=\"tormenta\"></div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n\r\n  <div class=\"modal-header\">\r\n    <h4 class=\"modal-title\">Confirmation</h4>\r\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n      <span aria-hidden=\"true\">&times;</span>\r\n    </button>\r\n  </div>\r\n  <div class=\"modal-body\">\r\n    <div class=\"jumbotron\">\r\n      <h4 class=\"text-center\">{{infoModal}}</h4>\r\n    </div>\r\n  </div>\r\n  <div class=\"modal-footer\">\r\n    <button type=\"button\" class=\"btn btn-outline-light\" (click)=\"c('Close click')\">Close</button>\r\n  </div>\r\n\r\n</ng-template>\r\n\r\n"
 
 /***/ }),
 
@@ -849,18 +849,16 @@ var PublicWeatherPageComponent = /** @class */ (function () {
         this.circles = [];
         this.report = null;
         this.user = this.userService.cacheUser;
+        this.getPublicationsInit();
     }
     PublicWeatherPageComponent_1 = PublicWeatherPageComponent;
     PublicWeatherPageComponent.prototype.ngOnInit = function () {
-        this.getPublicationsInit();
-        this.Draw();
         this.publicWeatherForm = this.formBuilder.group({
             idRegionesFavoritas: '',
         });
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(this.setPosition.bind(this));
         }
-        this.getPublicationsInit();
     };
     PublicWeatherPageComponent.prototype.setPosition = function (position) {
         this.lat = position.coords.latitude;
@@ -900,20 +898,15 @@ var PublicWeatherPageComponent = /** @class */ (function () {
         this.publicationService.getPublications().subscribe(function (response) {
             response.map(function (publication) {
                 /*PublicWeatherPageComponent.drawCircleMap(publication.reports);*/
+                this.userService.getUserById(this.user.id).subscribe(function (response) {
+                    response.zones.map(function (z) {
+                        if (z.number === publication.reports[1].zone.number) {
+                            PublicWeatherPageComponent_1.add({ weather: 'assets/img/' + publication.reports[1].weather + '.png', zone: publication.reports[1].zone.name });
+                        }
+                    });
+                });
                 this.circle = publication.reports.map(function (report) {
-                    /*Dibujar las publicaciones en el mapa*/
-                    /*Lista de zonas favoritas y clima*/
-                    /*PublicWeatherPageComponent.add({weather: report.weather, zone: report.zone.name });*/
                     return { latit: report.coordinate.latitude, longit: report.coordinate.longitude, color: 'red' };
-                    /*this.userService.getUserById(this.user.id).subscribe( response2 => {
-                        response2.zones.map(function (zone: Zone) {
-                          if (report.zone.number === zone.number) {
-                            alert({weather: report.weather, zone: report.zone.name});
-                             return {weather: report.weather, zone: report.zone.name };
-                            PublicWeatherPageComponent.add({weather: report.weather, zone: report.zone.name });
-                          }
-                        });
-                    });*/
                 });
             });
         }, function (error) {
@@ -969,18 +962,6 @@ var PublicWeatherPageComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    PublicWeatherPageComponent.prototype.Draw = function () {
-        this.publicationService.getPublications().subscribe(function (response) {
-            response.map(function (publication) {
-                publication.reports.map(function (report) {
-                    report.comment = 'red';
-                    this.circles.push(report);
-                });
-            });
-        }, function (error) {
-            console.log(error);
-        });
-    };
     //Create the favorite zone view
     PublicWeatherPageComponent.prototype.getFavoriteZones = function (email) {
         this.userService.listFavoriteZones(email);

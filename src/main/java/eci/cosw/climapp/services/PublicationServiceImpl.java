@@ -31,8 +31,8 @@ public class PublicationServiceImpl implements PublicationService {
                 new Zone(11, 11, "Suba",
                         new ArrayList<Coordinate> (Arrays.asList(new Coordinate(4.836357, -74.084712), new Coordinate(4.828147, -74.033557), new Coordinate(4.741931, -74.134494), new Coordinate(4.686501, -74.057247)))));
 
-        new Publication(1, new ArrayList<Report>(Arrays.asList(r1,r2,r3)),new Zone(11, 11, "Suba",
-                new ArrayList<Coordinate> (Arrays.asList(new Coordinate(4.836357, -74.084712), new Coordinate(4.828147, -74.033557), new Coordinate(4.741931, -74.134494), new Coordinate(4.686501, -74.057247)))));
+        publications.add(new Publication(1, new ArrayList<Report>(Arrays.asList(r1,r2,r3)),new Zone(11, 11, "Suba",
+                new ArrayList<Coordinate> (Arrays.asList(new Coordinate(4.836357, -74.084712), new Coordinate(4.828147, -74.033557), new Coordinate(4.741931, -74.134494), new Coordinate(4.686501, -74.057247))))));
 
 
     }
