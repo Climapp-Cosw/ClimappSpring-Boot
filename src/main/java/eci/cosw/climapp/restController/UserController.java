@@ -119,6 +119,12 @@ public class UserController  {
         return userService.findUserById(id);
     }
 
+    @RequestMapping( value = "/users", method = RequestMethod.GET )
+    public List<User> getUsers(){
+
+        return userService.getUsers();
+    }
+
     public class Token{
         String access_token;
 
