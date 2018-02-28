@@ -1,7 +1,4 @@
  # System Files
-.DS_Store
-Thumbs.db
-build
 .gradle
 .idea
 out
