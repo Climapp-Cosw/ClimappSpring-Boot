@@ -1,12 +1,20 @@
 package eci.cosw.climapp.models;
 
 
+import javax.persistence.*;
 import java.util.Date;
 
-public class Report {
+@Entity(name="Report")
+@Table(name="Report")
+public class Report  implements java.io.Serializable{
 
+    @Id
+    @GeneratedValue
     private int id;
+
+    @Column(name="")
     private Date dateTimeReport;
+
     private Coordinate coordinate;
     private String img;
     private String comment;

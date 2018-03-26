@@ -5,6 +5,8 @@
  */
 package eci.cosw.climapp.models;
 
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +14,21 @@ import java.util.List;
  *
  * @author JuanArevaloMerchan
  */
-public class Zone {
-    
+@Entity(name="Zone")
+@Table(name="Zone")
+public class Zone implements java.io.Serializable{
+
+    @Id
+    @GeneratedValue
     private int id;
+
+    @Column(name = "number", nullable = false, length = 100)
     private int number;
+    @Column(name = "name", nullable = false, length = 100)
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "Zone_id")
     private List<Coordinate> coordinates=new ArrayList<>();
     
     

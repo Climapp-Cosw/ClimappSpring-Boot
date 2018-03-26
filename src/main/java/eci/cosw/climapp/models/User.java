@@ -1,20 +1,46 @@
 package eci.cosw.climapp.models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by laura on 11/02/2018.
  */
-public class User {
+@Entity
+@Table(name = "User")
+public class User implements java.io.Serializable{
 
+    @Id
+    @GeneratedValue
     private int id;
+
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "email", nullable = false)
     private String email;
+
+    @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "confpasswd", nullable = false)
     private String confirmPassword;
+
     private String image;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "User_id")
     private List<Report> reports = new ArrayList<>();
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "FavoriteZone",
+            joinColumns = @JoinColumn(name = "User_id"),
+            inverseJoinColumns = @JoinColumn(name = "Zone_id")
+    )
     private List<Zone> zones = new ArrayList<>();
 
     public User() {

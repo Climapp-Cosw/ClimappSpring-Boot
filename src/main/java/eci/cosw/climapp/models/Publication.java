@@ -1,11 +1,22 @@
 package eci.cosw.climapp.models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Publication {
+@Entity
+@Table(name= "Publication")
+public class Publication implements java.io.Serializable {
+
+    @Id
+    @GeneratedValue
     private int id;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "Report_id")
     private List<Report> reports=new ArrayList<Report>();
+
+
     private Zone zones;
 
     public Publication(int id, List<Report> reports,Zone z) {

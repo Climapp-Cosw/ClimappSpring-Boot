@@ -1,6 +1,14 @@
 package eci.cosw.climapp.models;
 
-public class Coordinate {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity(name= "Cordinate")
+public class Coordinate implements java.io.Serializable {
+
+    @Id
+    @GeneratedValue
     private long id;
     private double latitude;
     private double longitude;
