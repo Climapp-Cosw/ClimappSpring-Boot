@@ -37,6 +37,7 @@ public class User implements Serializable{
     @JoinColumn(name = "User_id")
     private List<Report> report = new ArrayList<>();
 
+    @JsonIgnore
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
