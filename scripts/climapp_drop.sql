@@ -32,9 +32,9 @@ DROP TABLE Publication;
 
 DROP TABLE Report;
 
-DROP TABLE User;
+DROP TABLE Users;
 
-DROP TABLE Zone;
+DROP TABLE Zones;
 
 -- End of file.
 

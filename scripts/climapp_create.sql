@@ -42,9 +42,9 @@ CREATE TABLE Report (
 CREATE TABLE Users (
     id int NOT NULL AUTO_INCREMENT,
     email varchar(20) NOT NULL,
-    name char(20) NOT NULL,
+    name varchar(20) NOT NULL,
     password varchar(20) NOT NULL,
-    img varchar(30) NOT NULL,
+    img varchar(100) NOT NULL,
     confpasswd varchar(20) NOT NULL,
     CONSTRAINT User_pk PRIMARY KEY (id)
 );

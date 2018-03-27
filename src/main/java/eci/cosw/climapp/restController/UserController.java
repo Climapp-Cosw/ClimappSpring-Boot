@@ -38,7 +38,7 @@ public class UserController  {
         User user = userService.findUserByEmailAndPassword(username, password);
 
         if ( user == null ){
-            throw new ServletException( "User email not found." );
+            throw new ServletException( "Invalid User!" );
         }
 
         String pwd = user.getPassword();
@@ -62,7 +62,7 @@ public class UserController  {
     @RequestMapping( value = "/{email}/reports", method = RequestMethod.GET )
     public List<Report> getReportsByUser(@PathVariable("email") String email){
         System.out.println("Correo: "+email);
-        return userService.findUserByEmail(email).getReports();
+        return userService.findUserByEmail(email).getReport();
     }
 
     @RequestMapping( value = "/updateprofile/{id}", method = RequestMethod.POST )

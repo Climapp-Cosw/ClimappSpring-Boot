@@ -50,6 +50,7 @@ public class ReportServiceImpl implements ReportService{
                 }
             }
         }
+
         reportsRepository.saveAndFlush(rep);
         return rep;
     }

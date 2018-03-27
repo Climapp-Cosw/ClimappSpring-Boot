@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by laura on 11/02/2018.
@@ -39,21 +40,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User user) {
-        usersRepository.saveAndFlush(user);
-        return usersRepository.getOne(user.getId());
+        return usersRepository.save(user);
     }
     @Override
     public User findUserById(int id) {
-        return getUser(id);
+        return this.getUser(id);
     }
     @Override
     public User findUserByEmail(String email) {
-        return null;
+        return usersRepository.findUserByEmail(email);
     }
 
     @Override
     public User findUserByEmailAndPassword(String email, String password) {
-        return null;
+        return usersRepository.findUserByEmailAndPassword(email, password);
     }
 
     @Override

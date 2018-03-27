@@ -8,6 +8,7 @@ package eci.cosw.climapp.services;
 import eci.cosw.climapp.models.Coordinate;
 import eci.cosw.climapp.models.Zone;
 import eci.cosw.climapp.repositories.ZonesRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import java.util.List;
 @Service
 public class ZoneServiceImpl implements ZoneService{
 
+    @Autowired
     private ZonesRepository zonesRepository;
 
 

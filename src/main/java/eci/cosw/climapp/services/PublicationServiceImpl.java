@@ -1,6 +1,7 @@
 package eci.cosw.climapp.services;
 
 import eci.cosw.climapp.models.*;
+import eci.cosw.climapp.repositories.PublicationRepository;
 import eci.cosw.climapp.repositories.ReportsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,10 +14,12 @@ import java.util.List;
 @Service
 public class PublicationServiceImpl implements PublicationService {
 
-    private List<Publication> publications= new ArrayList<>();
 
     @Autowired
     private ReportsRepository reportsRepository;
+
+    @Autowired
+    private PublicationRepository publicationsRepository;
 
     public PublicationServiceImpl(){
     }
@@ -24,23 +27,20 @@ public class PublicationServiceImpl implements PublicationService {
 
     @Override
     public List<Publication> getPublications() {
-        return publications;
+        return publicationsRepository.findAll();
     }
 
     @Override
     public Publication createPublication(Publication p) {
-        publications.add(p);
-        p.setId(publications.size());
+        publicationsRepository.save(p);
         return p;
     }
 
     @Override
     public List<Report> findNewPublication(Report rep) throws ServicesException{
-
         List<Report> reportPublications=new ArrayList<Report>();
         List<Report> reports=reportsRepository.findAll();
-        int sizereports= (int) reportsRepository.count();
-        for (int i=0;i<sizereports;i++){
+        for (int i=0;i<reports.size();i++){
             Report repPublication= reports.get(i);
             if(rep.getCoordinate().distCoordenate(repPublication.getCoordinate())<=0.7 && rep.getWeather().equals(repPublication.getWeather())){
                 reportPublications.add(repPublication);
@@ -52,13 +52,14 @@ public class PublicationServiceImpl implements PublicationService {
     }
     @Override
     public Publication findPublication(Report rep) throws ServicesException{
-        for (int i=0;i<publications.size();i++){
-            List<Report> reportPublications=publications.get(i).getReports();
+        List<Publication>  pub= publicationsRepository.findAll();
+        for (int i=0;i<pub.size();i++){
+            List<Report> reportPublications=pub.get(i).getReports();
             for (int j=0;j<reportPublications.size();j++){
                 Report repPublication= reportPublications.get(j);
                 if(rep.getCoordinate().distCoordenate(repPublication.getCoordinate())<=0.7 && rep.getWeather().equals(repPublication.getWeather())){
                     reportPublications.add(rep);
-                    return publications.get(i);
+                    return pub.get(i);
 
                 };
             }
