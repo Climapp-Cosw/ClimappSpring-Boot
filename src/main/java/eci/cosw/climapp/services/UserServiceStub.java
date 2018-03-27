@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by laura on 11/02/2018.
  */
-@Service
+//@Service
 public class UserServiceStub implements UserService {
 
     private List<User> users = new ArrayList<>();

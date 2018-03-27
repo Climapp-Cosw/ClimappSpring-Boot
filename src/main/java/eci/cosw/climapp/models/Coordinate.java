@@ -1,17 +1,23 @@
 package eci.cosw.climapp.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name= "Cordinate")
+@Table(name= "Cordinate")
 public class Coordinate implements java.io.Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id", unique = true, nullable = false)
     private long id;
+
+    @Column(name = "latitude", unique = true, nullable = false)
     private double latitude;
+
+    @Column(name = "longitude", unique = true, nullable = false)
     private double longitude;
+
+    private Zone zone;
 
     /**
      * @param latitude

@@ -1,5 +1,8 @@
 package eci.cosw.climapp.models;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +13,13 @@ public class Publication implements java.io.Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "id", unique = true, nullable = false)
     private int id;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "Report_id")
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="Report_id")
+    @Fetch(FetchMode.JOIN)
     private List<Report> reports=new ArrayList<Report>();
-
 
     private Zone zones;
 

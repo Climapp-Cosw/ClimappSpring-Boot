@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author JuanArevaloMerchan
  */
-@Service
+//@Service
 public class ZoneServiceStub implements ZoneService{
     private List<Zone> zones = new ArrayList<>();
 

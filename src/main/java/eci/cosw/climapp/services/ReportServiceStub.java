@@ -4,8 +4,6 @@ import eci.cosw.climapp.models.Coordinate;
 import eci.cosw.climapp.models.Report;
 import eci.cosw.climapp.models.User;
 import eci.cosw.climapp.models.Zone;
-import eci.cosw.climapp.repositories.ReportsRepository;
-import eci.cosw.climapp.repositories.ZonesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,30 +15,34 @@ import java.util.List;
 /**
  * Created by laura on 11/02/2018.
  */
-@Service
-public class ReportServiceImpl implements ReportService{
+//@Service
+public class ReportServiceStub implements ReportService{
+
+    private List<Report>reports=new ArrayList<>();
 
     @Autowired
-    private ReportsRepository reportsRepository;
+    private ZoneService zoneService;
 
-    @Autowired
-    private ZonesRepository zonesRepository;
-
-
+    public ReportServiceStub() throws ServicesException{
+        reports.add(new Report(1,new Date(),new Coordinate( 4.710988599999999,-74.072092), "assets/img/rain","comment", "rain",
+                new User(3,"prueba3@mail.com","password","natan ram","http://www.your3dsource.com/images/facepic3.jpeg","password"),
+                new Zone(11, 11, "Suba",
+                        new ArrayList<Coordinate> (Arrays.asList(new Coordinate(4.836357, -74.084712), new Coordinate(4.828147, -74.033557), new Coordinate(4.741931, -74.134494), new Coordinate(4.686501, -74.057247))))));
+        reports.add(new Report(2,new Date(),new Coordinate( 4.711777486983153,-74.07104712948808), "assets/img/rain","comment", "rain",
+                new User(4,"prueba4@mail.com","password","daniel ro","http://www.your3dsource.com/images/facepic4.jpeg","password"),
+                new Zone(11, 11, "Suba",
+                        new ArrayList<Coordinate> (Arrays.asList(new Coordinate(4.836357, -74.084712), new Coordinate(4.828147, -74.033557), new Coordinate(4.741931, -74.134494), new Coordinate(4.686501, -74.057247))))));
+    }
 
     @Override
     public Report createReport(Report rep) throws ServicesException{
-        List<Zone> zones= zonesRepository.findAll();
-        int sizezone= (int) zonesRepository.count();
-        for(int i=0;i<sizezone;i++){
+        for(int i=0;i<zoneService.getNumZones();i++){
             if(this.containsZone(rep.getCoordinate().getLongitude(),rep.getCoordinate().getLatitude(),
-                    zones.get(i).getCoordinates().size(),zones.get(i).getCoordinates())){
-                rep.setZone(zones.get(i));
+                    zoneService.getZones().get(i).getCoordinates().size(),zoneService.getZones().get(i).getCoordinates())){
+                rep.setZone(zoneService.getZones().get(i));
             }
         }
-        List<Report> reports= reportsRepository.findAll();
-        int sizereport= (int) reportsRepository.count();
-        for(int i=0; i<sizereport;i++){
+        for(int i=0; i<reports.size();i++){
             Report p=reports.get(i);
             if (rep.getReportedUser().getId()==p.getReportedUser().getId() && p.getCoordinate().distCoordenate(rep.getCoordinate())<=0.7) {
                 if(p.getWeather().equals(rep.getWeather())){
@@ -50,7 +52,8 @@ public class ReportServiceImpl implements ReportService{
                 }
             }
         }
-        reportsRepository.saveAndFlush(rep);
+        rep.setId(reports.size());
+        reports.add(rep);
         return rep;
     }
 
@@ -69,7 +72,14 @@ public class ReportServiceImpl implements ReportService{
     }
     @Override
     public void deleteReport(int id) {
-        reportsRepository.deleteById(id);
+        boolean flag=true;
+        for (int i=0;i<reports.size() && flag;i++){
+            Report rp=reports.get(i);
+            if (id==rp.getId()){
+                reports.remove(i);
+                flag=false;
+            }
+        }
     }
 
     @Override
@@ -79,7 +89,7 @@ public class ReportServiceImpl implements ReportService{
 
     @Override
     public List<Report> getReports() {
-        return reportsRepository.findAll();
+        return reports;
     }
 
 

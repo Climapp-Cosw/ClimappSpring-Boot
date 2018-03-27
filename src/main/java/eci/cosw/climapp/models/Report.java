@@ -1,6 +1,9 @@
 package eci.cosw.climapp.models;
 
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,16 +13,34 @@ public class Report  implements java.io.Serializable{
 
     @Id
     @GeneratedValue
+    @Column(name = "id", unique = true, nullable = false)
     private int id;
 
-    @Column(name="")
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="datereport",nullable = false, length = 255)
     private Date dateTimeReport;
 
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "Coordinate_id")
     private Coordinate coordinate;
+
+    @Column(name="img",nullable = false, length = 255)
     private String img;
+
+    @Column(name="comment", length = 255)
     private String comment;
+
+    @Column(name="weather",nullable = false, length = 255)
     private String weather;
+
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="User_id")
+    @Fetch(FetchMode.JOIN)
     private User reportedUser;
+
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="Zone_id")
+    @Fetch(FetchMode.JOIN)
     private Zone zone;
 
     /**
