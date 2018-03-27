@@ -1,5 +1,7 @@
 package eci.cosw.climapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +10,11 @@ import java.util.List;
  * Created by laura on 11/02/2018.
  */
 @Entity
-@Table(name = "User")
-public class User implements java.io.Serializable{
+@Table(name = "Users")
+public class User implements Serializable{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "name", nullable = false)
@@ -27,11 +29,13 @@ public class User implements java.io.Serializable{
     @Column(name = "confpasswd", nullable = false)
     private String confirmPassword;
 
+    @Column(name = "img", nullable = false)
     private String image;
 
+    @JsonIgnore 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "User_id")
-    private List<Report> reports = new ArrayList<>();
+    private List<Report> report = new ArrayList<>();
 
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
@@ -159,15 +163,15 @@ public class User implements java.io.Serializable{
     /**
      * @return the reports
      */
-    public List<Report> getReports() {
-        return reports;
+    public List<Report> getReport() {
+        return report;
     }
 
     /**
-     * @param reports the reports to set
+     * @param report the reports to set
      */
-    public void setReports(List<Report> reports) {
-        this.reports = reports;
+    public void setReport(List<Report> report) {
+        this.report= report;
     }
 
     /**

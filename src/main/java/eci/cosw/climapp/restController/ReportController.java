@@ -26,7 +26,7 @@ public class ReportController {
         report.getCoordinate().setLatitude(Double.parseDouble(lat));
         report.getCoordinate().setLongitude(Double.parseDouble(lon));
         User u = userService.getUser(report.getReportedUser().getId());
-        u.getReports().add(report);
+        u.getReport().add(report);
         System.out.println(report.toString());
         return reportService.createReport(report);
     }
