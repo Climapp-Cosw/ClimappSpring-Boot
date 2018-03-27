@@ -28,8 +28,9 @@ values(4.741931, -74.134494,11);
 insert into Coordinate (latitude,longitude,Zone_id)
 values(4.686501, -74.057247,11);
 
-insert into Report (datereport,img,comment,weather,User_id,Zone_id,Coordinate_id,Publication_id)
-values ("2018-27-03","assets/img/rain","comment","rain",1,11,1,null);
 
 insert into Report (datereport,img,comment,weather,User_id,Zone_id,Coordinate_id,Publication_id)
-values ("2018-27-03","assets/img/rain","comment","rain",2,11,2,null);
+values (STR_TO_DATE( "2018-27-03" , '%Y-%m-%d' ),"assets/img/rain","comment","rain",1,11,1,null);
+
+insert into Report (datereport,img,comment,weather,User_id,Zone_id,Coordinate_id,Publication_id)
+values (STR_TO_DATE( "2018-27-03" , '%Y-%m-%d' ),"assets/img/rain","comment","rain",2,11,2,null);

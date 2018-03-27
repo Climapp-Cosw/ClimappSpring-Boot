@@ -21,8 +21,8 @@ public class Report  implements java.io.Serializable{
     @Column(name="datereport",nullable = false, length = 255)
     private Date dateTimeReport;
 
-    @JsonIgnore
-    @OneToOne(fetch=FetchType.LAZY)
+    @OneToOne
+    @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "Coordinate_id")
     private Coordinate coordinate;
 
@@ -35,16 +35,15 @@ public class Report  implements java.io.Serializable{
     @Column(name="weather",nullable = false, length = 255)
     private String weather;
 
-    @JsonIgnore
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="User_id")
+
+    @ManyToOne
     @Fetch(FetchMode.JOIN)
+    @JoinColumn(name="User_id")
     private User reportedUser;
 
-    @JsonIgnore
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="Zone_id")
+    @ManyToOne
     @Fetch(FetchMode.JOIN)
+    @JoinColumn(name="Zone_id")
     private Zone zone;
 
     /**

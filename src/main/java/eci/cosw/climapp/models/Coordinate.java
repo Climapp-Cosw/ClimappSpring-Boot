@@ -1,9 +1,14 @@
 package eci.cosw.climapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 
-@Entity(name= "Cordinate")
-@Table(name= "Cordinate")
+@Entity(name= "Coordinate")
+@Table(name= "Coordinate")
 public class Coordinate implements java.io.Serializable {
 
     @Id
@@ -11,12 +16,16 @@ public class Coordinate implements java.io.Serializable {
     @Column(name = "id", unique = true, nullable = false)
     private long id;
 
-    @Column(name = "latitude", unique = true, nullable = false)
+    @Column(name = "latitude", nullable = false)
     private double latitude;
 
-    @Column(name = "longitude", unique = true, nullable = false)
+    @Column(name = "longitude", nullable = false)
     private double longitude;
 
+
+    @ManyToOne
+    @Fetch(FetchMode.JOIN)
+    @JoinColumn(name = "Zone_id")
     private Zone zone;
 
     /**

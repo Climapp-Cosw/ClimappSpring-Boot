@@ -1,6 +1,9 @@
 package eci.cosw.climapp.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -32,9 +35,9 @@ public class User implements Serializable{
     @Column(name = "img", nullable = false)
     private String image;
 
-    @JsonIgnore 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "User_id")
+    @JsonIgnore
+    @OneToMany(mappedBy = "reportedUser")
+    @Fetch(FetchMode.JOIN)
     private List<Report> report = new ArrayList<>();
 
     @JsonIgnore

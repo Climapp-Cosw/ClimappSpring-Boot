@@ -28,10 +28,11 @@ public class Zone implements java.io.Serializable{
 
     @Column(name = "number", nullable = false, length = 100)
     private int number;
+
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     @JoinColumn(name = "Zone_id")
     @Fetch(FetchMode.JOIN)
     private List<Coordinate> coordinates=new ArrayList<>();
