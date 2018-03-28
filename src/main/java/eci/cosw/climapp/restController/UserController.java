@@ -103,16 +103,17 @@ public class UserController  {
         }
     }
     
-    
+
     @RequestMapping( value = "/zones/{email}", method = RequestMethod.POST )
     public User addZone(@RequestBody Zone zone, @PathVariable("email") String email) throws ServletException, ServicesException{
         return userService.addZone(zone, email);
     }
-    
+
     @RequestMapping( value = "/zones/{email}", method = RequestMethod.DELETE )
     public User deleteZone(@RequestBody Zone zone, @PathVariable("email") String email) throws ServletException, ServicesException{
         return userService.deleteZone(zone, email);
     }
+
     @RequestMapping( value = "/id/{id}", method = RequestMethod.GET )
     public User getUsersById(@PathVariable("id") int id){
         System.out.println("Id: "+id);

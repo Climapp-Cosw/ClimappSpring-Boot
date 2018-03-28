@@ -40,7 +40,7 @@ public class User implements Serializable{
     @Fetch(FetchMode.JOIN)
     private List<Report> report = new ArrayList<>();
 
-    @JsonIgnore
+
     @ManyToMany
     @JoinTable(name = "FavoriteZone",
             joinColumns = @JoinColumn(name = "User_id" , referencedColumnName="id"),
