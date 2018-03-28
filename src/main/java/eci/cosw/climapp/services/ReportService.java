@@ -17,12 +17,12 @@ public interface ReportService {
 
     /**
      */
-    public void updateReport();
+    public void updateReport(Report r);
 
     /**
      * @return
      */
     public List<Report> getReports();
 
-
+    public Report ReportByReportId(int id);
 }

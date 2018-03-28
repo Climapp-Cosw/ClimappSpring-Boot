@@ -1,5 +1,6 @@
 package eci.cosw.climapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -12,27 +13,23 @@ import java.util.List;
 public class Publication implements java.io.Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private int id;
 
-    @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name="Report_id")
+    @JsonIgnore
+    @OneToMany(mappedBy = "publication")
     @Fetch(FetchMode.JOIN)
     private List<Report> reports=new ArrayList<Report>();
 
-    private Zone zones;
-
-    public Publication(int id, List<Report> reports,Zone z) {
+    public Publication(int id, List<Report> reports) {
         this.id = id;
         this.reports = reports;
-        this.zones=z;
     }
 
-    public Publication(List<Report> reports,Zone z) {
+    public Publication(List<Report> reports) {
         this.id = id;
         this.reports = reports;
-        this.zones=z;
     }
 
     public Publication() {
@@ -53,11 +50,11 @@ public class Publication implements java.io.Serializable {
         this.reports = reports;
     }
 
-    public Zone getZones() {
-        return zones;
-    }
-
-    public void setZones(Zone zones) {
-        this.zones = zones;
+    @Override
+    public String toString() {
+        return "Report{" +
+                "id=" + id +
+                ", reports=" + reports +
+                '}';
     }
 }

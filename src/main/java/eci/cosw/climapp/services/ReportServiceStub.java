@@ -83,7 +83,7 @@ public class ReportServiceStub implements ReportService{
     }
 
     @Override
-    public void updateReport() {
+    public void updateReport(Report r) {
 
     }
 
@@ -92,6 +92,10 @@ public class ReportServiceStub implements ReportService{
         return reports;
     }
 
+    @Override
+    public Report ReportByReportId(int id) {
+        return null;
+    }
 
 
 }

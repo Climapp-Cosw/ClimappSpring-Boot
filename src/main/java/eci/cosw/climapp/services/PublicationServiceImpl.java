@@ -33,20 +33,26 @@ public class PublicationServiceImpl implements PublicationService {
     @Override
     public Publication createPublication(Publication p) {
         publicationsRepository.save(p);
+        int idp=publicationsRepository.PublicationIdLast();
+        p.setId(idp);
+        List<Report> reportsUpdate=p.getReports();
+        for (int i=0;i<reportsUpdate.size();i++){
+            reportsUpdate.get(i).setPublication(p);
+        }
+        reportsRepository.saveAll(reportsUpdate);
         return p;
     }
 
     @Override
     public List<Report> findNewPublication(Report rep) throws ServicesException{
         List<Report> reportPublications=new ArrayList<Report>();
-        List<Report> reports=reportsRepository.findAll();
+        List<Report> reports=reportsRepository.findPublicationNull();
         for (int i=0;i<reports.size();i++){
             Report repPublication= reports.get(i);
             if(rep.getCoordinate().distCoordenate(repPublication.getCoordinate())<=0.7 && rep.getWeather().equals(repPublication.getWeather())){
                 reportPublications.add(repPublication);
             };
         }
-
 
         return reportPublications;
     }

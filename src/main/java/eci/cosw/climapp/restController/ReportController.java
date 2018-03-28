@@ -25,9 +25,8 @@ public class ReportController {
     public Report createReport(@RequestBody Report report, @PathVariable("lat") String lat,@PathVariable("lon") String lon) throws ServicesException {
         report.getCoordinate().setLatitude(Double.parseDouble(lat));
         report.getCoordinate().setLongitude(Double.parseDouble(lon));
-        User u = userService.getUser(report.getReportedUser().getId());
-        u.getReport().add(report);
-        System.out.println(report.toString());
+        //User u = userService.getUser(report.getReportedUser().getId());
+        //u.getReport().add(report);
         return reportService.createReport(report);
     }
 

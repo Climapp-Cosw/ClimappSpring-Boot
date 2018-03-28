@@ -28,31 +28,30 @@ public class PublicationController {
     public boolean findPublication(@RequestBody Report report) throws ServicesException {
         boolean flag=false;
         Publication p=null;
+        Report repUpdate=reportService.ReportByReportId(report.getId());
         List<Report> reports = publicationService.findNewPublication(report);
         if(reports.size()>=3){
             p=new Publication();
             p.setReports(reports);
-            p.setZones(report.getZone());
+            //p.setZones(report.getZone());
             publicationService.createPublication(p);
-            for (int i=0;i<reportService.getReports().size();i++){
-                reportService.deleteReport(reports.get(i).getId());
-            }
             flag=true;
             System.out.println("publicacion realizadaaaa");
         }else{
             p=publicationService.findPublication(report);
             if(p!=null){
                 flag=true;
-                reportService.deleteReport(report.getId());
 
+                repUpdate.setPublication(p);
+                reportService.updateReport(repUpdate);
             };
-
         }
         if(flag){
             //PUBLICAR ZONA
+            System.out.print(p);
             msgt.convertAndSend("/topic/reportWeather", p);
             //Publicar Zona favorita
-            int numberZone = report.getZone().getNumber();
+            int numberZone = repUpdate.getZone().getId();
             if(numberZone!=22){
                 msgt.convertAndSend("/topic/zoneSuscribe"+numberZone, p);
 

@@ -27,7 +27,7 @@ CREATE TABLE Publication (
 -- Table: Report
 CREATE TABLE Report (
     id int NOT NULL AUTO_INCREMENT,
-    datereport date NOT NULL,
+    datereport datetime NOT NULL,
     img varchar(50) NULL,
     comment varchar(50) NULL,
     weather char(20) NOT NULL,

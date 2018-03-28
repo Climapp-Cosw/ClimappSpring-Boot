@@ -4,6 +4,7 @@ import eci.cosw.climapp.models.Coordinate;
 import eci.cosw.climapp.models.Report;
 import eci.cosw.climapp.models.User;
 import eci.cosw.climapp.models.Zone;
+import eci.cosw.climapp.repositories.CoordinatesRepository;
 import eci.cosw.climapp.repositories.ReportsRepository;
 import eci.cosw.climapp.repositories.ZonesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,32 +27,35 @@ public class ReportServiceImpl implements ReportService{
     @Autowired
     private ZonesRepository zonesRepository;
 
+    @Autowired
+    private CoordinatesRepository coordinatesRepository;
+
 
 
     @Override
     public Report createReport(Report rep) throws ServicesException{
-        List<Zone> zones= zonesRepository.findAll();
-        int sizezone= (int) zonesRepository.count();
-        for(int i=0;i<sizezone;i++){
+        List<Zone> zs= zonesRepository.findAll();
+        for(int i=0;i<zs.size();i++){
+            Zone z= zs.get(i);
             if(this.containsZone(rep.getCoordinate().getLongitude(),rep.getCoordinate().getLatitude(),
-                    zones.get(i).getCoordinates().size(),zones.get(i).getCoordinates())){
-                rep.setZone(zones.get(i));
+                    z.getCoordinates().size(),z.getCoordinates())){
+                rep.setZone(z);
+                break;
             }
         }
-        List<Report> reports= reportsRepository.findAll();
-        int sizereport= (int) reportsRepository.count();
-        for(int i=0; i<sizereport;i++){
-            Report p=reports.get(i);
+        List<Report> reportUser= reportsRepository.ReportByUserId(rep.getReportedUser().getId());
+        for(int i=0; i<reportUser.size();i++){
+            Report p=reportUser.get(i);
             if (rep.getReportedUser().getId()==p.getReportedUser().getId() && p.getCoordinate().distCoordenate(rep.getCoordinate())<=0.7) {
-                if(p.getWeather().equals(rep.getWeather())){
+                if(p.getWeather().equals(rep.getWeather())&& ((rep.getDateTimeReport().getTime()-p.getDateTimeReport().getTime()))<480000){
                     throw new ServicesException("You have already published a report in the same zone with the same weather");
-                }else if(!p.getWeather().equals(rep.getWeather()) && p.getDateTimeReport().compareTo(rep.getDateTimeReport())<8 ){
+                }else if(!p.getWeather().equals(rep.getWeather()) && ((rep.getDateTimeReport().getTime()-p.getDateTimeReport().getTime()))<480000){
                     throw new ServicesException("You have recently published a report in the same zone with different weather conditions");
                 }
             }
         }
-
-        reportsRepository.saveAndFlush(rep);
+        coordinatesRepository.saveAndFlush(rep.getCoordinate());
+        reportsRepository.save(rep);
         return rep;
     }
 
@@ -74,8 +78,13 @@ public class ReportServiceImpl implements ReportService{
     }
 
     @Override
-    public void updateReport() {
+    public Report ReportByReportId(int id) {
+        return reportsRepository.ReportByReportId(id);
+    }
 
+    @Override
+    public void updateReport(Report r) {
+        reportsRepository.save(r);
     }
 
     @Override

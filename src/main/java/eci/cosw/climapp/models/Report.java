@@ -13,7 +13,7 @@ import java.util.Date;
 public class Report  implements java.io.Serializable{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private int id;
 
@@ -45,6 +45,12 @@ public class Report  implements java.io.Serializable{
     @Fetch(FetchMode.JOIN)
     @JoinColumn(name="Zone_id")
     private Zone zone;
+
+
+    @ManyToOne
+    @Fetch(FetchMode.JOIN)
+    @JoinColumn(name="Publication_id")
+    private Publication publication;
 
     /**
      *
@@ -196,6 +202,14 @@ public class Report  implements java.io.Serializable{
 
     public void setZone(Zone zone) {
         this.zone = zone;
+    }
+
+    public Publication getPublication() {
+        return publication;
+    }
+
+    public void setPublication(Publication publication) {
+        this.publication = publication;
     }
 
     @Override

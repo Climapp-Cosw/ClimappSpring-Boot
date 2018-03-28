@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Coordinate implements java.io.Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private long id;
 
@@ -22,7 +22,7 @@ public class Coordinate implements java.io.Serializable {
     @Column(name = "longitude", nullable = false)
     private double longitude;
 
-
+    @JsonIgnore
     @ManyToOne
     @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "Zone_id")
@@ -45,6 +45,7 @@ public class Coordinate implements java.io.Serializable {
     public Coordinate(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.zone=null;
     }
 
     public Coordinate(){

@@ -6,6 +6,7 @@
 package eci.cosw.climapp.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -22,7 +23,7 @@ import java.util.List;
 public class Zone implements java.io.Serializable{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private int id;
 
@@ -107,5 +108,10 @@ public class Zone implements java.io.Serializable{
 
     public void setCoordinates(List<Coordinate> coordinates) {
         this.coordinates = coordinates;
+    }
+
+    @Override
+    public String toString() {
+        return "Zone{" + "id=" + getId() + ", number='" + getNumber() + '\'' + ", name='" + getName() + '}';
     }
 }

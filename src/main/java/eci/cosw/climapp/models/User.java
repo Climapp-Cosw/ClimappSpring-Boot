@@ -41,13 +41,10 @@ public class User implements Serializable{
     private List<Report> report = new ArrayList<>();
 
     @JsonIgnore
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
+    @ManyToMany
     @JoinTable(name = "FavoriteZone",
-            joinColumns = @JoinColumn(name = "User_id"),
-            inverseJoinColumns = @JoinColumn(name = "Zone_id")
+            joinColumns = @JoinColumn(name = "User_id" , referencedColumnName="id"),
+            inverseJoinColumns = @JoinColumn(name = "Zone_id" , referencedColumnName="id")
     )
     private List<Zone> zones = new ArrayList<>();
 

@@ -15,6 +15,13 @@ import java.util.List;
  */
 @Repository
 public interface ReportsRepository extends JpaRepository <Report, Integer>{
-    @Query("select name from User")
-    public List<User> findClientByPPrice(long price);
+
+    @Query(value ="SELECT * FROM Report r WHERE r.User_id = ?1", nativeQuery = true)
+    public List<Report> ReportByUserId(int id);
+
+    @Query(value= "SELECT * FROM Report r WHERE r.Publication_id is NULL", nativeQuery = true)
+    public List<Report> findPublicationNull();
+
+    @Query(value ="SELECT * FROM Report r WHERE r.id = ?1", nativeQuery = true)
+    public Report ReportByReportId(int id);
 }
