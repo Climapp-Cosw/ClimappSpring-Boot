@@ -26,7 +26,6 @@ public interface UsersRepository extends JpaRepository <User,Integer>{
     @Modifying
     @Query(value = "update Users u set u.name = ?1, u.email = ?2, u.password = ?3, u.image = ?4  where u.id = ?5", nativeQuery = true )
     User updateUser(String name, String email, String password, String image, int id);
-	
 
 
 }
