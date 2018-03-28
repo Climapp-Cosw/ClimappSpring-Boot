@@ -40,11 +40,6 @@ public class UserServiceStub implements UserService {
     }
     @Override
     public User updateUser(User user,User u){
-        u.setImage(user.getImage());
-        u.setPassword(user.getPassword());
-        u.setEmail(user.getEmail());
-        u.setName(user.getName());
-        u.setConfirmPassword(user.getConfirmPassword());
         return u;
     }
 
