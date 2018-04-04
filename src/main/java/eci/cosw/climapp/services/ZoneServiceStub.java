@@ -94,6 +94,11 @@ public class ZoneServiceStub implements ZoneService{
     }
 
     @Override
+    public List<Zone> getFavoriteZones(String email) {
+        return null;
+    }
+
+    @Override
     public Zone getZone(String name) {
         for (int i = 0; i < zones.size(); i++) {
             if(zones.get(i).getName().equals(name)){

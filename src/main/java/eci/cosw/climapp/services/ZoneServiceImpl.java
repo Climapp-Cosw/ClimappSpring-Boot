@@ -41,6 +41,11 @@ public class ZoneServiceImpl implements ZoneService{
     }
 
     @Override
+    public List<Zone> getFavoriteZones(String email) {
+        return zonesRepository.getFavoriteZones(email);
+    }
+
+    @Override
     public Zone getZone(String name) {
         //implementar
         return null;

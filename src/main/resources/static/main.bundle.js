@@ -1098,7 +1098,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/zones-page/zones-page.components.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container-fluid\" id=\"\" >\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-3\">\r\n\r\n            <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n        </div>\r\n        <div class=\"col-6\">\r\n            <h1 id=\"titulo\" align=\"center\">Zones</h1>\r\n        </div>\r\n\r\n        <table class=\"table\" align=\"CENTER\">\r\n            <thead class=\"thead-dark\">\r\n                <tr>\r\n                    <th>Number</th>\r\n                    <th>Name</th>\r\n                    <th></th>\r\n\r\n                </tr>\r\n            </thead>\r\n            <tr *ngFor=\"let zone of zones\">\r\n                <td>{{zone.number}}</td>\r\n                <td>{{zone.name}}</td>\r\n                <td><button type=\"button\" class=\"btn btn-info\" (click)=\"subscribeZone(zone.id, zone.number, zone.name, content)\">Subscribe</button></td>\r\n            </tr>\r\n        </table>\r\n    </div>\r\n</div>\r\n\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n\r\n    <div class=\"modal-header\">\r\n        <h4 class=\"modal-title\">Confirmation</h4>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <div class=\"jumbotron\">\r\n            <h4 class=\"text-center\">{{infoModal}}</h4>\r\n        </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-outline-light\" (click)=\"c('Close click')\">Close</button>\r\n    </div>\r\n\r\n</ng-template>\r\n\r\n"
+module.exports = "\r\n<div class=\"container-fluid\" id=\"\" >\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-3\">\r\n\r\n            <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n        </div>\r\n      <div class=\"col-6\">\r\n        <h1 id=\"titulo\" align=\"center\">Zones</h1>\r\n      </div>\r\n      <table class=\"table\" align=\"CENTER\">\r\n        <thead class=\"thead-dark\">\r\n        <tr>\r\n          <th>Name</th>\r\n          <th></th>\r\n\r\n        </tr>\r\n        </thead>\r\n        <tr *ngFor=\"let Fzone of Fzones\">\r\n          <td>{{Fzone.name}}</td>\r\n        </tr>\r\n      </table>\r\n\r\n        <div class=\"col-6\">\r\n            <h1 id=\"titulo\" align=\"center\">Zones to Subscribe</h1>\r\n        </div>\r\n\r\n        <table class=\"table\" align=\"CENTER\">\r\n            <thead class=\"thead-dark\">\r\n                <tr>\r\n                    <th>Number</th>\r\n                    <th>Name</th>\r\n                    <th></th>\r\n\r\n                </tr>\r\n            </thead>\r\n            <tr *ngFor=\"let zone of zones\">\r\n                <td>{{zone.number}}</td>\r\n                <td>{{zone.name}}</td>\r\n                <td><button type=\"button\" class=\"btn btn-info\" (click)=\"subscribeZone(zone.id, zone.number, zone.name, content)\">Subscribe</button></td>\r\n            </tr>\r\n        </table>\r\n    </div>\r\n</div>\r\n\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n\r\n    <div class=\"modal-header\">\r\n        <h4 class=\"modal-title\">Confirmation</h4>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <div class=\"jumbotron\">\r\n            <h4 class=\"text-center\">{{infoModal}}</h4>\r\n        </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-outline-light\" (click)=\"c('Close click')\">Close</button>\r\n    </div>\r\n\r\n</ng-template>\r\n\r\n"
 
 /***/ }),
 
@@ -1133,10 +1133,14 @@ var ZonesPageComponent = /** @class */ (function () {
         this.userService = userService;
         this.modalService = modalService;
         this.zones = [];
+        this.Fzones = [];
     }
     ZonesPageComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.user = this.userService.cacheUser;
+        this.userService.listFavoriteZones(this.userService.cacheUser.email).subscribe(function (favoriteZones) {
+            _this.Fzones = favoriteZones;
+        });
         this.zoneService.listZones().subscribe(function (zonesResponse) {
             _this.zones = zonesResponse;
         });

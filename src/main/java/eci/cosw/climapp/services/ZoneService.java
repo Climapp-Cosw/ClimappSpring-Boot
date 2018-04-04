@@ -32,6 +32,8 @@ public interface ZoneService {
      */
     public int getNumZones();
 
+    public List<Zone> getFavoriteZones(String email);
+
     
     
 }
