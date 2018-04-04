@@ -1098,7 +1098,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/zones-page/zones-page.components.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"container-fluid\" id=\"\" >\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-3\">\r\n\r\n            <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n        </div>\r\n      <div class=\"col-6\">\r\n        <h1 id=\"titulo\" align=\"center\">Zones</h1>\r\n      </div>\r\n      <table class=\"table\" align=\"CENTER\">\r\n        <thead class=\"thead-dark\">\r\n        <tr>\r\n          <th>Name</th>\r\n          <th></th>\r\n\r\n        </tr>\r\n        </thead>\r\n        <tr *ngFor=\"let Fzone of Fzones\">\r\n          <td>{{Fzone.name}}</td>\r\n        </tr>\r\n      </table>\r\n\r\n        <div class=\"col-6\">\r\n            <h1 id=\"titulo\" align=\"center\">Zones to Subscribe</h1>\r\n        </div>\r\n\r\n        <table class=\"table\" align=\"CENTER\">\r\n            <thead class=\"thead-dark\">\r\n                <tr>\r\n                    <th>Number</th>\r\n                    <th>Name</th>\r\n                    <th></th>\r\n\r\n                </tr>\r\n            </thead>\r\n            <tr *ngFor=\"let zone of zones\">\r\n                <td>{{zone.number}}</td>\r\n                <td>{{zone.name}}</td>\r\n                <td><button type=\"button\" class=\"btn btn-info\" (click)=\"subscribeZone(zone.id, zone.number, zone.name, content)\">Subscribe</button></td>\r\n            </tr>\r\n        </table>\r\n    </div>\r\n</div>\r\n\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n\r\n    <div class=\"modal-header\">\r\n        <h4 class=\"modal-title\">Confirmation</h4>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <div class=\"jumbotron\">\r\n            <h4 class=\"text-center\">{{infoModal}}</h4>\r\n        </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-outline-light\" (click)=\"c('Close click')\">Close</button>\r\n    </div>\r\n\r\n</ng-template>\r\n\r\n"
+module.exports = "\r\n<div class=\"container-fluid\" id=\"\" >\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-3\">\r\n\r\n            <img width=\"200\" height=\"200\" class=\"img-responsive center\" src=\"assets/img/logo.png\" alt=\"Logo\">\r\n        </div>\r\n      <div class=\"col-6\">\r\n        <h1 id=\"titulo\" align=\"center\">Zones</h1>\r\n      </div>\r\n      <table class=\"table\" align=\"CENTER\">\r\n        <thead class=\"thead-dark\">\r\n        <tr>\r\n          <th>Name</th>\r\n          <th></th>\r\n\r\n        </tr>\r\n        </thead>\r\n        <tr *ngFor=\"let Fzone of Fzones\">\r\n          <td>{{Fzone.name}}</td>\r\n          <td><button type=\"button\" class=\"btn btn-info\" (click)=\"unsubscribeZone(Fzone.id, Fzone.number, Fzone.name, content)\">Unsubscribe</button></td>\r\n        </tr>\r\n      </table>\r\n\r\n        <div class=\"col-6\">\r\n            <h1 id=\"titulo\" align=\"center\">Zones to Subscribe</h1>\r\n        </div>\r\n\r\n        <table class=\"table\" align=\"CENTER\">\r\n            <thead class=\"thead-dark\">\r\n                <tr>\r\n                    <th>Number</th>\r\n                    <th>Name</th>\r\n                    <th></th>\r\n\r\n                </tr>\r\n            </thead>\r\n            <tr *ngFor=\"let zone of zones\">\r\n                <td>{{zone.number}}</td>\r\n                <td>{{zone.name}}</td>\r\n                <td><button type=\"button\" class=\"btn btn-info\" (click)=\"subscribeZone(zone.id, zone.number, zone.name, content)\">Subscribe</button></td>\r\n            </tr>\r\n        </table>\r\n    </div>\r\n</div>\r\n\r\n\r\n<ng-template #content let-c=\"close\" let-d=\"dismiss\">\r\n\r\n    <div class=\"modal-header\">\r\n        <h4 class=\"modal-title\">Confirmation</h4>\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"d('Cross click')\">\r\n                <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n    </div>\r\n    <div class=\"modal-body\">\r\n        <div class=\"jumbotron\">\r\n            <h4 class=\"text-center\">{{infoModal}}</h4>\r\n        </div>\r\n    </div>\r\n    <div class=\"modal-footer\">\r\n        <button type=\"button\" class=\"btn btn-outline-light\" (click)=\"c('Close click')\">Close</button>\r\n    </div>\r\n\r\n</ng-template>\r\n\r\n"
 
 /***/ }),
 
@@ -1156,12 +1156,22 @@ var ZonesPageComponent = /** @class */ (function () {
             _this.modalService.open(content, { windowClass: 'dark-modal' });
             //alert('Se ha adicionado '+name+ 'a tus zonas');
             console.log('Se ha adicionado ' + name + ' a tus zonas');
+            _this.Fzones = serverResponse;
         }, function (error) {
             _this.infoModal = error.message;
             _this.modalService.open(content, { windowClass: 'dark-modal' });
             console.log(error);
             console.log(error.message);
         });
+    };
+    ZonesPageComponent.prototype.unsubscribeZone = function (id, number, name, content) {
+        var _this = this;
+        this.userService.deleteZone(this.userService.cacheUser.email, id, number, name).subscribe(function (favoriteZones) {
+            _this.Fzones = favoriteZones;
+        });
+        console.log('Se ha eliminado ' + name + ' de tus zonas');
+        this.infoModal = 'You have unsubscribed to ' + name + ' zone.';
+        this.modalService.open(content, { windowClass: 'dark-modal' });
     };
     ZonesPageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -1450,6 +1460,12 @@ var UserService = /** @class */ (function (_super) {
     };
     UserService.prototype.addZone = function (email, id, number, name) {
         return this.post('users/zones/' + email, { id: id, number: number, name: name }).map(function (loginResponse) {
+            return loginResponse;
+        });
+    };
+    UserService.prototype.deleteZone = function (email, id, number, name) {
+        return this.post('zones/deletedFavorites/' + email, { id: id, number: number, name: name }).map(function (loginResponse) {
+            return loginResponse;
         });
     };
     UserService.prototype.listFavoriteZones = function (email) {

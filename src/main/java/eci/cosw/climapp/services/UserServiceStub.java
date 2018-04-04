@@ -84,7 +84,7 @@ public class UserServiceStub implements UserService {
     }
 
     @Override
-    public User addZone(Zone zone, String email) throws ServicesException{
+    public List<Zone> addZone(Zone zone, String email) throws ServicesException{
          User u = this.findUserByEmail(email);
          List<Zone> zon = u.getZones();
          for(int i=0; i<zon.size(); i++){
@@ -94,13 +94,13 @@ public class UserServiceStub implements UserService {
          }
          zon.add(zone);
          u.setZones(zon);
-         return u;
+         return u.getZones();
     }
 
     @Override
-    public User deleteZone(Zone zone,  String email) {
+    public List<Zone> deleteZone(Zone zone,  String email) {
         User u = this.findUserByEmail(email);
         u.deleteZone(zone);
-        return u;
+        return u.getZones();
     }
 }

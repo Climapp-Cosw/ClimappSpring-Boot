@@ -58,17 +58,17 @@ public interface UserService {
      * @param zone
      * @param email
      * @return 
-     * @throws com.eci.cosw.climapp.services.ServicesException
+     * @throws eci.cosw.climapp.services.ServicesException
      */
-    public User addZone(Zone zone, String email) throws ServicesException;
+    public List<Zone> addZone(Zone zone, String email) throws ServicesException;
 
     /**
      * 
      * @param zone
      * @param email
      * @return 
-     * @throws com.eci.cosw.climapp.services.ServicesException
+     * @throws eci.cosw.climapp.services.ServicesException
      */
-    public User deleteZone(Zone zone, String email) throws ServicesException;
+    public List<Zone> deleteZone(Zone zone, String email) throws ServicesException;
 
 }
